@@ -3,29 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوت فيسبوك</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>تسجيل الدخول إلى فيسبوك</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        .login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>بوت التحكم في فيسبوك</h1>
-        <form id="login-form">
-            <label for="email">البريد الإلكتروني:</label>
-            <input type="text" id="email" required>
-            <label for="password">كلمة المرور:</label>
-            <input type="password" id="password" required>
-            <button type="submit">تسجيل الدخول</button>
-        </form>
-        
-        <div id="page-selection" style="display:none;">
-            <h2>اختر الصفحة:</h2>
-            <select id="page-dropdown"></select>
-            <button id="start-bot">بدء البوت</button>
-        </div>
-        
-        <div id="output" style="display:none;"></div>
-    </div>
 
-    <script src="script.js"></script>
+<div class="login-container">
+    <h2>تسجيل الدخول إلى فيسبوك</h2>
+    <input type="text" id="email" placeholder="البريد الإلكتروني">
+    <input type="password" id="password" placeholder="كلمة المرور">
+    <button onclick="login()">تسجيل الدخول</button>
+</div>
+
+<script>
+    function login() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (email && password) {
+            alert('تم تسجيل الدخول بنجاح!');
+            // هنا يمكنك إرسال البيانات إلى الخادم لتسجيل الدخول باستخدام Puppeteer أو Selenium
+        } else {
+            alert('يرجى إدخال البريد الإلكتروني وكلمة المرور');
+        }
+    }
+</script>
+
 </body>
 </html>
