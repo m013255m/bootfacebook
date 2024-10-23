@@ -36,6 +36,13 @@
         button:hover {
             background-color: #0056b3;
         }
+        .loading {
+            display: none;
+            margin-top: 20px;
+        }
+        .loading img {
+            width: 50px;
+        }
     </style>
 </head>
 <body>
@@ -45,6 +52,10 @@
     <input type="text" id="email" placeholder="البريد الإلكتروني">
     <input type="password" id="password" placeholder="كلمة المرور">
     <button onclick="login()">تسجيل الدخول</button>
+    <div class="loading" id="loading">
+        <img src="https://i.imgur.com/LLfPFFX.gif" alt="تحميل...">
+        <p>جارٍ التحقق من البيانات...</p>
+    </div>
 </div>
 
 <script>
@@ -53,8 +64,26 @@
         const password = document.getElementById('password').value;
 
         if (email && password) {
-            alert('تم تسجيل الدخول بنجاح!');
-            // هنا يمكنك إرسال البيانات إلى الخادم لتسجيل الدخول باستخدام Puppeteer أو Selenium
+            // إظهار أيقونة التحميل
+            document.getElementById('loading').style.display = 'block';
+
+            // محاكاة عملية تحقق البيانات (هنا يمكنك استبدال هذا بجزء التحقق من البيانات)
+            setTimeout(() => {
+                // إخفاء أيقونة التحميل
+                document.getElementById('loading').style.display = 'none';
+
+                // التحقق من البيانات (محاكاة تحقق ناجح)
+                const isValid = true; // هنا يمكنك إضافة تحقق البيانات الفعلي
+                
+                if (isValid) {
+                    alert('تم تسجيل الدخول بنجاح!');
+
+                    // الانتقال إلى صفحة البوت
+                    window.location.href = "bot.html"; // استبدل "bot.html" بعنوان صفحة البوت
+                } else {
+                    alert('البيانات غير صحيحة. يرجى التحقق من البريد الإلكتروني وكلمة المرور.');
+                }
+            }, 3000); // محاكاة وقت التحقق (3 ثواني)
         } else {
             alert('يرجى إدخال البريد الإلكتروني وكلمة المرور');
         }
