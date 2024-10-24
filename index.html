@@ -3,99 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول إلى بوت الفيسبوك</title>
+    <title>بوت الرد التلقائي</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
             text-align: center;
-            padding: 50px;
+            padding-top: 50px;
         }
-        .login-container {
+        h2 {
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
             background-color: white;
             padding: 20px;
-            border-radius: 10px;
-            display: inline-block;
-            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        input {
-            margin: 10px;
-            padding: 10px;
-            width: 80%;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
-        .loading {
-            display: none;
-            margin-top: 20px;
-        }
-        .loading img {
-            width: 50px;
+        p {
+            color: #555;
         }
     </style>
 </head>
 <body>
 
-<div class="login-container">
-    <h2>تسجيل الدخول إلى بوت الفيسبوك</h2>
-    <input type="text" id="email" placeholder="البريد الإلكتروني">
-    <input type="password" id="password" placeholder="كلمة المرور">
-    <button onclick="login()">تسجيل الدخول</button>
-    <div class="loading" id="loading">
-        <img src="https://i.imgur.com/LLfPFFX.gif" alt="تحميل...">
-        <p>جارٍ التحقق من البيانات...</p>
-    </div>
+<div class="container">
+    <h2>مرحبا بك في بوت الرد التلقائي!</h2>
+    <p>هنا يمكنك التحكم في الردود التلقائية على رسائل وتعليقات صفحة الفيسبوك الخاصة بك.</p>
+    <!-- أضف عناصر التحكم هنا -->
 </div>
-
-<script>
-    function login() {
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-        if (email && password) {
-            // إظهار أيقونة التحميل
-            document.getElementById('loading').style.display = 'block';
-
-            // إرسال البيانات إلى السيرفر (أو تشغيل Selenium عبر Python)
-            fetch('/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('loading').style.display = 'none';
-                if (data.success) {
-                    alert('تم تسجيل الدخول بنجاح!');
-                    // الانتقال إلى صفحة البوت
-                    window.location.href = "bot.html";
-                } else {
-                    alert('حدث خطأ أثناء تسجيل الدخول. تحقق من البيانات.');
-                }
-            })
-            .catch(error => {
-                document.getElementById('loading').style.display = 'none';
-                alert('حدث خطأ أثناء الاتصال بالسيرفر.');
-                console.error('Error:', error);
-            });
-        } else {
-            alert('يرجى إدخال البريد الإلكتروني وكلمة المرور');
-        }
-    }
-</script>
 
 </body>
 </html>
