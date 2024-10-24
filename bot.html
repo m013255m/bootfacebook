@@ -1,49 +1,39 @@
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-import time
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوت الرد التلقائي</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h2 {
+            color: #333;
+        }
+        .container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        p {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
 
-# إعداد ChromeDriver
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument("--start-maximized")
-driver = webdriver.Chrome(executable_path="path/to/chromedriver", options=chrome_options)
+<div class="container">
+    <h2>مرحبا بك في بوت الرد التلقائي!</h2>
+    <p>هنا يمكنك التحكم في الردود التلقائية على رسائل وتعليقات صفحة الفيسبوك الخاصة بك.</p>
+    <!-- أضف عناصر التحكم هنا -->
+</div>
 
-# فتح صفحة الفيسبوك
-driver.get("https://www.facebook.com/")
-
-# تسجيل الدخول
-email_input = driver.find_element_by_id("email")
-password_input = driver.find_element_by_id("pass")
-
-# بيانات تسجيل الدخول التي يتم إدخالها من الواجهة
-email_input.send_keys("your_email@example.com")
-password_input.send_keys("your_password")
-
-# الضغط على زر تسجيل الدخول
-login_button = driver.find_element_by_name("login")
-login_button.click()
-
-# انتظار الدخول
-time.sleep(5)
-
-# الانتقال إلى صفحة الرسائل أو التعليقات المراد الرد عليها
-driver.get("https://www.facebook.com/pages/?category=your_page")
-
-# التعامل مع الرسائل أو التعليقات (مثال بسيط للرد على الرسائل)
-def reply_to_messages():
-    time.sleep(5)
-    messages = driver.find_elements_by_class_name("_3oh-")
-    for message in messages:
-        try:
-            message.click()
-            time.sleep(2)
-            text_area = driver.find_element_by_css_selector("textarea")
-            text_area.send_keys("شكراً على رسالتك، سنرد عليك قريباً.")
-            text_area.send_keys(Keys.RETURN)
-        except Exception as e:
-            print(f"Error replying to message: {e}")
-
-# تنفيذ الردود
-reply_to_messages()
-
-# إغلاق المتصفح بعد انتهاء العملية
-driver.quit()
+</body>
+</html>
