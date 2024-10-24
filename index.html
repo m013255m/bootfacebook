@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول إلى فيسبوك</title>
+    <title>تسجيل الدخول إلى بوت الفيسبوك</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -48,7 +48,7 @@
 <body>
 
 <div class="login-container">
-    <h2>تسجيل الدخول إلى فيسبوك</h2>
+    <h2>تسجيل الدخول إلى بوت الفيسبوك</h2>
     <input type="text" id="email" placeholder="البريد الإلكتروني">
     <input type="password" id="password" placeholder="كلمة المرور">
     <button onclick="login()">تسجيل الدخول</button>
@@ -67,23 +67,30 @@
             // إظهار أيقونة التحميل
             document.getElementById('loading').style.display = 'block';
 
-            // محاكاة عملية تحقق البيانات (هنا يمكنك استبدال هذا بجزء التحقق من البيانات)
-            setTimeout(() => {
-                // إخفاء أيقونة التحميل
+            // إرسال البيانات إلى السيرفر (أو تشغيل Selenium عبر Python)
+            fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            })
+            .then(response => response.json())
+            .then(data => {
                 document.getElementById('loading').style.display = 'none';
-
-                // التحقق من البيانات (محاكاة تحقق ناجح)
-                const isValid = true; // هنا يمكنك إضافة تحقق البيانات الفعلي
-                
-                if (isValid) {
+                if (data.success) {
                     alert('تم تسجيل الدخول بنجاح!');
-
                     // الانتقال إلى صفحة البوت
-                    window.location.href = "bot.html"; // استبدل "bot.html" بعنوان صفحة البوت
+                    window.location.href = "bot.html";
                 } else {
-                    alert('البيانات غير صحيحة. يرجى التحقق من البريد الإلكتروني وكلمة المرور.');
+                    alert('حدث خطأ أثناء تسجيل الدخول. تحقق من البيانات.');
                 }
-            }, 3000); // محاكاة وقت التحقق (3 ثواني)
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                alert('حدث خطأ أثناء الاتصال بالسيرفر.');
+                console.error('Error:', error);
+            });
         } else {
             alert('يرجى إدخال البريد الإلكتروني وكلمة المرور');
         }
