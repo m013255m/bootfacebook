@@ -3,37 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>بوت الرد التلقائي</title>
+    <title>تسجيل الدخول</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            text-align: center;
-            padding-top: 50px;
-        }
-        h2 {
-            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .container {
-            width: 50%;
-            margin: 0 auto;
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
         }
-        p {
-            color: #555;
+        h2 {
+            text-align: center;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .loading {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>مرحبا بك في بوت الرد التلقائي!</h2>
-    <p>هنا يمكنك التحكم في الردود التلقائية على رسائل وتعليقات صفحة الفيسبوك الخاصة بك.</p>
-    <!-- أضف عناصر التحكم هنا -->
+    <h2>تسجيل الدخول</h2>
+    <form id="loginForm">
+        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" id="password" placeholder="كلمة المرور" required>
+        <button type="submit">تسجيل الدخول</button>
+        <div class="loading" id="loading">
+            <p>جاري التحقق...</p>
+            <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading" width="50">
+        </div>
+    </form>
 </div>
+
+<script>
+    document.getElementById( loginForm ).addEventListener( submit , function(event) {
+        event.preventDefault();
+
+        var email = document.getElementById( email ).value;
+        var password = document.getElementById( password ).value;
+        var loadingElement = document.getElementById( loading );
+
+        // إظهار علامة التحميل
+        loadingElement.style.display =  block ;
+
+        // استدعاء وهمي للتحقق من البريد وكلمة المرور
+        setTimeout(function() {
+            loadingElement.style.display =  none ;
+            
+            // تحقق بسيط
+            if (email === "your_email@example.com" && password === "your_password") {
+                alert("تم تسجيل الدخول بنجاح!");
+                // يمكنك إعادة توجيه المستخدم إلى صفحة البوت هنا
+                window.location.href = "bot.html"; // تأكد من وجود bot.html
+            } else {
+                alert("خطأ في البيانات، حاول مرة أخرى.");
+            }
+        }, 2000); // محاكاة فترة التحميل لمدة 2 ثانية
+    });
+</script>
 
 </body>
 </html>
