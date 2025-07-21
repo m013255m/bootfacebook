@@ -1,97 +1,390 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول</title>
+    <title>توقع مكان التفاحة</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
         }
-        .container {
-            background-color: white;
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
+            overflow-x: hidden;
         }
-        h2 {
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
-        input[type="email"],
-        input[type="password"] {
+        
+        h1 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 700;
+        }
+        
+        .game-area {
+            position: relative;
             width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 4px;
+            height: 300px;
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 2px dashed #ddd;
+            touch-action: manipulation;
         }
+        
+        .apple {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path fill="%23e74c3c" d="M25,5c-5,0-10,3-10,8c0,5,5,10,10,10s10-5,10-10C35,8,30,5,25,5z"/><path fill="%23c0392b" d="M25,23c-5,0-10-5-10-10c0-5,5-8,10-8V23z"/><path fill="%232ecc71" d="M23,5h4v3h-4V5z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 10;
+        }
+        
+        .apple:hover {
+            transform: scale(1.1);
+        }
+        
+        .prediction-area {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: rgba(46, 204, 113, 0.3);
+            border: 2px solid #2ecc71;
+            pointer-events: none;
+            display: none;
+            z-index: 5;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.7; }
+            50% { transform: scale(1.05); opacity: 0.9; }
+            100% { transform: scale(0.95); opacity: 0.7; }
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
+            background-color: #e74c3c;
             color: white;
             border: none;
-            border-radius: 4px;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+        
         button:hover {
-            background-color: #218838;
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
-        .loading {
-            display: none;
-            text-align: center;
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
             margin-top: 20px;
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat h3 {
+            color: #e74c3c;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .stat p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 100;
+        }
+        
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 24px;
+            }
+            
+            .game-area {
+                height: 250px;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="container">
-    <h2>تسجيل الدخول</h2>
-    <form id="loginForm">
-        <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-        <input type="password" id="password" placeholder="كلمة المرور" required>
-        <button type="submit">تسجيل الدخول</button>
-        <div class="loading" id="loading">
-            <p>جاري التحقق...</p>
-            <img src="https://i.imgur.com/llF5iyg.gif" alt="Loading" width="50">
+    <div class="container">
+        <h1>توقع مكان التفاحة 🍎</h1>
+        
+        <div class="game-area" id="gameArea">
+            <div class="apple" id="apple"></div>
+            <div class="prediction-area" id="prediction"></div>
         </div>
-    </form>
-</div>
+        
+        <div class="controls">
+            <button id="predictBtn">توقع الموقع</button>
+            <button id="moveBtn">حرك التفاحة</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <h3 id="attempts">0</h3>
+                <p>المحاولات</p>
+            </div>
+            <div class="stat">
+                <h3 id="accuracy">0%</h3>
+                <p>الدقة</p>
+            </div>
+            <div class="stat">
+                <h3 id="streak">0</h3>
+                <p>التوالي</p>
+            </div>
+        </div>
+    </div>
 
-<script>
-    document.getElementById( loginForm ).addEventListener( submit , function(event) {
-        event.preventDefault();
-
-        var email = document.getElementById( email ).value;
-        var password = document.getElementById( password ).value;
-        var loadingElement = document.getElementById( loading );
-
-        // إظهار علامة التحميل
-        loadingElement.style.display =  block ;
-
-        // استدعاء وهمي للتحقق من البريد وكلمة المرور
-        setTimeout(function() {
-            loadingElement.style.display =  none ;
+    <script>
+        const gameArea = document.getElementById('gameArea');
+        const apple = document.getElementById('apple');
+        const prediction = document.getElementById('prediction');
+        const predictBtn = document.getElementById('predictBtn');
+        const moveBtn = document.getElementById('moveBtn');
+        const attemptsEl = document.getElementById('attempts');
+        const accuracyEl = document.getElementById('accuracy');
+        const streakEl = document.getElementById('streak');
+        
+        let attempts = 0;
+        let correctPredictions = 0;
+        let currentStreak = 0;
+        let maxStreak = 0;
+        let applePosition = { x: 0, y: 0 };
+        let gameAreaRect = gameArea.getBoundingClientRect();
+        
+        // Initialize game
+        function initGame() {
+            moveApple();
+            updateGameAreaSize();
             
-            // تحقق بسيط
-            if (email === "your_email@example.com" && password === "your_password") {
-                alert("تم تسجيل الدخول بنجاح!");
-                // يمكنك إعادة توجيه المستخدم إلى صفحة البوت هنا
-                window.location.href = "bot.html"; // تأكد من وجود bot.html
+            // Event listeners
+            predictBtn.addEventListener('click', predictApplePosition);
+            moveBtn.addEventListener('click', moveApple);
+            
+            // Handle window resize
+            window.addEventListener('resize', updateGameAreaSize);
+            
+            // Touch support for apple
+            apple.addEventListener('touchstart', handleTouchStart, { passive: false });
+            apple.addEventListener('touchmove', handleTouchMove, { passive: false });
+            apple.addEventListener('touchend', handleTouchEnd, { passive: false });
+        }
+        
+        // Update game area size when window resizes
+        function updateGameAreaSize() {
+            gameAreaRect = gameArea.getBoundingClientRect();
+        }
+        
+        // Move apple to random position
+        function moveApple() {
+            // Hide prediction
+            prediction.style.display = 'none';
+            
+            // Calculate random position within game area
+            const maxX = gameAreaRect.width - apple.offsetWidth;
+            const maxY = gameAreaRect.height - apple.offsetHeight;
+            
+            applePosition = {
+                x: Math.floor(Math.random() * maxX),
+                y: Math.floor(Math.random() * maxY)
+            };
+            
+            // Apply new position with animation
+            apple.style.transition = 'all 0.5s ease-out';
+            apple.style.left = `${applePosition.x}px`;
+            apple.style.top = `${applePosition.y}px`;
+            
+            // Remove transition after animation completes
+            setTimeout(() => {
+                apple.style.transition = 'none';
+            }, 500);
+        }
+        
+        // Predict apple position (AI simulation)
+        function predictApplePosition() {
+            attempts++;
+            attemptsEl.textContent = attempts;
+            
+            // Simulate AI prediction with 85% accuracy
+            const isCorrect = Math.random() < 0.85;
+            
+            if (isCorrect) {
+                // Accurate prediction (slightly offset from actual position)
+                const offsetX = (Math.random() * 20) - 10; // -10 to 10
+                const offsetY = (Math.random() * 20) - 10; // -10 to 10
+                
+                prediction.style.left = `${applePosition.x + offsetX - 5}px`;
+                prediction.style.top = `${applePosition.y + offsetY - 5}px`;
+                
+                correctPredictions++;
+                currentStreak++;
+                if (currentStreak > maxStreak) {
+                    maxStreak = currentStreak;
+                }
+                
+                // Show celebration
+                celebrate();
             } else {
-                alert("خطأ في البيانات، حاول مرة أخرى.");
+                // Wrong prediction (random position)
+                const maxX = gameAreaRect.width - prediction.offsetWidth;
+                const maxY = gameAreaRect.height - prediction.offsetHeight;
+                
+                prediction.style.left = `${Math.floor(Math.random() * maxX)}px`;
+                prediction.style.top = `${Math.floor(Math.random() * maxY)}px`;
+                
+                currentStreak = 0;
             }
-        }, 2000); // محاكاة فترة التحميل لمدة 2 ثانية
-    });
-</script>
-
+            
+            // Update stats
+            const accuracy = Math.round((correctPredictions / attempts) * 100);
+            accuracyEl.textContent = `${accuracy}%`;
+            streakEl.textContent = currentStreak;
+            
+            // Show prediction
+            prediction.style.display = 'block';
+        }
+        
+        // Touch event handlers for apple
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let appleStartX = 0;
+        let appleStartY = 0;
+        
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            
+            const appleRect = apple.getBoundingClientRect();
+            appleStartX = appleRect.left - gameAreaRect.left;
+            appleStartY = appleRect.top - gameAreaRect.top;
+        }
+        
+        function handleTouchMove(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
+            
+            let newX = appleStartX + deltaX;
+            let newY = appleStartY + deltaY;
+            
+            // Constrain to game area
+            newX = Math.max(0, Math.min(newX, gameAreaRect.width - apple.offsetWidth));
+            newY = Math.max(0, Math.min(newY, gameAreaRect.height - apple.offsetHeight));
+            
+            apple.style.left = `${newX}px`;
+            apple.style.top = `${newY}px`;
+            
+            // Update apple position
+            applePosition = { x: newX, y: newY };
+            
+            // Hide prediction if visible
+            prediction.style.display = 'none';
+        }
+        
+        function handleTouchEnd() {
+            // Reset touch variables
+            touchStartX = 0;
+            touchStartY = 0;
+            appleStartX = 0;
+            appleStartY = 0;
+        }
+        
+        // Celebration effect
+        function celebrate() {
+            const colors = ['#e74c3c', '#2ecc71', '#3498db', '#f1c40f', '#9b59b6'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `-10px`;
+                confetti.style.width = `${Math.random() * 10 + 5}px`;
+                confetti.style.height = confetti.style.width;
+                
+                document.body.appendChild(confetti);
+                
+                const animationDuration = Math.random() * 3 + 2;
+                
+                confetti.animate([
+                    { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+                    { transform: `translate(${Math.random() * 200 - 100}px, ${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                ], {
+                    duration: animationDuration * 1000,
+                    easing: 'cubic-bezier(0.1, 0.8, 0.9, 1)'
+                });
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, animationDuration * 1000);
+            }
+        }
+        
+        // Initialize the game
+        initGame();
+    </script>
 </body>
 </html>
