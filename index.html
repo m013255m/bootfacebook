@@ -48,17 +48,16 @@
             border: 1px solid var(--card-border);
         }
         
-        .header {
+        /* شاشة التحقق من ID */
+        .verify-screen {
             text-align: center;
-            margin-bottom: 20px;
-            position: relative;
         }
         
         .logo {
             color: var(--gold);
             font-size: 24px;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -76,69 +75,170 @@
             font-weight: bold;
         }
         
-        .subtitle {
+        .verify-title {
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .verify-subtitle {
             color: var(--text-light);
+            margin-bottom: 25px;
             font-size: 14px;
         }
         
-        /* اختيار عدد الصناديق */
-        .box-selector {
-            margin: 25px 0;
-            text-align: center;
+        .input-group {
+            margin-bottom: 20px;
         }
         
-        .box-options {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .box-option {
-            width: 50px;
-            height: 50px;
+        .input-field {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--card-border);
             background: var(--dark-bg);
-            border: 2px solid var(--card-border);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--text-light);
-            cursor: pointer;
+            color: var(--text);
+            font-size: 16px;
+            text-align: center;
             transition: all 0.3s;
         }
         
-        .box-option:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-        }
-        
-        .box-option.selected {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--dark-bg);
+        .input-field:focus {
+            outline: none;
             border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
         
-        /* منطقة اللعبة */
-        .game-area {
-            margin: 25px 0;
+        .verify-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .verify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
+        }
+        
+        .verify-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .loader {
             display: none;
+            margin: 20px auto;
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+        
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 4px solid transparent;
+            border-top-color: var(--gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        .loader-circle:nth-child(2) {
+            border-top-color: var(--gold-dark);
+            animation-delay: 0.2s;
+            width: 80%;
+            height: 80%;
+            top: 10%;
+            left: 10%;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success-check {
+            display: none;
+            width: 80px;
+            height: 80px;
+            margin: 20px auto;
+        }
+        
+        .checkmark {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: block;
+            stroke-width: 5;
+            stroke: var(--success);
+            stroke-miterlimit: 10;
+            box-shadow: inset 0 0 0 rgba(76, 175, 80, 0.5);
+            animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
+        }
+        
+        .checkmark__circle {
+            stroke-dasharray: 166;
+            stroke-dashoffset: 166;
+            stroke-width: 5;
+            stroke-miterlimit: 10;
+            stroke: var(--success);
+            fill: none;
+            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        }
+        
+        .checkmark__check {
+            transform-origin: 50% 50%;
+            stroke-dasharray: 48;
+            stroke-dashoffset: 48;
+            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+        }
+        
+        @keyframes stroke {
+            100% { stroke-dashoffset: 0; }
+        }
+        
+        @keyframes scale {
+            0%, 100% { transform: none; }
+            50% { transform: scale3d(1.1, 1.1, 1); }
+        }
+        
+        @keyframes fill {
+            100% { box-shadow: inset 0 0 0 40px rgba(76, 175, 80, 0); }
+        }
+        
+        /* شاشة اللعبة */
+        .game-screen {
+            display: none;
+            text-align: center;
+        }
+        
+        .game-header {
+            margin-bottom: 20px;
+        }
+        
+        .user-id {
+            color: var(--text-light);
+            font-size: 14px;
+            margin-bottom: 10px;
         }
         
         .boxes-container {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 25px;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
         
         .box {
-            width: 60px;
-            height: 80px;
+            width: 70px;
+            height: 90px;
             background: var(--dark-bg);
             border: 2px solid var(--card-border);
             border-radius: 8px;
@@ -165,8 +265,8 @@
         }
         
         .apple-icon {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23FFD700" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23FF9900" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/></svg>');
             background-size: contain;
             background-repeat: no-repeat;
@@ -180,47 +280,27 @@
             100% { transform: scale(1); }
         }
         
-        /* أزرار التحكم */
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .btn {
-            padding: 12px 25px;
+        .start-btn {
+            width: 200px;
+            padding: 15px;
             border: none;
             border-radius: 30px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #000;
             font-weight: bold;
             font-size: 16px;
             cursor: pointer;
             transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
+            margin-top: 20px;
         }
         
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-            color: var(--dark-bg);
-            box-shadow: var(--shadow);
-        }
-        
-        .btn-primary:hover {
+        .start-btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 16px rgba(255, 215, 0, 0.3);
         }
         
-        .btn-primary:active {
+        .start-btn:active {
             transform: translateY(1px);
-        }
-        
-        .btn-secondary {
-            background: var(--card-bg);
-            color: var(--text);
-            border: 2px solid var(--card-border);
         }
         
         /* تأثيرات الفوز */
@@ -253,31 +333,6 @@
             z-index: 99;
         }
         
-        /* الإحصائيات */
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 25px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        
-        .stat {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--gold);
-        }
-        
-        .stat-label {
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
         /* رسائل التنبيه */
         .alert {
             position: fixed;
@@ -288,7 +343,7 @@
             padding: 15px 25px;
             border-radius: 10px;
             box-shadow: var(--shadow);
-            border-left: 4px solid var(--gold);
+            border-left: 4px solid var(--danger);
             z-index: 200;
             display: none;
             animation: slideIn 0.3s;
@@ -302,17 +357,13 @@
         /* تصميم للهواتف */
         @media (max-width: 500px) {
             .box {
-                width: 50px;
-                height: 70px;
+                width: 60px;
+                height: 80px;
             }
             
-            .boxes-container {
-                gap: 8px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-                font-size: 14px;
+            .apple-icon {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -320,50 +371,48 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <!-- شاشة التحقق من ID -->
+        <div class="verify-screen" id="verifyScreen">
             <div class="logo">
                 <div class="logo-icon">1x</div>
                 <span>Golden Apple</span>
             </div>
-            <div class="subtitle">اختر عدد الصناديق وابدأ اللعب</div>
-        </div>
-        
-        <div class="box-selector">
-            <div class="box-options">
-                <div class="box-option" data-boxes="3">3</div>
-                <div class="box-option" data-boxes="4">4</div>
-                <div class="box-option selected" data-boxes="5">5</div>
-                <div class="box-option" data-boxes="6">6</div>
-                <div class="box-option" data-boxes="7">7</div>
+            
+            <h2 class="verify-title">التحقق من حساب 1xBet</h2>
+            <p class="verify-subtitle">يرجى إدخال معرف حسابك للتحقق والبدء في اللعبة</p>
+            
+            <div class="input-group">
+                <input type="text" id="userIdInput" class="input-field" placeholder="أدخل ID حساب 1xBet" maxlength="15">
+            </div>
+            
+            <button class="verify-btn" id="verifyBtn">تحقق الآن</button>
+            
+            <div class="loader" id="loader">
+                <div class="loader-circle"></div>
+                <div class="loader-circle"></div>
+            </div>
+            
+            <div class="success-check" id="successCheck">
+                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                </svg>
             </div>
         </div>
         
-        <div class="game-area" id="gameArea">
+        <!-- شاشة اللعبة -->
+        <div class="game-screen" id="gameScreen">
+            <div class="game-header">
+                <div class="logo">
+                    <div class="logo-icon">1x</div>
+                    <span>Golden Apple</span>
+                </div>
+                <div class="user-id">ID: <span id="userDisplayId">1234567890</span></div>
+            </div>
+            
             <div class="boxes-container" id="boxesContainer"></div>
             
-            <div class="controls">
-                <button class="btn btn-primary" id="revealBtn">
-                    <span>👁️</span> اظهار التفاحة
-                </button>
-                <button class="btn btn-secondary" id="resetBtn">
-                    <span>🔄</span> اعادة
-                </button>
-            </div>
-            
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-value" id="attempts">0</div>
-                    <div class="stat-label">المحاولات</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="wins">0</div>
-                    <div class="stat-label">الفوز</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value" id="streak">0</div>
-                    <div class="stat-label">متتالية</div>
-                </div>
-            </div>
+            <button class="start-btn" id="startBtn">ابدأ اللعب</button>
         </div>
     </div>
     
@@ -371,48 +420,75 @@
     
     <script>
         // عناصر DOM
-        const boxOptions = document.querySelectorAll('.box-option');
-        const gameArea = document.getElementById('gameArea');
+        const verifyScreen = document.getElementById('verifyScreen');
+        const gameScreen = document.getElementById('gameScreen');
+        const userIdInput = document.getElementById('userIdInput');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const loader = document.getElementById('loader');
+        const successCheck = document.getElementById('successCheck');
+        const userDisplayId = document.getElementById('userDisplayId');
         const boxesContainer = document.getElementById('boxesContainer');
-        const revealBtn = document.getElementById('revealBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const attemptsEl = document.getElementById('attempts');
-        const winsEl = document.getElementById('wins');
-        const streakEl = document.getElementById('streak');
+        const startBtn = document.getElementById('startBtn');
         const alertEl = document.getElementById('alert');
         
         // متغيرات اللعبة
-        let selectedBoxes = 5;
-        let boxes = [];
+        let userId = '';
         let applePosition = -1;
         let attempts = 0;
-        let wins = 0;
-        let currentStreak = 0;
-        let maxStreak = 0;
-        let canReveal = true;
+        
+        // تحقق من ID
+        verifyBtn.addEventListener('click', verifyUserId);
+        
+        function verifyUserId() {
+            const id = userIdInput.value.trim();
+            
+            if (id.length < 10) {
+                showAlert('يجب أن يتكون ID من 10 أرقام على الأقل', 'error');
+                return;
+            }
+            
+            if (!/^\d+$/.test(id)) {
+                showAlert('يجب أن يحتوي ID على أرقام فقط', 'error');
+                return;
+            }
+            
+            userId = id;
+            verifyBtn.style.display = 'none';
+            loader.style.display = 'block';
+            
+            // محاكاة عملية التحقق من السيرفر
+            setTimeout(() => {
+                loader.style.display = 'none';
+                successCheck.style.display = 'block';
+                
+                // عرض ID المستخدم
+                userDisplayId.textContent = userId;
+                
+                // الانتقال إلى شاشة اللعبة بعد التأكيد
+                setTimeout(() => {
+                    verifyScreen.style.display = 'none';
+                    gameScreen.style.display = 'block';
+                    initGame();
+                }, 1500);
+            }, 3000);
+        }
         
         // تهيئة اللعبة
         function initGame() {
-            // إنشاء الصناديق
+            // إنشاء 5 صناديق
             boxesContainer.innerHTML = '';
-            boxes = [];
-            
-            for (let i = 0; i < selectedBoxes; i++) {
+            for (let i = 0; i < 5; i++) {
                 const box = document.createElement('div');
                 box.className = 'box';
                 box.innerHTML = `
                     <span class="box-number">${i+1}</span>
                     <div class="apple-icon"></div>
                 `;
-                boxes.push(box);
                 boxesContainer.appendChild(box);
             }
             
-            // إخفاء التفاحة
+            // إخفاء التفاحة في مكان عشوائي
             hideApple();
-            
-            // عرض منطقة اللعبة
-            gameArea.style.display = 'block';
         }
         
         // إخفاء التفاحة في مكان عشوائي
@@ -423,36 +499,27 @@
             });
             
             // اختيار مكان عشوائي جديد
-            applePosition = Math.floor(Math.random() * selectedBoxes);
-            canReveal = true;
+            applePosition = Math.floor(Math.random() * 5);
         }
         
-        // عرض التفاحة
-        function revealApple() {
-            if (!canReveal) return;
-            
+        // بدء اللعبة وعرض التفاحة
+        startBtn.addEventListener('click', () => {
             attempts++;
-            attemptsEl.textContent = attempts;
             
             // عرض التفاحة في المكان المحدد
-            boxes[applePosition].querySelector('.apple-icon').style.display = 'block';
+            const appleIcons = document.querySelectorAll('.apple-icon');
+            appleIcons[applePosition].style.display = 'block';
             
             // تأثيرات الفوز
             createWinEffect();
             createConfetti();
+            vibrate();
             
-            wins++;
-            currentStreak++;
-            if (currentStreak > maxStreak) maxStreak = currentStreak;
-            
-            winsEl.textContent = wins;
-            streakEl.textContent = currentStreak;
-            
-            canReveal = false;
-            
-            // عرض رسالة التنبيه
-            showAlert('🎉 لقد وجدت التفاحة!', 'success');
-        }
+            // إخفاء التفاحة بعد 2 ثانية
+            setTimeout(() => {
+                hideApple();
+            }, 2000);
+        });
         
         // إنشاء تأثير الفوز
         function createWinEffect() {
@@ -498,33 +565,12 @@
         function showAlert(message, type) {
             alertEl.textContent = message;
             alertEl.style.display = 'block';
-            alertEl.style.borderLeftColor = type === 'success' ? 'var(--success)' : 'var(--danger)';
+            alertEl.style.borderLeftColor = type === 'error' ? 'var(--danger)' : 'var(--success)';
             
             setTimeout(() => {
                 alertEl.style.display = 'none';
             }, 3000);
         }
-        
-        // مستمعي الأحداث
-        boxOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                boxOptions.forEach(opt => opt.classList.remove('selected'));
-                option.classList.add('selected');
-                selectedBoxes = parseInt(option.dataset.boxes);
-                initGame();
-            });
-        });
-        
-        revealBtn.addEventListener('click', revealApple);
-        
-        resetBtn.addEventListener('click', () => {
-            hideApple();
-            currentStreak = 0;
-            streakEl.textContent = currentStreak;
-        });
-        
-        // بدء اللعبة عند التحميل
-        window.addEventListener('load', initGame);
         
         // تأثير اهتزاز للهواتف
         function vibrate() {
