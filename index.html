@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Golden Apple - 1xBet Style</title>
+    <title>Golden Apple - 1xBet</title>
     <style>
         :root {
             --gold: #FFD700;
@@ -38,18 +38,15 @@
             overflow-x: hidden;
         }
         
-        .container {
+        /* شاشة التحقق من ID */
+        .verify-screen {
             width: 100%;
             max-width: 500px;
             background: var(--card-bg);
             border-radius: 16px;
             box-shadow: var(--shadow);
-            padding: 20px;
+            padding: 30px;
             border: 1px solid var(--card-border);
-        }
-        
-        /* شاشة التحقق من ID */
-        .verify-screen {
             text-align: center;
         }
         
@@ -215,6 +212,13 @@
         /* شاشة اللعبة */
         .game-screen {
             display: none;
+            width: 100%;
+            max-width: 500px;
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            padding: 20px;
+            border: 1px solid var(--card-border);
             text-align: center;
         }
         
@@ -228,17 +232,56 @@
             margin-bottom: 10px;
         }
         
+        .box-selector {
+            margin: 15px 0;
+        }
+        
+        .box-options {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .box-option {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-bg);
+            border: 2px solid var(--card-border);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .box-option:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .box-option.selected {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--dark-bg);
+            border-color: var(--gold);
+        }
+        
         .boxes-container {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin: 30px 0;
+            margin: 25px 0;
             flex-wrap: wrap;
         }
         
         .box {
-            width: 70px;
-            height: 90px;
+            width: 60px;
+            height: 80px;
             background: var(--dark-bg);
             border: 2px solid var(--card-border);
             border-radius: 8px;
@@ -356,64 +399,82 @@
         
         /* تصميم للهواتف */
         @media (max-width: 500px) {
+            .verify-screen, .game-screen {
+                padding: 20px;
+            }
+            
             .box {
-                width: 60px;
-                height: 80px;
+                width: 50px;
+                height: 70px;
             }
             
             .apple-icon {
                 width: 40px;
                 height: 40px;
             }
+            
+            .start-btn {
+                width: 160px;
+                padding: 12px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <!-- شاشة التحقق من ID -->
-        <div class="verify-screen" id="verifyScreen">
+    <!-- شاشة التحقق من ID -->
+    <div class="verify-screen" id="verifyScreen">
+        <div class="logo">
+            <div class="logo-icon">1x</div>
+            <span>Golden Apple</span>
+        </div>
+        
+        <h2 class="verify-title">التحقق من حساب 1xBet</h2>
+        <p class="verify-subtitle">يرجى إدخال معرف حسابك للتحقق والبدء في اللعبة</p>
+        
+        <div class="input-group">
+            <input type="text" id="userIdInput" class="input-field" placeholder="أدخل ID حساب 1xBet" maxlength="15">
+        </div>
+        
+        <button class="verify-btn" id="verifyBtn">تحقق الآن</button>
+        
+        <div class="loader" id="loader">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+        
+        <div class="success-check" id="successCheck">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+            </svg>
+        </div>
+    </div>
+    
+    <!-- شاشة اللعبة -->
+    <div class="game-screen" id="gameScreen">
+        <div class="game-header">
             <div class="logo">
                 <div class="logo-icon">1x</div>
                 <span>Golden Apple</span>
             </div>
-            
-            <h2 class="verify-title">التحقق من حساب 1xBet</h2>
-            <p class="verify-subtitle">يرجى إدخال معرف حسابك للتحقق والبدء في اللعبة</p>
-            
-            <div class="input-group">
-                <input type="text" id="userIdInput" class="input-field" placeholder="أدخل ID حساب 1xBet" maxlength="15">
-            </div>
-            
-            <button class="verify-btn" id="verifyBtn">تحقق الآن</button>
-            
-            <div class="loader" id="loader">
-                <div class="loader-circle"></div>
-                <div class="loader-circle"></div>
-            </div>
-            
-            <div class="success-check" id="successCheck">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                </svg>
+            <div class="user-id">ID: <span id="userDisplayId">1234567890</span></div>
+        </div>
+        
+        <div class="box-selector">
+            <p>اختر عدد الصناديق:</p>
+            <div class="box-options">
+                <div class="box-option" data-boxes="3">3</div>
+                <div class="box-option" data-boxes="4">4</div>
+                <div class="box-option selected" data-boxes="5">5</div>
+                <div class="box-option" data-boxes="6">6</div>
+                <div class="box-option" data-boxes="7">7</div>
             </div>
         </div>
         
-        <!-- شاشة اللعبة -->
-        <div class="game-screen" id="gameScreen">
-            <div class="game-header">
-                <div class="logo">
-                    <div class="logo-icon">1x</div>
-                    <span>Golden Apple</span>
-                </div>
-                <div class="user-id">ID: <span id="userDisplayId">1234567890</span></div>
-            </div>
-            
-            <div class="boxes-container" id="boxesContainer"></div>
-            
-            <button class="start-btn" id="startBtn">ابدأ اللعب</button>
-        </div>
+        <div class="boxes-container" id="boxesContainer"></div>
+        
+        <button class="start-btn" id="startBtn">ابدأ اللعب</button>
     </div>
     
     <div class="alert" id="alert"></div>
@@ -427,12 +488,14 @@
         const loader = document.getElementById('loader');
         const successCheck = document.getElementById('successCheck');
         const userDisplayId = document.getElementById('userDisplayId');
+        const boxOptions = document.querySelectorAll('.box-option');
         const boxesContainer = document.getElementById('boxesContainer');
         const startBtn = document.getElementById('startBtn');
         const alertEl = document.getElementById('alert');
         
         // متغيرات اللعبة
         let userId = '';
+        let selectedBoxes = 5;
         let applePosition = -1;
         let attempts = 0;
         
@@ -473,11 +536,26 @@
             }, 3000);
         }
         
+        // اختيار عدد الصناديق
+        boxOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                boxOptions.forEach(opt => opt.classList.remove('selected'));
+                option.classList.add('selected');
+                selectedBoxes = parseInt(option.dataset.boxes);
+                createBoxes();
+            });
+        });
+        
         // تهيئة اللعبة
         function initGame() {
-            // إنشاء 5 صناديق
+            createBoxes();
+        }
+        
+        // إنشاء الصناديق
+        function createBoxes() {
             boxesContainer.innerHTML = '';
-            for (let i = 0; i < 5; i++) {
+            
+            for (let i = 0; i < selectedBoxes; i++) {
                 const box = document.createElement('div');
                 box.className = 'box';
                 box.innerHTML = `
@@ -499,7 +577,7 @@
             });
             
             // اختيار مكان عشوائي جديد
-            applePosition = Math.floor(Math.random() * 5);
+            applePosition = Math.floor(Math.random() * selectedBoxes);
         }
         
         // بدء اللعبة وعرض التفاحة
