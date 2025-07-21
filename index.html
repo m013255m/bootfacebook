@@ -280,8 +280,8 @@
         }
         
         .box {
-            width: 60px;
-            height: 80px;
+            width: 80px;
+            height: 100px;
             background: var(--dark-bg);
             border: 2px solid var(--card-border);
             border-radius: 8px;
@@ -308,13 +308,14 @@
         }
         
         .apple-icon {
-            width: 50px;
-            height: 50px;
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23FFD700" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23FF9900" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/></svg>');
+            width: 70px;
+            height: 70px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23FFD700" d="M50,10c-12,0-20,7-20,17c0,10,12,20,20,20s20-10,20-20C70,17,62,10,50,10z"/><path fill="%23FF9900" d="M50,47c-12,0-20-10-20-20c0-10,8-17,20-17V47z"/><path fill="%234CAF50" d="M47,10h6v6h-6V10z"/></svg>');
             background-size: contain;
             background-repeat: no-repeat;
             display: none;
             animation: bounceIn 0.5s;
+            filter: drop-shadow(0 4px 8px rgba(255, 215, 0, 0.6));
         }
         
         @keyframes bounceIn {
@@ -335,6 +336,8 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
         }
         
         .start-btn:hover {
@@ -344,6 +347,29 @@
         
         .start-btn:active {
             transform: translateY(1px);
+        }
+        
+        .start-btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 37%,
+                rgba(255, 255, 255, 0.8) 45%,
+                rgba(255, 255, 255, 0) 50%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
         }
         
         /* تأثيرات الفوز */
@@ -404,13 +430,13 @@
             }
             
             .box {
-                width: 50px;
-                height: 70px;
+                width: 70px;
+                height: 90px;
             }
             
             .apple-icon {
-                width: 40px;
-                height: 40px;
+                width: 60px;
+                height: 60px;
             }
             
             .start-btn {
