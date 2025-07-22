@@ -1,4 +1,4 @@
-ا<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -322,18 +322,6 @@
             box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
         
-        .circle {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: rgba(255, 204, 0, 0.2);
-            border: 2px solid rgba(255, 204, 0, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 5;
-        }
-        
         .apple {
             position: absolute;
             width: 60px;
@@ -345,7 +333,6 @@
             transition: transform 0.3s ease;
             z-index: 10;
             filter: drop-shadow(0 4px 8px rgba(255, 204, 0, 0.4));
-            display: none;
         }
         
         .prediction-area {
@@ -497,12 +484,11 @@
         <div class="game-area" id="gameArea">
             <div class="apple" id="apple"></div>
             <div class="prediction-area" id="prediction"></div>
-            <!-- الدوائر ستضاف هنا ديناميكيًا -->
         </div>
         
         <div class="controls">
-            <button class="btn" id="startBtn">بدء</button>
             <button class="btn" id="predictBtn">توقع الموقع</button>
+            <button class="btn" id="moveBtn">حرك التفاحة</button>
         </div>
         
         <div class="stats">
@@ -534,8 +520,8 @@
         const gameArea = document.getElementById( gameArea );
         const apple = document.getElementById( apple );
         const prediction = document.getElementById( prediction );
-        const startBtn = document.getElementById( startBtn );
         const predictBtn = document.getElementById( predictBtn );
+        const moveBtn = document.getElementById( moveBtn );
         const attemptsEl = document.getElementById( attempts );
         const accuracyEl = document.getElementById( accuracy );
         const streakEl = document.getElementById( streak );
@@ -548,8 +534,6 @@
         let applePosition = { x: 0, y: 0 };
         let gameAreaRect = gameArea.getBoundingClientRect();
         let userId =   ;
-        let circles = [];
-        const circleCount = 5; // عدد الدوائر
         
         // تحقق من ID
         verifyBtn.addEventListener( click , verifyUserId);
@@ -585,102 +569,49 @@
         
         // تهيئة اللعبة
         function initGame() {
+            moveApple();
             updateGameAreaSize();
-            createCircles();
             
             // مستمعي الأحداث
-            startBtn.addEventListener( click , startGame);
             predictBtn.addEventListener( click , predictApplePosition);
+            moveBtn.addEventListener( click , moveApple);
             
             // تغيير حجم النافذة
             window.addEventListener( resize , updateGameAreaSize);
+            
+            // دعم اللمس
+            apple.addEventListener( touchstart , handleTouchStart, { passive: false });
+            apple.addEventListener( touchmove , handleTouchMove, { passive: false });
+            apple.addEventListener( touchend , handleTouchEnd, { passive: false });
         }
         
         function updateGameAreaSize() {
             gameAreaRect = gameArea.getBoundingClientRect();
         }
         
-        // إنشاء الدوائر
-        function createCircles() {
-            // إزالة أي دوائر موجودة مسبقًا
-            circles.forEach(circle => circle.remove());
-            circles = [];
-            
-            const maxX = gameAreaRect.width - 60;
-            const maxY = gameAreaRect.height - 60;
-            
-            for (let i = 0; i < circleCount; i++) {
-                const circle = document.createElement( div );
-                circle.className =  circle ;
-                
-                // وضع عشوائي للدوائر مع التأكد من عدم تداخلها كثيرًا
-                let x, y, overlapping;
-                let attempts = 0;
-                const maxAttempts = 100;
-                
-                do {
-                    overlapping = false;
-                    x = Math.floor(Math.random() * maxX);
-                    y = Math.floor(Math.random() * maxY);
-                    
-                    // التحقق من التداخل مع الدوائر الأخرى
-                    for (const otherCircle of circles) {
-                        const otherX = parseInt(otherCircle.style.left);
-                        const otherY = parseInt(otherCircle.style.top);
-                        
-                        const distance = Math.sqrt(Math.pow(x - otherX, 2) + Math.pow(y - otherY, 2));
-                        if (distance < 80) { // مسافة أقل من 80 بكسل تعتبر تداخل
-                            overlapping = true;
-                            break;
-                        }
-                    }
-                    
-                    attempts++;
-                    if (attempts >= maxAttempts) break;
-                } while (overlapping);
-                
-                circle.style.left = `${x}px`;
-                circle.style.top = `${y}px`;
-                
-                gameArea.appendChild(circle);
-                circles.push(circle);
-            }
-        }
-        
-        // بدء اللعبة (إخفاء دائرة عشوائية وإظهار التفاحة مكانها)
-        function startGame() {
-            // إخفاء التفاحة أولاً
-            apple.style.display =  none ;
+        // تحريك التفاحة
+        function moveApple() {
             prediction.style.display =  none ;
             
-            // اختيار دائرة عشوائية
-            if (circles.length === 0) return;
-            const randomIndex = Math.floor(Math.random() * circles.length);
-            const randomCircle = circles[randomIndex];
+            const maxX = gameAreaRect.width - apple.offsetWidth;
+            const maxY = gameAreaRect.height - apple.offsetHeight;
             
-            // الحصول على موقع الدائرة المختارة
-            const circleX = parseInt(randomCircle.style.left);
-            const circleY = parseInt(randomCircle.style.top);
+            applePosition = {
+                x: Math.floor(Math.random() * maxX),
+                y: Math.floor(Math.random() * maxY)
+            };
             
-            // إخفاء الدائرة المختارة
-            randomCircle.style.display =  none ;
+            apple.style.transition =  all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+            apple.style.left = `${applePosition.x}px`;
+            apple.style.top = `${applePosition.y}px`;
             
-            // إظهار التفاحة في نفس مكان الدائرة
-            apple.style.left = `${circleX}px`;
-            apple.style.top = `${circleY}px`;
-            apple.style.display =  block ;
-            
-            // حفظ موقع التفاحة
-            applePosition = { x: circleX, y: circleY };
+            setTimeout(() => {
+                apple.style.transition =  none ;
+            }, 500);
         }
         
         // توقع موقع التفاحة (100% دقة)
         function predictApplePosition() {
-            if (apple.style.display !==  block ) {
-                alert( يجب الضغط على زر "بدء" أولاً );
-                return;
-            }
-            
             attempts++;
             attemptsEl.textContent = attempts;
             
@@ -706,6 +637,45 @@
             // تأثيرات الفوز
             celebrate();
             showWinAnimation();
+        }
+        
+        // معالجة اللمس
+        let touchStartX = 0;
+        let touchStartY = 0;
+        let appleStartX = 0;
+        let appleStartY = 0;
+        
+        function handleTouchStart(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            touchStartX = touch.clientX;
+            touchStartY = touch.clientY;
+            
+            const appleRect = apple.getBoundingClientRect();
+            appleStartX = appleRect.left - gameAreaRect.left;
+            appleStartY = appleRect.top - gameAreaRect.top;
+        }
+        
+        function handleTouchMove(e) {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const deltaX = touch.clientX - touchStartX;
+            const deltaY = touch.clientY - touchStartY;
+            
+            let newX = appleStartX + deltaX;
+            let newY = appleStartY + deltaY;
+            
+            newX = Math.max(0, Math.min(newX, gameAreaRect.width - apple.offsetWidth));
+            newY = Math.max(0, Math.min(newY, gameAreaRect.height - apple.offsetHeight));
+            
+            apple.style.left = `${newX}px`;
+            apple.style.top = `${newY}px`;
+            applePosition = { x: newX, y: newY };
+            prediction.style.display =  none ;
+        }
+        
+        function handleTouchEnd() {
+            touchStartX = touchStartY = appleStartX = appleStartY = 0;
         }
         
         // تأثيرات الفوز
