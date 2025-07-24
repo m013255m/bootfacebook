@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1xApple Predictor - نظام توقع التفاحة الذهبية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ffcc00;
+            --secondary: #ff6600;
+            --dark: #1a1a1a;
+            --light: #f8f8f8;
+            --success: #4CAF50;
+            --danger: #e74c3c;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family:  Tajawal , sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            margin-bottom: 20px;
+        }
+        
+        .header h2 {
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .circles-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.3);
+            border: 3px dashed rgba(255, 204, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .circle.active {
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+        }
+        
+        .apple {
+            width: 90%;
+            height: 90%;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        
+        .apple.show {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .apple.red {
+            background-image: url( data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23e74c3c" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23c0392b" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/></svg> );
+        }
+        
+        .apple.bitten {
+            background-image: url( data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23ffcc00" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23ff6600" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/><path fill="%232a2a2a" d="M35,15c0,0-5,2-5,5s2,5,5,5s5-2,5-5S40,15,35,15z"/></svg> );
+            opacity: 0.5;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: var(--dark);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn::after {
+            content:   ;
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0) 37%,
+                rgba(255, 255, 255, 0.8) 45%,
+                rgba(255, 255, 255, 0) 50%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+        
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
+        .countdown {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            margin: 20px 0;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .select-container {
+            margin-bottom: 20px;
+        }
+        
+        .select-container label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        .select-container select {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 50px;
+            border: none;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 16px;
+            text-align: center;
+            border: 1px solid rgba(255, 204, 0, 0.3);
+        }
+        
+        .select-container select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        }
+        
+        /* تأثيرات الفوز */
+        .win-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(255, 204, 0, 0.3) 0%, transparent 70%);
+            z-index: 999;
+            pointer-events: none;
+            opacity: 0;
+            animation: fadeInOut 2s ease-out;
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.2); }
+        }
+        
+        /* تأثيرات الهاتف */
+        @media (max-width: 500px) {
+            .circle {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .countdown {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>لعبة التفاحة الحمراء</h2>
+            <p>ID المستخدم: <span id="userDisplayId">1234567890</span></p>
+        </div>
+        
+        <div class="select-container">
+            <label for="circleCount">اختر عدد الدوائر:</label>
+            <select id="circleCount">
+                <option value="3">3 دوائر</option>
+                <option value="4" selected>4 دوائر</option>
+                <option value="5">5 دوائر</option>
+                <option value="6">6 دوائر</option>
+                <option value="7">7 دوائر</option>
+            </select>
+        </div>
+        
+        <div class="circles-container" id="circlesContainer">
+            <!-- سيتم إضافة الدوائر هنا ديناميكيًا -->
+        </div>
+        
+        <div class="countdown" id="countdown" style="display: none;"></div>
+        
+        <div class="controls">
+            <button class="btn" id="showAppleBtn">اظهر التفاحة</button>
+        </div>
+    </div>
+    
+    <script>
+        // عناصر DOM
+        const userDisplayId = document.getElementById( userDisplayId );
+        const circleCountSelect = document.getElementById( circleCount );
+        const circlesContainer = document.getElementById( circlesContainer );
+        const countdownEl = document.getElementById( countdown );
+        const showAppleBtn = document.getElementById( showAppleBtn );
+        
+        // متغيرات اللعبة
+        let circles = [];
+        let selectedCircleIndex = -1;
+        let countdownInterval;
+        
+        // تهيئة اللعبة
+        function initGame() {
+            // استعادة المعرف من localStorage
+            const userId = localStorage.getItem( userId );
+            if (userId) {
+                userDisplayId.textContent = userId;
+            } else {
+                // إذا لم يكن هناك معرف، يمكن إعادة توجيه المستخدم
+                window.location.href =  index.html ;
+                return;
+            }
+            
+            // إنشاء الدوائر حسب الاختيار
+            createCircles(parseInt(circleCountSelect.value));
+            
+            // مستمعي الأحداث
+            circleCountSelect.addEventListener( change , function() {
+                createCircles(parseInt(this.value));
+            });
+            
+            showAppleBtn.addEventListener( click , startAppleReveal);
+        }
+        
+        // إنشاء الدوائر
+        function createCircles(count) {
+            circlesContainer.innerHTML =   ;
+            circles = [];
+            
+            for (let i = 0; i < count; i++) {
+                const circle = document.createElement( div );
+                circle.className =  circle ;
+                
+                const apple = document.createElement( div );
+                apple.className =  apple ;
+                circle.appendChild(apple);
+                
+                circlesContainer.appendChild(circle);
+                circles.push({
+                    element: circle,
+                    apple: apple
+                });
+            }
+        }
+        
+        // بدء عرض التفاحة
+        function startAppleReveal() {
+            if (circles.length === 0) return;
+            
+            // تعطيل الزر أثناء العد التنازلي
+            showAppleBtn.disabled = true;
+            
+            // اختيار دائرة عشوائية للتفاحة الحمراء
+            selectedCircleIndex = Math.floor(Math.random() * circles.length);
+            
+            // بدء العد التنازلي
+            let count = 3;
+            countdownEl.textContent = count;
+            countdownEl.style.display =  flex ;
+            
+            countdownInterval = setInterval(() => {
+                count--;
+                countdownEl.textContent = count;
+                
+                if (count <= 0) {
+                    clearInterval(countdownInterval);
+                    countdownEl.style.display =  none ;
+                    revealApple();
+                }
+            }, 1000);
+        }
+        
+        // عرض التفاحة
+        function revealApple() {
+            // إظهار التفاحة الحمراء في الدائرة المختارة
+            circles.forEach((circle, index) => {
+                if (index === selectedCircleIndex) {
+                    circle.apple.className =  apple red show ;
+                    circle.element.classList.add( active );
+                    
+                    // تأثير اهتزاز للدائرة الفائزة
+                    circle.element.style.animation =  shake 0.5s ease-in-out ;
+                    setTimeout(() => {
+                        circle.element.style.animation =   ;
+                    }, 500);
+                } else {
+                    // إظهار تفاحة مأكولة في الدوائر الأخرى
+                    circle.apple.className =  apple bitten show ;
+                }
+            });
+            
+            // تفعيل الزر مرة أخرى
+            showAppleBtn.disabled = false;
+            showAppleBtn.textContent =  جرب مرة أخرى ;
+            
+            // تأثيرات الفوز
+            celebrate();
+            showWinAnimation();
+        }
+        
+        // تأثيرات الفوز
+        function celebrate() {
+            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+        }
+        
+        function showWinAnimation() {
+            const winAnim = document.createElement( div );
+            winAnim.className =  win-animation ;
+            document.body.appendChild(winAnim);
+            
+            setTimeout(() => {
+                winAnim.remove();
+            }, 2000);
+        }
+        
+        // بدء اللعبة عند تحميل الصفحة
+        window.addEventListener( DOMContentLoaded , initGame);
+    </script>
+</body>
+</html>
