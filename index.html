@@ -25,15 +25,22 @@
         }
         
         body {
-            background: var(--dark);
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             color: var(--light);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background-image: radial-gradient(circle at center, #333 0%, #111 100%);
             overflow-x: hidden;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
         
         /* النافذة المنبثقة */
@@ -425,6 +432,74 @@
             100% { opacity: 0; transform: scale(1.2); }
         }
         
+        /* نافذة التنبيه */
+        .alert-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+        
+        .alert-popup.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .alert-content {
+            background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+            border-radius: 15px;
+            width: 90%;
+            max-width: 350px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border: 1px solid var(--danger);
+            transform: scale(0.8);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .alert-popup.active .alert-content {
+            transform: scale(1);
+        }
+        
+        .alert-content h3 {
+            color: var(--danger);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        .alert-content p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        
+        .alert-btn {
+            background: var(--danger);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+        
+        .alert-btn:hover {
+            background: #c0392b;
+        }
+        
         /* تأثيرات الهاتف */
         @media (max-width: 500px) {
             .popup-content {
@@ -451,10 +526,10 @@
     <div class="popup active" id="idPopup">
         <div class="popup-content">
             <h2>مرحبًا بكم في نظام توقع التفاحة الذهبية</h2>
-            <p>لبدء استخدام النظام، يرجى إدخال معرف حسابك في 1xBet للتحقق</p>
+            <p>لبدء استخدام النظام، يرجى إدخال معرف حسابك في 1xBet المكون من 10 أرقام</p>
             
             <div class="input-group">
-                <input type="text" id="userIdInput" placeholder="أدخل ID حساب 1xBet">
+                <input type="text" id="userIdInput" placeholder="أدخل ID حساب 1xBet (10 أرقام)" maxlength="10" inputmode="numeric">
             </div>
             
             <button class="btn" id="verifyBtn">تحقق من المعرف</button>
@@ -471,6 +546,15 @@
                     <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
                 </svg>
             </div>
+        </div>
+    </div>
+    
+    <!-- نافذة التنبيه -->
+    <div class="alert-popup" id="alertPopup">
+        <div class="alert-content">
+            <h3>خطأ في المعرف</h3>
+            <p>يجب أن يتكون المعرف من 10 أرقام فقط</p>
+            <button class="alert-btn" id="alertBtn">حسنًا</button>
         </div>
     </div>
     
@@ -509,22 +593,25 @@
     
     <script>
         // عناصر DOM
-        const idPopup = document.getElementById( idPopup );
-        const gameContainer = document.getElementById( gameContainer );
-        const userIdInput = document.getElementById( userIdInput );
-        const verifyBtn = document.getElementById( verifyBtn );
-        const loader = document.getElementById( loader );
-        const successCheck = document.getElementById( successCheck );
-        const userDisplayId = document.getElementById( userDisplayId );
+        const idPopup = document.getElementById('idPopup');
+        const gameContainer = document.getElementById('gameContainer');
+        const userIdInput = document.getElementById('userIdInput');
+        const verifyBtn = document.getElementById('verifyBtn');
+        const loader = document.getElementById('loader');
+        const successCheck = document.getElementById('successCheck');
+        const userDisplayId = document.getElementById('userDisplayId');
         
-        const gameArea = document.getElementById( gameArea );
-        const apple = document.getElementById( apple );
-        const prediction = document.getElementById( prediction );
-        const predictBtn = document.getElementById( predictBtn );
-        const moveBtn = document.getElementById( moveBtn );
-        const attemptsEl = document.getElementById( attempts );
-        const accuracyEl = document.getElementById( accuracy );
-        const streakEl = document.getElementById( streak );
+        const alertPopup = document.getElementById('alertPopup');
+        const alertBtn = document.getElementById('alertBtn');
+        
+        const gameArea = document.getElementById('gameArea');
+        const apple = document.getElementById('apple');
+        const prediction = document.getElementById('prediction');
+        const predictBtn = document.getElementById('predictBtn');
+        const moveBtn = document.getElementById('moveBtn');
+        const attemptsEl = document.getElementById('attempts');
+        const accuracyEl = document.getElementById('accuracy');
+        const streakEl = document.getElementById('streak');
         
         // متغيرات اللعبة
         let attempts = 0;
@@ -533,35 +620,44 @@
         let maxStreak = 0;
         let applePosition = { x: 0, y: 0 };
         let gameAreaRect = gameArea.getBoundingClientRect();
-        let userId =   ;
+        let userId = '';
         
         // تحقق من ID
-        verifyBtn.addEventListener( click , verifyUserId);
+        verifyBtn.addEventListener('click', verifyUserId);
+        alertBtn.addEventListener('click', () => {
+            alertPopup.classList.remove('active');
+        });
+        
+        // التحقق من أن المدخل أرقام فقط
+        userIdInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
         
         function verifyUserId() {
             const id = userIdInput.value.trim();
             
-            if (!id || id.length < 6) {
-                alert( يرجى إدخال معرف حساب صحيح (6 أحرف على الأقل) );
+            // التحقق من أن المعرف يتكون من 10 أرقام
+            if (!id || id.length !== 10 || !/^\d+$/.test(id)) {
+                alertPopup.classList.add('active');
                 return;
             }
             
             userId = id;
-            verifyBtn.style.display =  none ;
-            loader.classList.add( active );
+            verifyBtn.style.display = 'none';
+            loader.classList.add('active');
             
             // محاكاة عملية التحقق من السيرفر
             setTimeout(() => {
-                loader.classList.remove( active );
-                successCheck.classList.add( active );
+                loader.classList.remove('active');
+                successCheck.classList.add('active');
                 
                 // عرض ID المستخدم
                 userDisplayId.textContent = userId;
                 
                 // الانتقال إلى شاشة اللعبة بعد التأكيد
                 setTimeout(() => {
-                    idPopup.classList.remove( active );
-                    gameContainer.classList.add( active );
+                    idPopup.classList.remove('active');
+                    gameContainer.classList.add('active');
                     initGame();
                 }, 1500);
             }, 3000);
@@ -573,16 +669,16 @@
             updateGameAreaSize();
             
             // مستمعي الأحداث
-            predictBtn.addEventListener( click , predictApplePosition);
-            moveBtn.addEventListener( click , moveApple);
+            predictBtn.addEventListener('click', predictApplePosition);
+            moveBtn.addEventListener('click', moveApple);
             
             // تغيير حجم النافذة
-            window.addEventListener( resize , updateGameAreaSize);
+            window.addEventListener('resize', updateGameAreaSize);
             
             // دعم اللمس
-            apple.addEventListener( touchstart , handleTouchStart, { passive: false });
-            apple.addEventListener( touchmove , handleTouchMove, { passive: false });
-            apple.addEventListener( touchend , handleTouchEnd, { passive: false });
+            apple.addEventListener('touchstart', handleTouchStart, { passive: false });
+            apple.addEventListener('touchmove', handleTouchMove, { passive: false });
+            apple.addEventListener('touchend', handleTouchEnd, { passive: false });
         }
         
         function updateGameAreaSize() {
@@ -591,7 +687,7 @@
         
         // تحريك التفاحة
         function moveApple() {
-            prediction.style.display =  none ;
+            prediction.style.display = 'none';
             
             const maxX = gameAreaRect.width - apple.offsetWidth;
             const maxY = gameAreaRect.height - apple.offsetHeight;
@@ -601,12 +697,12 @@
                 y: Math.floor(Math.random() * maxY)
             };
             
-            apple.style.transition =  all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+            apple.style.transition = 'all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             apple.style.left = `${applePosition.x}px`;
             apple.style.top = `${applePosition.y}px`;
             
             setTimeout(() => {
-                apple.style.transition =  none ;
+                apple.style.transition = 'none';
             }, 500);
         }
         
@@ -632,7 +728,7 @@
             streakEl.textContent = currentStreak;
             
             // عرض التوقع
-            prediction.style.display =  block ;
+            prediction.style.display = 'block';
             
             // تأثيرات الفوز
             celebrate();
@@ -671,7 +767,7 @@
             apple.style.left = `${newX}px`;
             apple.style.top = `${newY}px`;
             applePosition = { x: newX, y: newY };
-            prediction.style.display =  none ;
+            prediction.style.display = 'none';
         }
         
         function handleTouchEnd() {
@@ -684,8 +780,8 @@
         }
         
         function showWinAnimation() {
-            const winAnim = document.createElement( div );
-            winAnim.className =  win-animation ;
+            const winAnim = document.createElement('div');
+            winAnim.className = 'win-animation';
             document.body.appendChild(winAnim);
             
             setTimeout(() => {
