@@ -20,7 +20,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family:  Tajawal , sans-serif;
+            font-family: 'Tajawal', sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
         
@@ -103,6 +103,13 @@
         .circle.active {
             border: 3px solid var(--primary);
             box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+            animation: shake 0.5s ease-in-out;
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
         }
         
         .apple {
@@ -122,11 +129,11 @@
         }
         
         .apple.red {
-            background-image: url( data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23e74c3c" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23c0392b" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/></svg> );
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23e74c3c" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23c0392b" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/></svg>');
         }
         
         .apple.bitten {
-            background-image: url( data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23ffcc00" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23ff6600" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/><path fill="%232a2a2a" d="M35,15c0,0-5,2-5,5s2,5,5,5s5-2,5-5S40,15,35,15z"/></svg> );
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60"><path fill="%23ffcc00" d="M30,5c-7,0-12,4-12,10c0,6,7,12,12,12s12-6,12-12C42,9,37,5,30,5z"/><path fill="%23ff6600" d="M30,27c-7,0-12-6-12-12c0-6,5-10,12-10V27z"/><path fill="%234CAF50" d="M28,5h4v4h-4V5z"/><path fill="%23ffffff" d="M30,40c-3,0-5-2-5-5s2-5,5-5s5,2,5,5S33,40,30,40z" opacity="0.2"/><path fill="%232a2a2a" d="M35,15c0,0-5,2-5,5s2,5,5,5s5-2,5-5S40,15,35,15z"/></svg>');
             opacity: 0.5;
         }
         
@@ -163,7 +170,7 @@
         }
         
         .btn::after {
-            content:   ;
+            content: '';
             position: absolute;
             top: -50%;
             left: -50%;
@@ -302,11 +309,11 @@
     
     <script>
         // عناصر DOM
-        const userDisplayId = document.getElementById( userDisplayId );
-        const circleCountSelect = document.getElementById( circleCount );
-        const circlesContainer = document.getElementById( circlesContainer );
-        const countdownEl = document.getElementById( countdown );
-        const showAppleBtn = document.getElementById( showAppleBtn );
+        const userDisplayId = document.getElementById('userDisplayId');
+        const circleCountSelect = document.getElementById('circleCount');
+        const circlesContainer = document.getElementById('circlesContainer');
+        const countdownEl = document.getElementById('countdown');
+        const showAppleBtn = document.getElementById('showAppleBtn');
         
         // متغيرات اللعبة
         let circles = [];
@@ -316,12 +323,12 @@
         // تهيئة اللعبة
         function initGame() {
             // استعادة المعرف من localStorage
-            const userId = localStorage.getItem( userId );
+            const userId = localStorage.getItem('userId');
             if (userId) {
                 userDisplayId.textContent = userId;
             } else {
                 // إذا لم يكن هناك معرف، يمكن إعادة توجيه المستخدم
-                window.location.href =  index.html ;
+                window.location.href = 'index.html';
                 return;
             }
             
@@ -329,24 +336,24 @@
             createCircles(parseInt(circleCountSelect.value));
             
             // مستمعي الأحداث
-            circleCountSelect.addEventListener( change , function() {
+            circleCountSelect.addEventListener('change', function() {
                 createCircles(parseInt(this.value));
             });
             
-            showAppleBtn.addEventListener( click , startAppleReveal);
+            showAppleBtn.addEventListener('click', startAppleReveal);
         }
         
         // إنشاء الدوائر
         function createCircles(count) {
-            circlesContainer.innerHTML =   ;
+            circlesContainer.innerHTML = '';
             circles = [];
             
             for (let i = 0; i < count; i++) {
-                const circle = document.createElement( div );
-                circle.className =  circle ;
+                const circle = document.createElement('div');
+                circle.className = 'circle';
                 
-                const apple = document.createElement( div );
-                apple.className =  apple ;
+                const apple = document.createElement('div');
+                apple.className = 'apple';
                 circle.appendChild(apple);
                 
                 circlesContainer.appendChild(circle);
@@ -364,13 +371,19 @@
             // تعطيل الزر أثناء العد التنازلي
             showAppleBtn.disabled = true;
             
+            // إخفاء أي تفاح موجود مسبقاً
+            circles.forEach(circle => {
+                circle.apple.className = 'apple';
+                circle.element.classList.remove('active');
+            });
+            
             // اختيار دائرة عشوائية للتفاحة الحمراء
             selectedCircleIndex = Math.floor(Math.random() * circles.length);
             
             // بدء العد التنازلي
             let count = 3;
             countdownEl.textContent = count;
-            countdownEl.style.display =  flex ;
+            countdownEl.style.display = 'flex';
             
             countdownInterval = setInterval(() => {
                 count--;
@@ -378,7 +391,7 @@
                 
                 if (count <= 0) {
                     clearInterval(countdownInterval);
-                    countdownEl.style.display =  none ;
+                    countdownEl.style.display = 'none';
                     revealApple();
                 }
             }, 1000);
@@ -389,23 +402,17 @@
             // إظهار التفاحة الحمراء في الدائرة المختارة
             circles.forEach((circle, index) => {
                 if (index === selectedCircleIndex) {
-                    circle.apple.className =  apple red show ;
-                    circle.element.classList.add( active );
-                    
-                    // تأثير اهتزاز للدائرة الفائزة
-                    circle.element.style.animation =  shake 0.5s ease-in-out ;
-                    setTimeout(() => {
-                        circle.element.style.animation =   ;
-                    }, 500);
+                    circle.apple.className = 'apple red show';
+                    circle.element.classList.add('active');
                 } else {
                     // إظهار تفاحة مأكولة في الدوائر الأخرى
-                    circle.apple.className =  apple bitten show ;
+                    circle.apple.className = 'apple bitten show';
                 }
             });
             
             // تفعيل الزر مرة أخرى
             showAppleBtn.disabled = false;
-            showAppleBtn.textContent =  جرب مرة أخرى ;
+            showAppleBtn.textContent = 'جرب مرة أخرى';
             
             // تأثيرات الفوز
             celebrate();
@@ -418,8 +425,8 @@
         }
         
         function showWinAnimation() {
-            const winAnim = document.createElement( div );
-            winAnim.className =  win-animation ;
+            const winAnim = document.createElement('div');
+            winAnim.className = 'win-animation';
             document.body.appendChild(winAnim);
             
             setTimeout(() => {
@@ -428,7 +435,7 @@
         }
         
         // بدء اللعبة عند تحميل الصفحة
-        window.addEventListener( DOMContentLoaded , initGame);
+        window.addEventListener('DOMContentLoaded', initGame);
     </script>
 </body>
 </html>
