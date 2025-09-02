@@ -773,7 +773,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.section-title, .service-card, .feature, .portfolio-item, .testimonial, .contact-info');
             
-            const observer = new IntersectionObserver((entries) => {
+            const observer = new IntersectionObserver((entries) {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('animated');
