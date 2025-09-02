@@ -124,21 +124,11 @@
         
         /* Hero Section with Animations */
         .hero {
-            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
             padding: 5rem 0;
             text-align: center;
             color: white;
             position: relative;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
         }
         
         .hero-content {
@@ -306,10 +296,133 @@
             transform: scale(1.2) rotate(5deg);
         }
         
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .portfolio-item {
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .portfolio-item.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            transform: translateY(0);
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .testimonial.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .testimonial-content {
+            position: relative;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-content::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 10px 10px 0;
+            border-style: solid;
+            border-color: white transparent transparent;
+        }
+        
+        .testimonial-client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 1rem;
+        }
+        
+        .client-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
         /* Contact Section */
         .contact {
             padding: 5rem 0;
-            background-color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
         }
         
         .contact-container {
@@ -339,14 +452,16 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            background-color: var(--light-color);
+            background: rgba(255, 255, 255, 0.1);
             padding: 1rem;
             border-radius: 8px;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
         
         .contact-method:hover {
             transform: translateX(10px);
+            background: rgba(255, 255, 255, 0.2);
         }
         
         .contact-method i {
@@ -400,6 +515,42 @@
             
             .hero p {
                 font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .contact-number {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .service-card, .feature, .testimonial {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -491,6 +642,84 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
+    <section class="portfolio">
+        <div class="container">
+            <h2 class="section-title">أعمالنا في التسويق الإلكتروني</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Social Media Marketing">
+                    <div class="portfolio-overlay">
+                        <h3>إدارة وسائل التواصل الاجتماعي</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80" alt="Digital Strategy">
+                    <div class="portfolio-overlay">
+                        <h3>استراتيجيات التسويق الرقمي</h3>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Branding">
+                    <div class="portfolio-overlay">
+                        <h3>بناء الهوية البصرية</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">آراء عملائنا</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"لقد ساعدتنا شركة ديجيتال ماركتنج على زيادة مبيعاتنا بنسبة 200% خلال 3 أشهر فقط، فريق محترف ومتميز!"</p>
+                    </div>
+                    <div class="testimonial-client">
+                        <div class="client-avatar">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client">
+                        </div>
+                        <div class="client-info">
+                            <h4>أحمد محمد</h4>
+                            <p>مدير تسويق، شركة التقنية</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"استراتيجية التسويق التي قدمتها لنا الشركة كانت ممتازة، وأدت إلى زيادة الوعي بالعلامة التجارية بشكل ملحوظ."</p>
+                    </div>
+                    <div class="testimonial-client">
+                        <div class="client-avatar">
+                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Client">
+                        </div>
+                        <div class="client-info">
+                            <h4>سارة عبد الله</h4>
+                            <p>مالكة متجر إلكتروني</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <div class="testimonial-content">
+                        <p>"الحملات الإعلانية التي نفذتها الشركة لنا حققت نتائج مذهلة بتكلفة أقل مما كنا نتوقع، نشكرهم على احترافيتهم."</p>
+                    </div>
+                    <div class="testimonial-client">
+                        <div class="client-avatar">
+                            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=699&q=80" alt="Client">
+                        </div>
+                        <div class="client-info">
+                            <h4>محمد علي</h4>
+                            <p>مدير عام، مجموعة التجارة</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact">
         <div class="container">
@@ -542,7 +771,7 @@
     <script>
         // Animation on scroll
         document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.section-title, .service-card, .feature, .contact-info');
+            const animatedElements = document.querySelectorAll('.section-title, .service-card, .feature, .portfolio-item, .testimonial, .contact-info');
             
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
