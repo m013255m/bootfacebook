@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أفضل شركة تسويق إلكتروني في مصر | 01060474659</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -25,6 +26,7 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -34,15 +36,27 @@
             padding: 0 15px;
         }
         
-        /* Header Styles */
+        /* Header Styles with Animations */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+            animation: slideDown 0.7s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
         .header-content {
@@ -54,35 +68,75 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
+            position: relative;
+            display: inline-block;
         }
         
         .logo span {
             color: var(--secondary-color);
+            position: relative;
+        }
+        
+        .logo span::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--secondary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+        
+        .logo:hover span::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         
         .contact-number {
             background-color: var(--secondary-color);
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 30px;
             font-weight: bold;
             display: flex;
             align-items: center;
             gap: 10px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
         }
         
         .contact-number:hover {
             background-color: #c0392b;
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(2deg);
+            animation: none;
         }
         
-        /* Hero Section */
+        /* Hero Section with Animations */
         .hero {
-            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
-            padding: 5rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
+            padding: 6rem 0;
             text-align: center;
             color: white;
             position: relative;
+            overflow: hidden;
         }
         
         .hero::before {
@@ -92,7 +146,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.4);
         }
         
         .hero-content {
@@ -101,108 +155,216 @@
         }
         
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1rem;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             max-width: 800px;
-            margin: 0 auto 2rem;
+            margin: 0 auto 3rem;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .cta-button {
             display: inline-block;
             background-color: var(--secondary-color);
             color: white;
-            padding: 15px 40px;
+            padding: 16px 45px;
             border-radius: 30px;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: bold;
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             margin-top: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1s ease-out 1.2s both, bounce 2s infinite 3s;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-15px);
+            }
+            60% {
+                transform: translateY(-7px);
+            }
         }
         
         .cta-button:hover {
             background-color: #c0392b;
-            transform: scale(1.05);
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
         }
         
-        /* Services Section */
+        /* Floating elements */
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+        
+        /* Services Section with Animations */
         .services {
-            padding: 5rem 0;
+            padding: 6rem 0;
             background-color: white;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             color: var(--primary-color);
-            font-size: 2.2rem;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
         }
         
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 2.5rem;
         }
         
         .service-card {
             background-color: var(--light-color);
-            border-radius: 10px;
-            padding: 2rem;
+            border-radius: 15px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
         }
         
         .service-icon {
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: var(--accent-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--secondary-color);
         }
         
         .service-card h3 {
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             color: var(--primary-color);
+            font-size: 1.5rem;
         }
         
         /* Why Us Section */
         .why-us {
-            padding: 5rem 0;
+            padding: 6rem 0;
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
+            position: relative;
+            overflow: hidden;
         }
         
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
         
         .feature {
             text-align: center;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            border-radius: 15px;
             backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+        
+        .feature.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .feature:hover {
+            transform: translateY(-10px) scale(1.03);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         .feature i {
-            font-size: 2.5rem;
+            font-size: 3rem;
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: all 0.4s ease;
+        }
+        
+        .feature:hover i {
+            transform: scale(1.2) rotate(10deg);
         }
         
         /* Contact Section */
         .contact {
-            padding: 5rem 0;
+            padding: 6rem 0;
             background-color: white;
         }
         
@@ -214,25 +376,39 @@
         
         .contact-info {
             text-align: center;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+        
+        .contact-info.animate {
+            opacity: 1;
+            transform: translateX(0);
         }
         
         .contact-methods {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
         
         .contact-method {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             background-color: var(--light-color);
-            padding: 1rem;
-            border-radius: 8px;
+            padding: 1.2rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-method:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
         .contact-method i {
-            font-size: 1.5rem;
-            margin-left: 1rem;
+            font-size: 1.8rem;
+            margin-left: 1.2rem;
             color: var(--accent-color);
         }
         
@@ -240,46 +416,98 @@
         footer {
             background-color: var(--dark-color);
             color: white;
-            padding: 2rem 0;
+            padding: 3rem 0 1.5rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .footer-content {
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
+            z-index: 1;
         }
         
         .social-links {
-            margin: 1rem 0;
+            margin: 1.5rem 0;
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
         }
         
         .social-links a {
             color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            font-size: 1.8rem;
+            transition: all 0.4s ease;
+            display: inline-block;
         }
         
         .social-links a:hover {
             color: var(--secondary-color);
+            transform: translateY(-8px) scale(1.2);
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.2rem;
             }
             
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .hero p {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-number {
+                padding: 10px 20px;
+            }
+        }
+        
+        /* Animation for elements on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Decorative elements */
+        .decoration {
+            position: absolute;
+            z-index: 0;
+        }
+        
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.1);
+            position: absolute;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .circle-2 {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: rgba(231, 76, 60, 0.1);
+            position: absolute;
+            bottom: -75px;
+            left: -75px;
         }
     </style>
 </head>
@@ -287,7 +515,9 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">شركة <span>ديجيتال</span> ماركتنج</div>
+            <div class="logo">
+                <span>ديجيتال</span> ماركتنج
+            </div>
             <a href="tel:01060474659" class="contact-number">
                 <i class="fas fa-phone"></i>
                 01060474659
@@ -297,6 +527,13 @@
 
     <!-- Hero Section -->
     <section class="hero">
+        <div class="floating-elements">
+            <div class="floating-element" style="width: 80px; height: 80px; top: 20%; left: 10%; animation-duration: 20s;"></div>
+            <div class="floating-element" style="width: 50px; height: 50px; top: 60%; left: 20%; animation-duration: 15s; animation-delay: -2s;"></div>
+            <div class="floating-element" style="width: 70px; height: 70px; top: 40%; left: 80%; animation-duration: 18s; animation-delay: -5s;"></div>
+            <div class="floating-element" style="width: 60px; height: 60px; top: 70%; left: 70%; animation-duration: 17s; animation-delay: -3s;"></div>
+        </div>
+        
         <div class="container hero-content">
             <h1>أفضل شركة تسويق إلكتروني للاتصال في مصر</h1>
             <p>نحن وكالة تسويق إلكتروني رائدة متخصصة في تقديم حلول تسويقية مبتكرة لتعزيز وجودك الرقمي وزيادة مبيعاتك عبر قنوات التسويق المختلفة.</p>
@@ -309,7 +546,7 @@
         <div class="container">
             <h2 class="section-title">خدماتنا في التسويق الإلكتروني</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-hashtag"></i>
                     </div>
@@ -317,7 +554,7 @@
                     <p>خدمة إدارة احترافية لحساباتك على منصات التواصل الاجتماعي مع محتوى جذاب واستراتيجية فعالة.</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-bullhorn"></i>
                     </div>
@@ -325,7 +562,7 @@
                     <p>تصميم وإدارة حملات إعلانية ممولة على فيسبوك، انستجرام، تيك توك، تويتر ولينكدان.</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-chart-line"></i>
                     </div>
@@ -333,7 +570,7 @@
                     <p>استراتيجيات تسويقية مخصصة لزيادة المبيعات وتحقيق أعلى عائد على الاستثمار.</p>
                 </div>
                 
-                <div class="service-card">
+                <div class="service-card animate-on-scroll">
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
@@ -346,22 +583,25 @@
 
     <!-- Why Us Section -->
     <section class="why-us">
+        <div class="decoration circle"></div>
+        <div class="decoration circle-2"></div>
+        
         <div class="container">
             <h2 class="section-title">لماذا نعتبر أفضل شركة تسويق إلكتروني؟</h2>
             <div class="features">
-                <div class="feature">
+                <div class="feature animate-on-scroll">
                     <i class="fas fa-rocket"></i>
                     <h3>وكالة تسويق سريعة النتائج</h3>
                     <p>نحن نضمن تحقيق نتائج قابلة للقياس في أسرع وقت ممكن.</p>
                 </div>
                 
-                <div class="feature">
+                <div class="feature animate-on-scroll">
                     <i class="fas fa-users"></i>
                     <h3>فريق محترف ومتخصص</h3>
                     <p>فريق عمل محترف لديه الخبرة الكافية في مجال التسويق الإلكتروني.</p>
                 </div>
                 
-                <div class="feature">
+                <div class="feature animate-on-scroll">
                     <i class="fas fa-cog"></i>
                     <h3>استراتيجيات مخصصة</h3>
                     <p>نطور استراتيجيات تسويقية مخصصة تناسب طبيعة عملك وأهدافك.</p>
@@ -375,7 +615,7 @@
         <div class="container">
             <h2 class="section-title">تواصل مع أفضل شركة تسويق إلكتروني</h2>
             <div class="contact-container">
-                <div class="contact-info">
+                <div class="contact-info animate-on-scroll">
                     <h3>نحن جاهزون للاتصال بك</h3>
                     <p>شركة ديجيتال ماركتنج هي افضل شركة تسويق الكتروني للاتصال في مصر. نحن نقدم خدمات تسويق متكاملة وشاملة لجميع احتياجاتك.</p>
                     
@@ -417,5 +657,47 @@
             <p>اتصل بنا الآن: <a href="tel:01060474659" style="color: var(--secondary-color);">01060474659</a></p>
         </div>
     </footer>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Create floating elements for hero section
+            const floatingContainer = document.querySelector('.floating-elements');
+            for (let i = 0; i < 8; i++) {
+                const size = Math.random() * 50 + 30;
+                const duration = Math.random() * 20 + 15;
+                const delay = Math.random() * -10;
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                
+                const element = document.createElement('div');
+                element.classList.add('floating-element');
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.top = `${top}%`;
+                element.style.left = `${left}%`;
+                element.style.animationDuration = `${duration}s`;
+                element.style.animationDelay = `${delay}s`;
+                
+                floatingContainer.appendChild(element);
+            }
+        });
+    </script>
 </body>
 </html>
