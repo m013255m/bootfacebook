@@ -3,463 +3,419 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1xApple Predictor - نظام توقع التفاحة الذهبية</title>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>أفضل شركة تسويق إلكتروني في مصر | 01060474659</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #ffcc00;
-            --secondary: #ff6600;
-            --dark: #1a1a1a;
-            --light: #f8f8f8;
-            --success: #4CAF50;
-            --danger: #e74c3c;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family:  Tajawal , sans-serif;
-            -webkit-tap-highlight-color: transparent;
+            font-family: 'Cairo', 'Tahoma', sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: var(--light);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            overflow-x: hidden;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
         }
         
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* النافذة المنبثقة */
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.5s ease;
-        }
-        
-        .popup.active {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        .popup-content {
-            background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-            border-radius: 20px;
+        .container {
             width: 90%;
-            max-width: 400px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 204, 0, 0.3);
-            transform: scale(0.7);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
         }
         
-        .popup.active .popup-content {
-            transform: scale(1);
-        }
-        
-        .popup h2 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 24px;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        
-        .popup p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        
-        .input-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .input-group input {
-            width: 100%;
-            padding: 15px 20px;
-            border-radius: 50px;
-            border: none;
-            background: rgba(0, 0, 0, 0.5);
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
-            font-size: 16px;
-            text-align: center;
-            border: 1px solid rgba(255, 204, 0, 0.3);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .input-group input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.3);
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
-        .btn {
-            background: linear-gradient(145deg, var(--primary), var(--secondary));
-            color: var(--dark);
-            border: none;
-            padding: 15px 30px;
-            border-radius: 50px;
-            font-size: 16px;
+        .logo {
+            font-size: 1.8rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
-            width: 100%;
-            position: relative;
-            overflow: hidden;
         }
         
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        .logo span {
+            color: var(--secondary-color);
         }
         
-        .btn:active {
-            transform: translateY(1px);
+        .contact-number {
+            background-color: var(--secondary-color);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
         }
         
-        .btn::after {
-            content:   ;
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                to bottom right,
-                rgba(255, 255, 255, 0) 0%,
-                rgba(255, 255, 255, 0) 37%,
-                rgba(255, 255, 255, 0.8) 45%,
-                rgba(255, 255, 255, 0) 50%
-            );
-            transform: rotate(30deg);
-            animation: shine 3s infinite;
+        .contact-number:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
         }
         
-        @keyframes shine {
-            0% { transform: rotate(30deg) translate(-30%, -30%); }
-            100% { transform: rotate(30deg) translate(30%, 30%); }
-        }
-        
-        /* تأثيرات التحميل */
-        .loader {
-            display: none;
-            margin: 20px auto;
-            width: 50px;
-            height: 50px;
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
             position: relative;
         }
         
-        .loader.active {
-            display: block;
-        }
-        
-        .loader-circle {
+        .hero::before {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 4px solid transparent;
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        .loader-circle:nth-child(2) {
-            border-top-color: var(--secondary);
-            animation-delay: 0.2s;
-            width: 80%;
-            height: 80%;
-            top: 10%;
-            left: 10%;
-        }
-        
-        .loader-circle:nth-child(3) {
-            border-top-color: var(--success);
-            animation-delay: 0.4s;
-            width: 60%;
-            height: 60%;
-            top: 20%;
-            left: 20%;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .success-check {
-            display: none;
-            width: 80px;
-            height: 80px;
-            margin: 20px auto;
-        }
-        
-        .success-check.active {
-            display: block;
-            animation: bounceIn 0.6s ease-out;
-        }
-        
-        @keyframes bounceIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            50% { transform: scale(1.1); opacity: 1; }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
-        }
-        
-        .checkmark {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            display: block;
-            stroke-width: 5;
-            stroke: var(--success);
-            stroke-miterlimit: 10;
-            box-shadow: inset 0 0 0 rgba(76, 175, 80, 0.5);
-            animation: fill 0.4s ease-in-out 0.4s forwards, scale 0.3s ease-in-out 0.9s both;
-        }
-        
-        .checkmark__circle {
-            stroke-dasharray: 166;
-            stroke-dashoffset: 166;
-            stroke-width: 5;
-            stroke-miterlimit: 10;
-            stroke: var(--success);
-            fill: none;
-            animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-        }
-        
-        .checkmark__check {
-            transform-origin: 50% 50%;
-            stroke-dasharray: 48;
-            stroke-dashoffset: 48;
-            animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
-        }
-        
-        @keyframes stroke {
-            100% { stroke-dashoffset: 0; }
-        }
-        
-        @keyframes scale {
-            0%, 100% { transform: none; }
-            50% { transform: scale3d(1.1, 1.1, 1); }
-        }
-        
-        @keyframes fill {
-            100% { box-shadow: inset 0 0 0 40px rgba(76, 175, 80, 0); }
-        }
-        
-        /* نافذة التنبيه */
-        .alert-popup {
-            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.7);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-            opacity: 0;
-            pointer-events: none;
-            transition: all 0.3s ease;
         }
         
-        .alert-popup.active {
-            opacity: 1;
-            pointer-events: all;
+        .hero-content {
+            position: relative;
+            z-index: 1;
         }
         
-        .alert-content {
-            background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
-            border-radius: 15px;
-            width: 90%;
-            max-width: 350px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--danger);
-            transform: scale(0.8);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
         }
         
-        .alert-popup.active .alert-content {
-            transform: scale(1);
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
         }
         
-        .alert-content h3 {
-            color: var(--danger);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-        
-        .alert-content p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-        
-        .alert-btn {
-            background: var(--danger);
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 14px;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1.2rem;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
         }
         
-        .alert-btn:hover {
-            background: #c0392b;
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: scale(1.05);
         }
         
-        /* تأثيرات الهاتف */
-        @media (max-width: 500px) {
-            .popup-content {
-                padding: 20px;
+        /* Services Section */
+        .services {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+            font-size: 2.2rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Why Us Section */
+        .why-us {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            text-align: center;
+        }
+        
+        .contact-methods {
+            margin-top: 2rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            background-color: var(--light-color);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        
+        .contact-method i {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            color: var(--accent-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
             }
             
-            .game-area {
-                height: 200px;
+            .hero h1 {
+                font-size: 2rem;
             }
             
-            .controls button {
-                min-width: 120px;
-                padding: 12px 20px;
-            }
-            
-            .stat h3 {
-                font-size: 20px;
+            .hero p {
+                font-size: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- النافذة المنبثقة لطلب ID -->
-    <div class="popup active" id="idPopup">
-        <div class="popup-content">
-            <h2>مرحبًا بكم في نظام توقع التفاحة الذهبية</h2>
-            <p>لبدء استخدام النظام، يرجى إدخال معرف حسابك في 1xBet المكون من 10 أرقام</p>
-            
-            <div class="input-group">
-                <input type="text" id="userIdInput" placeholder="أدخل ID حساب 1xBet (10 أرقام)" maxlength="10" inputmode="numeric">
-            </div>
-            
-            <button class="btn" id="verifyBtn">تحقق من المعرف</button>
-            
-            <div class="loader" id="loader">
-                <div class="loader-circle"></div>
-                <div class="loader-circle"></div>
-                <div class="loader-circle"></div>
-            </div>
-            
-            <div class="success-check" id="successCheck">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-                </svg>
-            </div>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">شركة <span>ديجيتال</span> ماركتنج</div>
+            <a href="tel:01060474659" class="contact-number">
+                <i class="fas fa-phone"></i>
+                01060474659
+            </a>
         </div>
-    </div>
-    
-    <!-- نافذة التنبيه -->
-    <div class="alert-popup" id="alertPopup">
-        <div class="alert-content">
-            <h3>خطأ في المعرف</h3>
-            <p>يجب أن يتكون المعرف من 10 أرقام فقط</p>
-            <button class="alert-btn" id="alertBtn">حسنًا</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>أفضل شركة تسويق إلكتروني للاتصال في مصر</h1>
+            <p>نحن وكالة تسويق إلكتروني رائدة متخصصة في تقديم حلول تسويقية مبتكرة لتعزيز وجودك الرقمي وزيادة مبيعاتك عبر قنوات التسويق المختلفة.</p>
+            <a href="tel:01060474659" class="cta-button">اتصل بنا الآن</a>
         </div>
-    </div>
-    
-    <script>
-        // عناصر DOM
-        const idPopup = document.getElementById('idPopup');
-        const userIdInput = document.getElementById('userIdInput');
-        const verifyBtn = document.getElementById('verifyBtn');
-        const loader = document.getElementById('loader');
-        const successCheck = document.getElementById('successCheck');
-        
-        const alertPopup = document.getElementById('alertPopup');
-        const alertBtn = document.getElementById('alertBtn');
-        
-        // متغيرات اللعبة
-        let userId = '';
-        
-        // تحقق من ID
-        verifyBtn.addEventListener('click', verifyUserId);
-        alertBtn.addEventListener('click', () => {
-            alertPopup.classList.remove('active');
-        });
-        
-        // التحقق من أن المدخل أرقام فقط
-        userIdInput.addEventListener('input', function() {
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
-        
-        function verifyUserId() {
-            const id = userIdInput.value.trim();
-            
-            // التحقق من أن المعرف يتكون من 10 أرقام
-            if (!id || id.length !== 10 || !/^\d+$/.test(id)) {
-                alertPopup.classList.add('active');
-                return;
-            }
-            
-            userId = id;
-            verifyBtn.style.display = 'none';
-            loader.classList.add('active');
-            
-            // محاكاة عملية التحقق من السيرفر
-            setTimeout(() => {
-                loader.classList.remove('active');
-                successCheck.classList.add('active');
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا في التسويق الإلكتروني</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <h3>إدارة حسابات السوشيال ميديا</h3>
+                    <p>خدمة إدارة احترافية لحساباتك على منصات التواصل الاجتماعي مع محتوى جذاب واستراتيجية فعالة.</p>
+                </div>
                 
-                // الانتقال إلى الصفحة الثانية بعد التأكيد
-                setTimeout(() => {
-                    // تخزين المعرف في localStorage لنقله للصفحة التالية
-                    localStorage.setItem('userId', userId);
-                    // الانتقال إلى index.html2
-                    window.location.href = 'index2.html';
-                }, 1500);
-            }, 3000);
-        }
-        
-        // تأثيرات الفوز
-        function celebrate() {
-            if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-        }
-    </script>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>حملات اعلانية ممولة</h3>
+                    <p>تصميم وإدارة حملات إعلانية ممولة على فيسبوك، انستجرام، تيك توك، تويتر ولينكدان.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>تسويق لزيادة المبيعات</h3>
+                    <p>استراتيجيات تسويقية مخصصة لزيادة المبيعات وتحقيق أعلى عائد على الاستثمار.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>خدمات البراندنج والدعاية</h3>
+                    <p>نقدم حلول متكاملة للبراندنج والتسويق والدعاية والإعلان لبناء هوية قوية لعلامتك التجارية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us">
+        <div class="container">
+            <h2 class="section-title">لماذا نعتبر أفضل شركة تسويق إلكتروني؟</h2>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-rocket"></i>
+                    <h3>وكالة تسويق سريعة النتائج</h3>
+                    <p>نحن نضمن تحقيق نتائج قابلة للقياس في أسرع وقت ممكن.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-users"></i>
+                    <h3>فريق محترف ومتخصص</h3>
+                    <p>فريق عمل محترف لديه الخبرة الكافية في مجال التسويق الإلكتروني.</p>
+                </div>
+                
+                <div class="feature">
+                    <i class="fas fa-cog"></i>
+                    <h3>استراتيجيات مخصصة</h3>
+                    <p>نطور استراتيجيات تسويقية مخصصة تناسب طبيعة عملك وأهدافك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل مع أفضل شركة تسويق إلكتروني</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>نحن جاهزون للاتصال بك</h3>
+                    <p>شركة ديجيتال ماركتنج هي افضل شركة تسويق الكتروني للاتصال في مصر. نحن نقدم خدمات تسويق متكاملة وشاملة لجميع احتياجاتك.</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <span>اتصل بنا: 01060474659</span>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <span>info@digital-marketing.com</span>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>القاهرة، مصر</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <h3>شركة ديجيتال ماركتنج - أفضل شركة تسويق إلكتروني</h3>
+            <p>نقدم خدمات التسويق الإلكتروني، إدارة حسابات السوشيال ميديا، الحملات الإعلانية الممولة، والاستراتيجيات التسويقية لزيادة المبيعات.</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <p>اتصل بنا الآن: <a href="tel:01060474659" style="color: var(--secondary-color);">01060474659</a></p>
+        </div>
+    </footer>
 </body>
 </html>
