@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>أفضل شركة تسويق إلكتروني في مصر | 01060474659</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #2c3e50;
@@ -26,7 +25,6 @@
             background-color: #f9f9f9;
             color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
         }
         
         .container {
@@ -36,25 +34,15 @@
             padding: 0 15px;
         }
         
-        /* Header Styles with Animations */
+        /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 100;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            animation: slideDown 0.7s ease-out;
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-            to {
-                transform: translateY(0);
-            }
         }
         
         .header-content {
@@ -66,30 +54,10 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            position: relative;
         }
         
         .logo span {
             color: var(--secondary-color);
-            position: relative;
-        }
-        
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--secondary-color);
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s ease;
-        }
-        
-        .logo:hover span::after {
-            transform: scaleX(1);
-            transform-origin: left;
         }
         
         .contact-number {
@@ -101,34 +69,30 @@
             align-items: center;
             gap: 10px;
             transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
         }
         
         .contact-number:hover {
             background-color: #c0392b;
             transform: scale(1.05);
-            animation: none;
         }
         
-        /* Hero Section with Animations */
+        /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
+            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
             padding: 5rem 0;
             text-align: center;
             color: white;
             position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
         }
         
         .hero-content {
@@ -139,25 +103,12 @@
         .hero h1 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
-            animation: fadeInUp 1s ease-out 0.5s both;
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 800px;
             margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
         
         .cta-button {
@@ -171,19 +122,6 @@
             text-decoration: none;
             transition: all 0.3s ease;
             margin-top: 1rem;
-            animation: fadeIn 1s ease-out 1.2s both, bounce 2s infinite 3s;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
         }
         
         .cta-button:hover {
@@ -191,7 +129,7 @@
             transform: scale(1.05);
         }
         
-        /* Services Section with Animations */
+        /* Services Section */
         .services {
             padding: 5rem 0;
             background-color: white;
@@ -202,14 +140,6 @@
             margin-bottom: 3rem;
             color: var(--primary-color);
             font-size: 2.2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-        
-        .section-title.animated {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .services-grid {
@@ -225,14 +155,6 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .service-card.animated {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .service-card:hover {
@@ -243,11 +165,6 @@
             font-size: 3rem;
             color: var(--accent-color);
             margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover .service-icon {
-            transform: scale(1.1) rotate(5deg);
         }
         
         .service-card h3 {
@@ -275,154 +192,18 @@
             background: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
             backdrop-filter: blur(10px);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .feature.animated {
-            opacity: 1;
-            transform: translateY(0);
         }
         
         .feature i {
             font-size: 2.5rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .feature:hover i {
-            transform: scale(1.2) rotate(5deg);
-        }
-        
-        /* Portfolio Section */
-        .portfolio {
-            padding: 5rem 0;
-            background-color: var(--light-color);
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .portfolio-item {
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .portfolio-item.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            padding: 1.5rem;
-            color: white;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            transform: translateY(0);
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            padding: 5rem 0;
-            background-color: white;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .testimonial {
-            background-color: var(--light-color);
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.6s ease;
-        }
-        
-        .testimonial.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        .testimonial-content {
-            position: relative;
-            padding: 1.5rem;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 1.5rem;
-        }
-        
-        .testimonial-content::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 10px 10px 0;
-            border-style: solid;
-            border-color: white transparent transparent;
-        }
-        
-        .testimonial-client {
-            display: flex;
-            align-items: center;
-        }
-        
-        .client-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-left: 1rem;
-        }
-        
-        .client-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
         
         /* Contact Section */
         .contact {
             padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
-            color: white;
+            background-color: white;
         }
         
         .contact-container {
@@ -433,14 +214,6 @@
         
         .contact-info {
             text-align: center;
-            opacity: 0;
-            transform: translateX(-50px);
-            transition: all 0.8s ease;
-        }
-        
-        .contact-info.animated {
-            opacity: 1;
-            transform: translateX(0);
         }
         
         .contact-methods {
@@ -452,16 +225,9 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            background: rgba(255, 255, 255, 0.1);
+            background-color: var(--light-color);
             padding: 1rem;
             border-radius: 8px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-        
-        .contact-method:hover {
-            transform: translateX(10px);
-            background: rgba(255, 255, 255, 0.2);
         }
         
         .contact-method i {
@@ -493,13 +259,11 @@
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: color 0.3s ease;
         }
         
         .social-links a:hover {
             color: var(--secondary-color);
-            transform: translateY(-5px);
         }
         
         /* Responsive Design */
@@ -515,42 +279,6 @@
             
             .hero p {
                 font-size: 1rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .contact-number {
-                padding: 8px 16px;
-                font-size: 0.9rem;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .testimonials-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 1.5rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .cta-button {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-            
-            .service-card, .feature, .testimonial {
-                padding: 1.5rem;
             }
         }
     </style>
@@ -642,84 +370,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio">
-        <div class="container">
-            <h2 class="section-title">أعمالنا في التسويق الإلكتروني</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Social Media Marketing">
-                    <div class="portfolio-overlay">
-                        <h3>إدارة وسائل التواصل الاجتماعي</h3>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a07a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1174&q=80" alt="Digital Strategy">
-                    <div class="portfolio-overlay">
-                        <h3>استراتيجيات التسويق الرقمي</h3>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Branding">
-                    <div class="portfolio-overlay">
-                        <h3>بناء الهوية البصرية</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">آراء عملائنا</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"لقد ساعدتنا شركة ديجيتال ماركتنج على زيادة مبيعاتنا بنسبة 200% خلال 3 أشهر فقط، فريق محترف ومتميز!"</p>
-                    </div>
-                    <div class="testimonial-client">
-                        <div class="client-avatar">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="Client">
-                        </div>
-                        <div class="client-info">
-                            <h4>أحمد محمد</h4>
-                            <p>مدير تسويق، شركة التقنية</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"استراتيجية التسويق التي قدمتها لنا الشركة كانت ممتازة، وأدت إلى زيادة الوعي بالعلامة التجارية بشكل ملحوظ."</p>
-                    </div>
-                    <div class="testimonial-client">
-                        <div class="client-avatar">
-                            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80" alt="Client">
-                        </div>
-                        <div class="client-info">
-                            <h4>سارة عبد الله</h4>
-                            <p>مالكة متجر إلكتروني</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial">
-                    <div class="testimonial-content">
-                        <p>"الحملات الإعلانية التي نفذتها الشركة لنا حققت نتائج مذهلة بتكلفة أقل مما كنا نتوقع، نشكرهم على احترافيتهم."</p>
-                    </div>
-                    <div class="testimonial-client">
-                        <div class="client-avatar">
-                            <img src="https://images.unsplash.com/photo-1552058544-f2b08422138a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=699&q=80" alt="Client">
-                        </div>
-                        <div class="client-info">
-                            <h4>محمد علي</h4>
-                            <p>مدير عام، مجموعة التجارة</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contact Section -->
     <section class="contact">
         <div class="container">
@@ -767,26 +417,5 @@
             <p>اتصل بنا الآن: <a href="tel:01060474659" style="color: var(--secondary-color);">01060474659</a></p>
         </div>
     </footer>
-
-    <script>
-        // Animation on scroll
-        document.addEventListener('DOMContentLoaded', function() {
-            const animatedElements = document.querySelectorAll('.section-title, .service-card, .feature, .portfolio-item, .testimonial, .contact-info');
-            
-            const observer = new IntersectionObserver((entries) {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-            
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
 </body>
 </html>
