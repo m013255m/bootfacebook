@@ -51,7 +51,7 @@
         header {
             background: var(--gradient);
             color: white;
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: fixed;
             width: 100%;
             top: 0;
@@ -72,12 +72,16 @@
         }
         
         .logo h1 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-right: 10px;
         }
         
         .logo span {
             color: var(--accent-color);
+        }
+        
+        .desktop-nav {
+            display: none;
         }
         
         .mobile-menu-btn {
@@ -98,7 +102,7 @@
             width: 80%;
             height: 100vh;
             background: var(--gradient);
-            padding: 5rem 2rem 2rem;
+            padding: 4rem 1.5rem 2rem;
             transition: right 0.3s ease;
             z-index: 999;
             box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
@@ -115,17 +119,23 @@
         }
         
         .mobile-menu ul li {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .mobile-menu ul li a {
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             display: block;
-            padding: 0.5rem 0;
+            padding: 0.7rem 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .mobile-menu ul li a:hover {
+            padding-right: 1rem;
+            color: var(--accent-color);
         }
         
         .close-menu {
@@ -161,7 +171,7 @@
         .hero {
             background: var(--gradient);
             color: white;
-            padding: 6rem 0 3rem;
+            padding: 5.5rem 0 2.5rem;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -173,27 +183,29 @@
         }
         
         .hero h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             margin-bottom: 1rem;
         }
         
         .hero p {
-            font-size: 1rem;
+            font-size: 0.95rem;
             max-width: 100%;
-            margin: 0 auto 2rem;
+            margin: 0 auto 1.5rem;
+            line-height: 1.8;
         }
         
         .btn {
             display: inline-block;
             background: var(--accent-color);
             color: white;
-            padding: 0.8rem 1.5rem;
+            padding: 0.7rem 1.4rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            font-size: 0.9rem;
         }
         
         .btn:hover {
@@ -204,7 +216,7 @@
         
         /* Services Section */
         .services {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: white;
         }
         
@@ -214,9 +226,9 @@
         }
         
         .section-title h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--secondary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             position: relative;
             display: inline-block;
         }
@@ -224,10 +236,10 @@
         .section-title h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: var(--accent-color);
         }
@@ -242,7 +254,7 @@
         .services-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
         
         .service-card {
@@ -252,7 +264,7 @@
             box-shadow: var(--box-shadow);
             transition: transform 0.3s;
             text-align: center;
-            padding: 1.5rem;
+            padding: 1.5rem 1rem;
         }
         
         .service-card:hover {
@@ -260,39 +272,40 @@
         }
         
         .service-icon {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             color: var(--primary-color);
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
         
         .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
             color: var(--secondary-color);
         }
         
         .service-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #555;
+            line-height: 1.7;
         }
         
         /* Portfolio Section */
         .portfolio {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: var(--light-color);
         }
         
         .portfolio-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 1.5rem;
+            gap: 1.2rem;
         }
         
         .portfolio-item {
             position: relative;
             border-radius: var(--border-radius);
             overflow: hidden;
-            height: 200px;
+            height: 180px;
             box-shadow: var(--box-shadow);
         }
         
@@ -329,16 +342,25 @@
             opacity: 1;
         }
         
+        .portfolio-overlay h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-overlay p {
+            font-size: 0.85rem;
+        }
+        
         /* About Section */
         .about {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: white;
         }
         
         .about-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
             align-items: center;
         }
         
@@ -353,7 +375,7 @@
         }
         
         .about-text h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
         }
@@ -362,11 +384,12 @@
             margin-bottom: 1rem;
             color: #555;
             font-size: 0.9rem;
+            line-height: 1.7;
         }
         
         /* Testimonials */
         .testimonials {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: var(--gradient);
             color: white;
         }
@@ -377,21 +400,22 @@
             border-radius: var(--border-radius);
             backdrop-filter: blur(10px);
             box-shadow: var(--box-shadow);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .testimonial-text {
             font-style: italic;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             position: relative;
-            padding: 0 1.5rem;
+            padding: 0 1.2rem;
             font-size: 0.9rem;
+            line-height: 1.7;
         }
         
         .testimonial-text::before,
         .testimonial-text::after {
             content: '"';
-            font-size: 2rem;
+            font-size: 1.8rem;
             position: absolute;
             color: rgba(255, 255, 255, 0.2);
         }
@@ -415,29 +439,33 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            margin-left: 1rem;
+            margin-left: 0.8rem;
             object-fit: cover;
         }
         
         .testimonial-author div {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+        }
+        
+        .testimonial-author h4 {
+            margin-bottom: 0.2rem;
         }
         
         /* Stats Section */
         .stats {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: white;
         }
         
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
+            gap: 1.2rem;
             text-align: center;
         }
         
         .stat-item {
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: var(--border-radius);
             background: var(--light-color);
             transition: transform 0.3s;
@@ -450,25 +478,25 @@
         }
         
         .stat-number {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
         
         .stat-title {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         /* Contact Section */
         .contact {
-            padding: 3rem 0;
+            padding: 2.5rem 0;
             background: white;
         }
         
         .contact-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 1.5rem;
         }
         
         .contact-info {
@@ -479,7 +507,7 @@
         .contact-info-item {
             display: flex;
             align-items: center;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .contact-icon {
@@ -490,13 +518,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-left: 1rem;
+            margin-left: 0.8rem;
             color: white;
             font-size: 1rem;
+            flex-shrink: 0;
         }
         
         .contact-info-item div {
             font-size: 0.9rem;
+        }
+        
+        .contact-info-item h3 {
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
         }
         
         .contact-form {
@@ -528,6 +562,7 @@
         
         .form-group textarea {
             min-height: 120px;
+            resize: vertical;
         }
         
         /* Footer */
@@ -545,13 +580,14 @@
         }
         
         .footer-logo h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
         }
         
         .footer-logo p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 1rem;
+            line-height: 1.6;
         }
         
         .footer-links h3,
@@ -568,7 +604,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 40px;
+            width: 35px;
             height: 2px;
             background: var(--accent-color);
         }
@@ -585,7 +621,7 @@
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         .footer-links ul li a:hover {
@@ -594,7 +630,8 @@
         
         .footer-newsletter p {
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
         
         .newsletter-form {
@@ -606,7 +643,7 @@
             padding: 0.7rem;
             border: none;
             border-radius: 4px 0 0 4px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         .newsletter-form button {
@@ -716,27 +753,37 @@
         /* Media Queries */
         @media (min-width: 576px) {
             .services-grid,
-            .portfolio-grid,
-            .stats-grid {
+            .portfolio-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
         }
         
         @media (min-width: 768px) {
             .hero {
-                padding: 7rem 0 4rem;
+                padding: 6rem 0 3rem;
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero p {
-                font-size: 1.1rem;
                 max-width: 80%;
             }
             
@@ -774,8 +821,42 @@
                 display: none;
             }
             
-            nav ul {
+            .desktop-nav {
+                display: block;
+            }
+            
+            .desktop-nav ul {
                 display: flex;
+                list-style: none;
+            }
+            
+            .desktop-nav ul li {
+                margin-left: 1.2rem;
+            }
+            
+            .desktop-nav ul li a {
+                color: white;
+                text-decoration: none;
+                font-weight: 600;
+                transition: color 0.3s;
+                padding: 0.5rem;
+                position: relative;
+                font-size: 0.9rem;
+            }
+            
+            .desktop-nav ul li a::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                width: 0;
+                height: 2px;
+                background: var(--accent-color);
+                transition: width 0.3s;
+            }
+            
+            .desktop-nav ul li a:hover::after {
+                width: 100%;
             }
             
             .services-grid {
@@ -813,7 +894,8 @@
             <div class="logo">
                 <h1>داي<span>بورت</span></h1>
             </div>
-            <nav>
+            
+            <nav class="desktop-nav">
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
@@ -822,6 +904,7 @@
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
+            
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -1191,7 +1274,7 @@
                     closeMenu();
                     
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 70,
                         behavior: 'smooth'
                     });
                 }
