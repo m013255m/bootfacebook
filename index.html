@@ -35,18 +35,21 @@
             box-sizing: border-box;
         }
         
-        body {
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
             font-family: 'Cairo', 'Open Sans', sans-serif;
             line-height: 1.6;
             color: #334155;
-            overflow-x: hidden;
             background-color: #FFFFFF;
+            scroll-behavior: smooth;
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
         
         /* Header Styles - محسّن */
@@ -242,6 +245,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
         
         .hero::before {
@@ -259,6 +263,7 @@
         .hero-content {
             position: relative;
             z-index: 1;
+            width: 100%;
         }
         
         .hero h2 {
@@ -328,6 +333,7 @@
         .services {
             padding: 5rem 0;
             background: var(--light-color);
+            width: 100%;
         }
         
         .section-title {
@@ -446,6 +452,7 @@
         .portfolio {
             padding: 5rem 0;
             background: white;
+            width: 100%;
         }
         
         .portfolio-grid {
@@ -516,6 +523,7 @@
         .about {
             padding: 5rem 0;
             background: var(--light-color);
+            width: 100%;
         }
         
         .about-content {
@@ -563,6 +571,7 @@
             color: white;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
         
         .testimonials::before {
@@ -650,6 +659,7 @@
         .stats {
             padding: 5rem 0;
             background: white;
+            width: 100%;
         }
         
         .stats-grid {
@@ -701,6 +711,7 @@
         .contact {
             padding: 5rem 0;
             background: var(--light-color);
+            width: 100%;
         }
         
         .contact-content {
@@ -801,6 +812,7 @@
             background: var(--dark-color);
             color: white;
             padding: 4rem 0 1.5rem;
+            width: 100%;
         }
         
         .footer-content {
