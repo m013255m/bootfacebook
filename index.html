@@ -3,46 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أفضل شركة تسويق إلكتروني في مصر | 01060474659</title>
+    <title>دايبورت - شركة تصميم مواقع ويب احترافية</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #e74c3c;
-            --accent-color: #3498db;
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
+            --success-color: #27ae60;
+            --warning-color: #f39c12;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', 'Tahoma', sans-serif;
         }
         
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            font-family: 'Cairo', 'Open Sans', sans-serif;
             line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
         }
         
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 15px;
         }
         
         /* Header Styles */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            background: var(--gradient);
             color: white;
             padding: 1rem 0;
-            position: sticky;
+            position: fixed;
+            width: 100%;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
         
         .header-content {
@@ -52,37 +57,69 @@
         }
         
         .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
             font-size: 1.8rem;
-            font-weight: bold;
+            margin-right: 10px;
         }
         
         .logo span {
-            color: var(--secondary-color);
+            color: var(--accent-color);
         }
         
-        .contact-number {
-            background-color: var(--secondary-color);
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-weight: bold;
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .language-switcher {
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
         }
         
-        .contact-number:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
+        .language-switcher button {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            margin: 0 0.3rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .language-switcher button:hover {
+            background: white;
+            color: var(--primary-color);
         }
         
         /* Hero Section */
         .hero {
-            background: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1414&q=80') no-repeat center center/cover;
-            padding: 5rem 0;
-            text-align: center;
+            background: var(--gradient);
             color: white;
+            padding: 8rem 0 5rem;
+            text-align: center;
             position: relative;
+            overflow: hidden;
         }
         
         .hero::before {
@@ -92,7 +129,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
+            background-size: cover;
+            background-position: center;
         }
         
         .hero-content {
@@ -100,46 +139,60 @@
             z-index: 1;
         }
         
-        .hero h1 {
-            font-size: 2.8rem;
+        .hero h2 {
+            font-size: 3rem;
             margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
         }
         
         .hero p {
             font-size: 1.2rem;
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease;
         }
         
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background: var(--accent-color);
             color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-size: 1.2rem;
-            font-weight: bold;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
             text-decoration: none;
-            transition: all 0.3s ease;
-            margin-top: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            animation: pulse 2s infinite;
         }
         
-        .cta-button:hover {
-            background-color: #c0392b;
-            transform: scale(1.05);
+        .btn:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         /* Services Section */
         .services {
             padding: 5rem 0;
-            background-color: white;
+            background: white;
         }
         
         .section-title {
             text-align: center;
             margin-bottom: 3rem;
-            color: var(--primary-color);
-            font-size: 2.2rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #777;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
         .services-grid {
@@ -149,252 +202,730 @@
         }
         
         .service-card {
-            background-color: var(--light-color);
+            background: white;
             border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            padding: 2rem;
         }
         
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
         
         .service-icon {
             font-size: 3rem;
-            color: var(--accent-color);
+            color: var(--primary-color);
             margin-bottom: 1rem;
         }
         
         .service-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: var(--primary-color);
+            color: var(--secondary-color);
         }
         
-        /* Why Us Section */
-        .why-us {
+        /* Portfolio Section */
+        .portfolio {
             padding: 5rem 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            background: var(--light-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(52, 152, 219, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 1rem;
+            text-align: center;
             color: white;
         }
         
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
         }
         
-        .feature {
-            text-align: center;
-            padding: 2rem;
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 0;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
             background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
             border-radius: 10px;
             backdrop-filter: blur(10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .feature i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-left: 1rem;
+            object-fit: cover;
         }
         
         /* Contact Section */
         .contact {
             padding: 5rem 0;
-            background-color: white;
+            background: white;
         }
         
-        .contact-container {
+        .contact-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 3rem;
         }
         
         .contact-info {
-            text-align: center;
+            display: flex;
+            flex-direction: column;
         }
         
-        .contact-methods {
-            margin-top: 2rem;
-        }
-        
-        .contact-method {
+        .contact-info-item {
             display: flex;
             align-items: center;
-            justify-content: center;
             margin-bottom: 1.5rem;
-            background-color: var(--light-color);
-            padding: 1rem;
-            border-radius: 8px;
         }
         
-        .contact-method i {
-            font-size: 1.5rem;
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin-left: 1rem;
-            color: var(--accent-color);
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-form {
+            background: var(--light-color);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
         }
         
         /* Footer */
         footer {
-            background-color: var(--dark-color);
+            background: var(--secondary-color);
             color: white;
-            padding: 2rem 0;
-            text-align: center;
+            padding: 3rem 0 1rem;
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
         }
         
-        .social-links {
-            margin: 1rem 0;
-            display: flex;
-            gap: 1rem;
+        .footer-logo h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
         
-        .social-links a {
+        .footer-links h3,
+        .footer-newsletter h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-links h3::after,
+        .footer-newsletter h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .footer-newsletter p {
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-form button {
+            background: var(--accent-color);
             color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
         }
         
-        .social-links a:hover {
-            color: var(--secondary-color);
+        .social-icons {
+            display: flex;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: pulse 1.5s infinite;
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+            }
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(52, 152, 219, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+            }
         }
         
         /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
             }
             
-            .hero h1 {
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            .hero {
+                padding: 7rem 0 4rem;
+            }
+            
+            .hero h2 {
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            
+            .language-switcher {
+                margin-top: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.6rem 1.5rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/201060474659" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <div class="logo">شركة <span>ديجيتال</span> ماركتنج</div>
-            <a href="tel:01060474659" class="contact-number">
-                <i class="fas fa-phone"></i>
-                01060474659
-            </a>
+            <div class="logo">
+                <h1>داي<span>بورت</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">خدماتنا</a></li>
+                    <li><a href="#portfolio">معرض الأعمال</a></li>
+                    <li><a href="#about">من نحن</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="language-switcher">
+                <button>AR</button>
+                <button>EN</button>
+            </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="home">
         <div class="container hero-content">
-            <h1>أفضل شركة تسويق إلكتروني للاتصال في مصر</h1>
-            <p>نحن وكالة تسويق إلكتروني رائدة متخصصة في تقديم حلول تسويقية مبتكرة لتعزيز وجودك الرقمي وزيادة مبيعاتك عبر قنوات التسويق المختلفة.</p>
-            <a href="tel:01060474659" class="cta-button">اتصل بنا الآن</a>
+            <h2>شركة دايبورت لتصميم المواقع الإلكترونية</h2>
+            <p>نحن نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار في العالم الرقمي. تصاميمنا إبداعية وسريعة الاستجابة وتلبي جميع احتياجاتك.</p>
+            <a href="#contact" class="btn">اطلب خدمتك الآن</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services">
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">خدماتنا في التسويق الإلكتروني</h2>
+            <div class="section-title">
+                <h2>خدماتنا</h2>
+                <p>نقدم مجموعة واسعة من خدمات تصميم وتطوير المواقع الإلكترونية لتلبية جميع احتياجاتك الرقمية</p>
+            </div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-hashtag"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>إدارة حسابات السوشيال ميديا</h3>
-                    <p>خدمة إدارة احترافية لحساباتك على منصات التواصل الاجتماعي مع محتوى جذاب واستراتيجية فعالة.</p>
+                    <h3>تصميم مواقع ويب</h3>
+                    <p>تصميم مواقع ويب جذابة وسهلة الاستخدام تعكس هوية علامتك التجارية وتوفر تجربة مستخدم استثنائية.</p>
                 </div>
-                
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>حملات اعلانية ممولة</h3>
-                    <p>تصميم وإدارة حملات إعلانية ممولة على فيسبوك، انستجرام، تيك توك، تويتر ولينكدان.</p>
+                    <h3>تطبيقات الجوال</h3>
+                    <p>تطوير تطبيقات جوال مبتكرة وسريعة للأجهزة iOS و Android تلبي احتياجات عملك وتوسع نطاق وصولك.</p>
                 </div>
-                
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    <h3>تسويق لزيادة المبيعات</h3>
-                    <p>استراتيجيات تسويقية مخصصة لزيادة المبيعات وتحقيق أعلى عائد على الاستثمار.</p>
+                    <h3>متاجر إلكترونية</h3>
+                    <p>إنشاء متاجر إلكترونية متكاملة مع أنظمة دفع آمنة وإدارة مخزون لتعزيز مبيعاتك عبر الإنترنت.</p>
                 </div>
-                
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-paint-brush"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>خدمات البراندنج والدعاية</h3>
-                    <p>نقدم حلول متكاملة للبراندنج والتسويق والدعاية والإعلان لبناء هوية قوية لعلامتك التجارية.</p>
+                    <h3>تحسين محركات البحث</h3>
+                    <p>تحسين ظهور موقعك في نتائج محركات البحث لزيادة الزيارات والوصول إلى العملاء المستهدفين.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-pencil-alt"></i>
+                    </div>
+                    <h3>تصميم الشعارات</h3>
+                    <p>تصميم شعارات إبداعية ومميزة تعبر عن هوية علامتك التجارية وتجذب انتباه عملائك.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>استضافة المواقع</h3>
+                    <p>خدمات استضافة موثوقة وسريعة مع دعم فني على مدار الساعة لضمان استمرارية عمل موقعك.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Us Section -->
-    <section class="why-us">
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
         <div class="container">
-            <h2 class="section-title">لماذا نعتبر أفضل شركة تسويق إلكتروني؟</h2>
-            <div class="features">
-                <div class="feature">
-                    <i class="fas fa-rocket"></i>
-                    <h3>وكالة تسويق سريعة النتائج</h3>
-                    <p>نحن نضمن تحقيق نتائج قابلة للقياس في أسرع وقت ممكن.</p>
+            <div class="section-title">
+                <h2>معرض أعمالنا</h2>
+                <p>إليك بعض المشاريع التي نفخر بها والتي تعكس إبداعنا وخبرتنا في مجال تصميم المواقع</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 1">
+                    <div class="portfolio-overlay">
+                        <h3>موقع شركة تقنية</h3>
+                        <p>تصميم حديث وسريع الاستجابة لشركة تقنية ناشئة</p>
+                    </div>
                 </div>
-                
-                <div class="feature">
-                    <i class="fas fa-users"></i>
-                    <h3>فريق محترف ومتخصص</h3>
-                    <p>فريق عمل محترف لديه الخبرة الكافية في مجال التسويق الإلكتروني.</p>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 2">
+                    <div class="portfolio-overlay">
+                        <h3>متجر إلكتروني</h3>
+                        <p>متجر إلكتروني متكامل بجميع خصائص البيع عبر الإنترنت</p>
+                    </div>
                 </div>
-                
-                <div class="feature">
-                    <i class="fas fa-cog"></i>
-                    <h3>استراتيجيات مخصصة</h3>
-                    <p>نطور استراتيجيات تسويقية مخصصة تناسب طبيعة عملك وأهدافك.</p>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 3">
+                    <div class="portfolio-overlay">
+                        <h3>موقع شخصي</h3>
+                        <p>تصميم موقع شخصي لمصمم جرافيك مع عرض أعماله</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 4">
+                    <div class="portfolio-overlay">
+                        <h3>مدونة تعليمية</h3>
+                        <p>تصميم مدونة تعليمية بتجربة مستخدم محسنة</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 5">
+                    <div class="portfolio-overlay">
+                        <h3>موقع مطعم</h3>
+                        <p>تصميم موقع لمطعم مع قائمة طعام ونظام حجوزات</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 6">
+                    <div class="portfolio-overlay">
+                        <h3>منصة تعليمية</h3>
+                        <p>تصميم منصة تعليمية بدورات تدريبية عبر الإنترنت</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>من نحن</h2>
+                <p>شركة دايبورت هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="فريق دايبورت">
+                </div>
+                <div class="about-text">
+                    <h3>خبرة وإبداع في عالم التصميم الرقمي</h3>
+                    <p>دايبورت هي شركة رائدة في مجال تصميم وتطوير المواقع الإلكترونية والتطبيقات، تأسست عام 2010، وتمتلك فريقًا من المصممين والمطورين المحترفين الذين يجمعون بين الإبداع والخبرة التقنية.</p>
+                    <p>نحن نؤمن بأن وجودك الرقمي هو انعكاس لهويتك ورسالتك، لذلك نعمل على تحويل رؤيتك إلى واقع ملموس عبر تصاميم مبتكرة وتجارب مستخدم استثنائية.</p>
+                    <p>نسعى دائمًا لمواكبة أحدث التقنيات والاتجاهات في عالم التصميم لضمان حصولك على أفضل الحلول الرقمية التي تلبي توقعاتك وتتفوق عليها.</p>
+                    <a href="#contact" class="btn">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>آراء عملائنا</h2>
+                <p>انطباعات عملائنا تعني الكثير لنا، وهنا بعض مما قالوه عن تجربتهم معنا</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "تعاملت مع العديد من شركات التصميم، ولكن فريق دايبورت كان الأكثر احترافية وإبداعًا. موقعي الجديد ساعد في زيادة مبيعاتي بنسبة 40% خلال شهرين فقط."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="عميل 1">
+                        <div>
+                            <h4>أحمد السيد</h4>
+                            <p>مدير شركة التقنية الماسية</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "تجربة رائعة من البداية إلى النهاية. استمع فريق العمل لاحتياجاتي وحولها إلى واقع يفوق توقعاتي. المتجر الإلكتروني الذي صممته لنا دايبورت سهل الاستخدام وجذاب للعملاء."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميل 2">
+                        <div>
+                            <h4>سارة محمد</h4>
+                            <p>مالكة متجر إلكتروني</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "الدعم الفني المتميز والالتزام بمواعيد التسليم جعلوا التعامل مع دايبورت تجربة ممتعة. أنصح أي شخص يبحث عن موقع إلكتروني احترافي أن يتعامل معهم."
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="عميل 3">
+                        <div>
+                            <h4>خالد محمود</h4>
+                            <p>مدير مركز التدريب المتقدم</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact">
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">تواصل مع أفضل شركة تسويق إلكتروني</h2>
-            <div class="contact-container">
+            <div class="section-title">
+                <h2>اتصل بنا</h2>
+                <p>نحن هنا لمساعدتك وتقديم الاستشارة المجانية لمشروعك القادم</p>
+            </div>
+            <div class="contact-content">
                 <div class="contact-info">
-                    <h3>نحن جاهزون للاتصال بك</h3>
-                    <p>شركة ديجيتال ماركتنج هي افضل شركة تسويق الكتروني للاتصال في مصر. نحن نقدم خدمات تسويق متكاملة وشاملة لجميع احتياجاتك.</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <i class="fas fa-phone"></i>
-                            <span>اتصل بنا: 01060474659</span>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <i class="fas fa-envelope"></i>
-                            <span>info@digital-marketing.com</span>
-                        </div>
-                        
-                        <div class="contact-method">
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>القاهرة، مصر</span>
+                        </div>
+                        <div>
+                            <h3>عنواننا</h3>
+                            <p>القاهرة، مصر</p>
                         </div>
                     </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h3>هاتفنا</h3>
+                            <p>+20 106 0474 659</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h3>بريدنا الإلكتروني</h3>
+                            <p>info@daport.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3>ساعات العمل</h3>
+                            <p>الأحد - الخميس: 9 ص - 5 م</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">الاسم بالكامل</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">رسالتك</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">إرسال الرسالة</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -402,20 +933,122 @@
 
     <!-- Footer -->
     <footer>
-        <div class="container footer-content">
-            <h3>شركة ديجيتال ماركتنج - أفضل شركة تسويق إلكتروني</h3>
-            <p>نقدم خدمات التسويق الإلكتروني، إدارة حسابات السوشيال ميديا، الحملات الإعلانية الممولة، والاستراتيجيات التسويقية لزيادة المبيعات.</p>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>داي<span>بورت</span></h2>
+                    <p>شركة رائدة في تصميم وتطوير المواقع الإلكترونية والتطبيقات، نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">خدماتنا</a></li>
+                        <li><a href="#portfolio">معرض الأعمال</a></li>
+                        <li><a href="#about">من نحن</a></li>
+                        <li><a href="#contact">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h3>خدماتنا</h3>
+                    <ul>
+                        <li><a href="#">تصميم مواقع ويب</a></li>
+                        <li><a href="#">تطبيقات الجوال</a></li>
+                        <li><a href="#">متاجر إلكترونية</a></li>
+                        <li><a href="#">تحسين محركات البحث</a></li>
+                        <li><a href="#">استضافة المواقع</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>اشترك في النشرة البريدية</h3>
+                    <p>اشترك ليصلك كل جديد عن خدماتنا وعروضنا الخاصة</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
-            
-            <p>اتصل بنا الآن: <a href="tel:01060474659" style="color: var(--secondary-color);">01060474659</a></p>
+            <div class="copyright">
+                <p>&copy; 2023 دايبورت. جميع الحقوق محفوظة.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Language switcher functionality
+        document.querySelectorAll('.language-switcher button').forEach(button => {
+            button.addEventListener('click', function() {
+                const lang = this.textContent;
+                if(lang === 'EN') {
+                    alert('سيتم تحويل الموقع إلى اللغة الإنجليزية');
+                    // هنا يمكن إضافة كود تحويل اللغة الفعلي
+                } else {
+                    alert('سيتم تحويل الموقع إلى اللغة العربية');
+                    // هنا يمكن إضافة كود تحويل اللغة الفعلي
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.querySelector('.contact-form form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
+                this.reset();
+            });
+        }
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // If element is in viewport
+                if(position.top < window.innerHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize elements for animation
+        document.querySelectorAll('.service-card, .portfolio-item, .testimonial-card').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        // Listen for scroll events
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial check on page load
+        window.addEventListener('load', animateOnScroll);
+    </script>
 </body>
 </html>
