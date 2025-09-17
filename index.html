@@ -9,11 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
     
     <style>
         :root {
@@ -22,10 +17,9 @@
             --accent-color: #e74c3c;
             --light-color: #ecf0f1;
             --dark-color: #2c3e50;
-            --success-color: #27ae60;
-            --warning-color: #f39c12;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            --gradient-reverse: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --border-radius: 10px;
         }
         
         * {
@@ -42,10 +36,15 @@
             background-color: #f9f9f9;
         }
         
+        body.menu-open {
+            overflow: hidden;
+        }
+        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
+            padding: 0 15px;
         }
         
         /* Header Styles */
@@ -57,14 +56,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: var(--box-shadow);
             transition: all 0.3s ease;
-        }
-        
-        header.sticky {
-            padding: 0.5rem 0;
-            background: rgba(52, 152, 219, 0.95);
-            backdrop-filter: blur(10px);
         }
         
         .header-content {
@@ -79,7 +72,7 @@
         }
         
         .logo h1 {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             margin-right: 10px;
         }
         
@@ -87,62 +80,58 @@
             color: var(--accent-color);
         }
         
-        nav ul {
-            display: flex;
+        .mobile-menu-btn {
+            display: block;
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: var(--gradient);
+            padding: 5rem 2rem 2rem;
+            transition: right 0.3s ease;
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu ul {
             list-style: none;
+            margin-top: 2rem;
         }
         
-        nav ul li {
-            margin-left: 1.5rem;
+        .mobile-menu ul li {
+            margin-bottom: 1.5rem;
         }
         
-        nav ul li a {
+        .mobile-menu ul li a {
             color: white;
             text-decoration: none;
+            font-size: 1.2rem;
             font-weight: 600;
-            transition: color 0.3s;
-            padding: 0.5rem;
-            position: relative;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        nav ul li a::after {
-            content: '';
+        .close-menu {
             position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-color);
-            transition: width 0.3s;
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-        
-        .language-switcher {
-            display: flex;
-            align-items: center;
-        }
-        
-        .language-switcher button {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            margin: 0 0.3rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .language-switcher button:hover {
-            background: white;
-            color: var(--primary-color);
-        }
-        
-        .mobile-menu-btn {
-            display: none;
+            top: 1rem;
+            left: 1rem;
             background: transparent;
             border: none;
             color: white;
@@ -150,26 +139,32 @@
             cursor: pointer;
         }
         
-        /* Hero Section */
-        .hero {
-            background: var(--gradient);
-            color: white;
-            padding: 8rem 0 5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
+        .menu-overlay {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: white;
+            padding: 6rem 0 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
         
         .hero-content {
@@ -178,13 +173,13 @@
         }
         
         .hero h2 {
-            font-size: 3rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
+            font-size: 1rem;
+            max-width: 100%;
             margin: 0 auto 2rem;
         }
         
@@ -192,61 +187,34 @@
             display: inline-block;
             background: var(--accent-color);
             color: white;
-            padding: 0.8rem 1.8rem;
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--secondary-color);
-            transition: all 0.3s;
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
-            width: 100%;
         }
         
         .btn:hover {
+            background: #c0392b;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
-        /* Particles Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-        }
-        
         /* Services Section */
         .services {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: white;
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
         
         .section-title h2 {
-            font-size: 2.5rem;
+            font-size: 1.8rem;
             color: var(--secondary-color);
             margin-bottom: 1rem;
             position: relative;
@@ -259,97 +227,73 @@
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 3px;
             background: var(--accent-color);
         }
         
         .section-title p {
             color: #777;
-            max-width: 700px;
+            max-width: 100%;
             margin: 0 auto;
+            font-size: 0.9rem;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         
         .service-card {
             background: white;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
             text-align: center;
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: var(--gradient);
-            transition: height 0.3s;
-            z-index: -1;
-        }
-        
-        .service-card:hover::before {
-            height: 100%;
+            padding: 1.5rem;
         }
         
         .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-            color: white;
-        }
-        
-        .service-card:hover .service-icon {
-            color: white;
-        }
-        
-        .service-card:hover h3 {
-            color: white;
+            transform: translateY(-5px);
         }
         
         .service-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: var(--primary-color);
             margin-bottom: 1rem;
-            transition: color 0.3s;
         }
         
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
-            transition: color 0.3s;
+        }
+        
+        .service-card p {
+            font-size: 0.9rem;
+            color: #555;
         }
         
         /* Portfolio Section */
         .portfolio {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: var(--light-color);
         }
         
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr;
             gap: 1.5rem;
         }
         
         .portfolio-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: var(--border-radius);
             overflow: hidden;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            height: 200px;
+            box-shadow: var(--box-shadow);
         }
         
         .portfolio-item img {
@@ -387,14 +331,14 @@
         
         /* About Section */
         .about {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: white;
         }
         
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
             align-items: center;
         }
         
@@ -404,64 +348,61 @@
         
         .about-image img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
         }
         
         .about-text h3 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
             color: var(--secondary-color);
         }
         
         .about-text p {
             margin-bottom: 1rem;
             color: #555;
+            font-size: 0.9rem;
         }
         
         /* Testimonials */
         .testimonials {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: var(--gradient);
             color: white;
         }
         
-        .testimonial-slider {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
         .testimonial-card {
             background: rgba(255, 255, 255, 0.1);
-            padding: 2rem;
-            border-radius: 10px;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
             backdrop-filter: blur(10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            margin: 0 1rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5rem;
         }
         
         .testimonial-text {
             font-style: italic;
             margin-bottom: 1.5rem;
             position: relative;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
+            font-size: 0.9rem;
         }
         
         .testimonial-text::before,
         .testimonial-text::after {
             content: '"';
-            font-size: 3rem;
+            font-size: 2rem;
             position: absolute;
             color: rgba(255, 255, 255, 0.2);
         }
         
         .testimonial-text::before {
-            top: -1rem;
+            top: -0.5rem;
             left: 0;
         }
         
         .testimonial-text::after {
-            bottom: -2rem;
+            bottom: -1.5rem;
             right: 0;
         }
         
@@ -471,55 +412,63 @@
         }
         
         .testimonial-author img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-left: 1rem;
             object-fit: cover;
         }
         
+        .testimonial-author div {
+            font-size: 0.9rem;
+        }
+        
         /* Stats Section */
         .stats {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: white;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
             text-align: center;
         }
         
         .stat-item {
-            padding: 2rem;
-            border-radius: 10px;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
             background: var(--light-color);
             transition: transform 0.3s;
         }
         
         .stat-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-5px);
             background: var(--gradient);
             color: white;
         }
         
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
         }
         
+        .stat-title {
+            font-size: 0.9rem;
+        }
+        
         /* Contact Section */
         .contact {
-            padding: 5rem 0;
+            padding: 3rem 0;
             background: white;
         }
         
         .contact-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
         }
         
         .contact-info {
@@ -534,8 +483,8 @@
         }
         
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
@@ -543,23 +492,28 @@
             align-items: center;
             margin-left: 1rem;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1rem;
+        }
+        
+        .contact-info-item div {
+            font-size: 0.9rem;
         }
         
         .contact-form {
             background: var(--light-color);
-            padding: 2rem;
-            border-radius: 10px;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            font-size: 0.9rem;
         }
         
         .form-group input,
@@ -569,42 +523,41 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: inherit;
-            transition: border-color 0.3s;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary-color);
-            outline: none;
+            font-size: 0.9rem;
         }
         
         .form-group textarea {
-            min-height: 150px;
+            min-height: 120px;
         }
         
         /* Footer */
         footer {
             background: var(--secondary-color);
             color: white;
-            padding: 3rem 0 1rem;
+            padding: 2rem 0 1rem;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
         .footer-logo h2 {
-            font-size: 2rem;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo p {
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
         
         .footer-links h3,
         .footer-newsletter h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
             position: relative;
             padding-bottom: 0.5rem;
         }
@@ -615,7 +568,7 @@
             position: absolute;
             bottom: 0;
             right: 0;
-            width: 50px;
+            width: 40px;
             height: 2px;
             background: var(--accent-color);
         }
@@ -625,13 +578,14 @@
         }
         
         .footer-links ul li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
         
         .footer-links ul li a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
+            font-size: 0.9rem;
         }
         
         .footer-links ul li a:hover {
@@ -640,6 +594,7 @@
         
         .footer-newsletter p {
             margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
         
         .newsletter-form {
@@ -648,9 +603,10 @@
         
         .newsletter-form input {
             flex: 1;
-            padding: 0.8rem;
+            padding: 0.7rem;
             border: none;
             border-radius: 4px 0 0 4px;
+            font-size: 0.9rem;
         }
         
         .newsletter-form button {
@@ -664,12 +620,12 @@
         
         .social-icons {
             display: flex;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
         }
         
         .social-icons a {
-            width: 40px;
-            height: 40px;
+            width: 35px;
+            height: 35px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
@@ -679,6 +635,7 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s;
+            font-size: 0.9rem;
         }
         
         .social-icons a:hover {
@@ -688,8 +645,9 @@
         
         .copyright {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
         }
         
         /* WhatsApp Float */
@@ -697,15 +655,15 @@
             position: fixed;
             bottom: 20px;
             left: 20px;
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             background: #25d366;
             color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             animation: pulse 1.5s infinite;
@@ -715,17 +673,17 @@
         /* Scroll to Top */
         .scroll-to-top {
             position: fixed;
-            bottom: 90px;
+            bottom: 80px;
             right: 20px;
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--accent-color);
             color: white;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             cursor: pointer;
@@ -755,124 +713,85 @@
             }
         }
         
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
+        /* Media Queries */
+        @media (min-width: 576px) {
+            .services-grid,
+            .portfolio-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            nav ul {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .mobile-menu {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 70%;
-                height: 100vh;
-                background: var(--gradient);
-                padding: 2rem;
-                transform: translateX(100%);
-                transition: transform 0.3s;
-                z-index: 999;
-            }
-            
-            .mobile-menu.active {
-                transform: translateX(0);
-            }
-            
-            .mobile-menu ul {
-                list-style: none;
-                margin-top: 2rem;
-            }
-            
-            .mobile-menu ul li {
-                margin-bottom: 1.5rem;
-            }
-            
-            .mobile-menu ul li a {
-                color: white;
-                text-decoration: none;
-                font-size: 1.2rem;
-                font-weight: 600;
-            }
-            
-            .close-menu {
-                position: absolute;
-                top: 1rem;
-                left: 1rem;
-                background: transparent;
-                border: none;
-                color: white;
-                font-size: 1.5rem;
-                cursor: pointer;
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
         
-        @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                margin-top: 1rem;
-            }
-            
+        @media (min-width: 768px) {
             .hero {
                 padding: 7rem 0 4rem;
             }
             
             .hero h2 {
-                font-size: 2rem;
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+                max-width: 80%;
             }
             
             .section-title h2 {
                 font-size: 2rem;
             }
             
-            .stats-grid {
+            .section-title p {
+                max-width: 80%;
+            }
+            
+            .services-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-        
-        @media (max-width: 576px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            nav ul li {
-                margin: 0.5rem 0;
+            .about-content {
+                grid-template-columns: 1fr 1fr;
             }
             
-            .language-switcher {
-                margin-top: 1rem;
-            }
-            
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                padding: 0.6rem 1.5rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
+            .contact-content {
+                grid-template-columns: 1fr 1fr;
             }
             
             .footer-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+            
+            nav ul {
+                display: flex;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
             }
         }
     </style>
@@ -903,10 +822,6 @@
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
             </nav>
-            <div class="language-switcher">
-                <button>AR</button>
-                <button>EN</button>
-            </div>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -927,13 +842,15 @@
         </ul>
     </div>
 
+    <!-- Menu Overlay -->
+    <div class="menu-overlay"></div>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div id="particles-js"></div>
         <div class="container hero-content">
-            <h2 class="animate__animated animate__fadeInDown">شركة دايبورت لتصميم المواقع الإلكترونية</h2>
-            <p class="animate__animated animate__fadeInUp">نحن نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار في العالم الرقمي. تصاميمنا إبداعية وسريعة الاستجابة وتلبي جميع احتياجاتك.</p>
-            <a href="#contact" class="btn animate__animated animate__pulse animate__infinite">اطلب خدمتك الآن</a>
+            <h2>شركة دايبورت لتصميم المواقع الإلكترونية</h2>
+            <p>نحن نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار في العالم الرقمي. تصاميمنا إبداعية وسريعة الاستجابة وتلبي جميع احتياجاتك.</p>
+            <a href="#contact" class="btn">اطلب خدمتك الآن</a>
         </div>
     </section>
 
@@ -941,46 +858,46 @@
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
-                <h2 data-aos="fade-up">خدماتنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">نقدم مجموعة واسعة من خدمات تصميم وتطوير المواقع الإلكترونية لتلبية جميع احتياجاتك الرقمية</p>
+                <h2>خدماتنا</h2>
+                <p>نقدم مجموعة واسعة من خدمات تصميم وتطوير المواقع الإلكترونية لتلبية جميع احتياجاتك الرقمية</p>
             </div>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3>تصميم مواقع ويب</h3>
                     <p>تصميم مواقع ويب جذابة وسهلة الاستخدام تعكس هوية علامتك التجارية وتوفر تجربة مستخدم استثنائية.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
                     <h3>تطبيقات الجوال</h3>
                     <p>تطوير تطبيقات جوال مبتكرة وسريعة للأجهزة iOS و Android تلبي احتياجات عملك وتوسع نطاق وصولك.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shopping-cart"></i>
                     </div>
                     <h3>متاجر إلكترونية</h3>
                     <p>إنشاء متاجر إلكترونية متكاملة مع أنظمة دفع آمنة وإدارة مخزون لتعزيز مبيعاتك عبر الإنترنت.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>تحسين محركات البحث</h3>
                     <p>تحسين ظهور موقعك في نتائج محركات البحث لزيادة الزيارات والوصول إلى العملاء المستهدفين.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-pencil-alt"></i>
                     </div>
                     <h3>تصميم الشعارات</h3>
                     <p>تصميم شعارات إبداعية ومميزة تعبر عن هوية علامتك التجارية وتجذب انتباه عملائك.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-server"></i>
                     </div>
@@ -995,50 +912,36 @@
     <section class="portfolio" id="portfolio">
         <div class="container">
             <div class="section-title">
-                <h2 data-aos="fade-up">معرض أعمالنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">إليك بعض المشاريع التي نفخر بها والتي تعكس إبداعنا وخبرتنا في مجال تصميم المواقع</p>
+                <h2>معرض أعمالنا</h2>
+                <p>إليك بعض المشاريع التي نفخر بها والتي تعكس إبداعنا وخبرتنا في مجال تصميم المواقع</p>
             </div>
             <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="200">
+                <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 1">
                     <div class="portfolio-overlay">
                         <h3>موقع شركة تقنية</h3>
                         <p>تصميم حديث وسريع الاستجابة لشركة تقنية ناشئة</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="300">
+                <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 2">
                     <div class="portfolio-overlay">
                         <h3>متجر إلكتروني</h3>
                         <p>متجر إلكتروني متكامل بجميع خصائص البيع عبر الإنترنت</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="400">
+                <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 3">
                     <div class="portfolio-overlay">
                         <h3>موقع شخصي</h3>
                         <p>تصميم موقع شخصي لمصمم جرافيك مع عرض أعماله</p>
                     </div>
                 </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="500">
+                <div class="portfolio-item">
                     <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 4">
                     <div class="portfolio-overlay">
                         <h3>مدونة تعليمية</h3>
                         <p>تصميم مدونة تعليمية بتجربة مستخدم محسنة</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="600">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 5">
-                    <div class="portfolio-overlay">
-                        <h3>موقع مطعم</h3>
-                        <p>تصميم موقع لمطعم مع قائمة طعام ونظام حجوزات</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="700">
-                    <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 6">
-                    <div class="portfolio-overlay">
-                        <h3>منصة تعليمية</h3>
-                        <p>تصميم منصة تعليمية بدورات تدريبية عبر الإنترنت</p>
                     </div>
                 </div>
             </div>
@@ -1049,20 +952,20 @@
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number" data-count="150">0</div>
+                <div class="stat-item">
+                    <div class="stat-number">150</div>
                     <div class="stat-title">مشروع مكتمل</div>
                 </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-number" data-count="95">0</div>
+                <div class="stat-item">
+                    <div class="stat-number">95</div>
                     <div class="stat-title">عميل سعيد</div>
                 </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-number" data-count="12">0</div>
+                <div class="stat-item">
+                    <div class="stat-number">12</div>
                     <div class="stat-title">جائزة فوز</div>
                 </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="stat-number" data-count="50">0</div>
+                <div class="stat-item">
+                    <div class="stat-number">50</div>
                     <div class="stat-title">مصمم محترف</div>
                 </div>
             </div>
@@ -1073,18 +976,17 @@
     <section class="about" id="about">
         <div class="container">
             <div class="section-title">
-                <h2 data-aos="fade-up">من نحن</h2>
-                <p data-aos="fade-up" data-aos-delay="100">شركة دايبورت هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
+                <h2>من نحن</h2>
+                <p>شركة دايبورت هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
             </div>
             <div class="about-content">
-                <div class="about-image" data-aos="fade-right" data-aos-delay="200">
+                <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="فريق دايبورت">
                 </div>
-                <div class="about-text" data-aos="fade-left" data-aos-delay="300">
+                <div class="about-text">
                     <h3>خبرة وإبداع في عالم التصميم الرقمي</h3>
                     <p>دايبورت هي شركة رائدة في مجال تصميم وتطوير المواقع الإلكترونية والتطبيقات، تأسست عام 2010، وتمتلك فريقًا من المصممين والمطورين المحترفين الذين يجمعون بين الإبداع والخبرة التقنية.</p>
                     <p>نحن نؤمن بأن وجودك الرقمي هو انعكاس لهويتك ورسالتك، لذلك نعمل على تحويل رؤيتك إلى واقع ملموس عبر تصاميم مبتكرة وتجارب مستخدم استثنائية.</p>
-                    <p>نسعى دائمًا لمواكبة أحدث التقنيات والاتجاهات في عالم التصميم لضمان حصولك على أفضل الحلول الرقمية التي تلبي توقعاتك وتتفوق عليها.</p>
                     <a href="#contact" class="btn">تواصل معنا</a>
                 </div>
             </div>
@@ -1095,44 +997,30 @@
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
-                <h2 data-aos="fade-up">آراء عملائنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">انطباعات عملائنا تعني الكثير لنا، وهنا بعض مما قالوه عن تجربتهم معنا</p>
+                <h2>آراء عملائنا</h2>
+                <p>انطباعات عملائنا تعني الكثير لنا، وهنا بعض مما قالوه عن تجربتهم معنا</p>
             </div>
-            <div class="testimonial-slider owl-carousel owl-theme">
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-text">
-                        "تعاملت مع العديد من شركات التصميم، ولكن فريق دايبورت كان الأكثر احترافية وإبداعًا. موقعي الجديد ساعد في زيادة مبيعاتي بنسبة 40% خلال شهرين فقط."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="عميل 1">
-                        <div>
-                            <h4>أحمد السيد</h4>
-                            <p>مدير شركة التقنية الماسية</p>
-                        </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "تعاملت مع العديد من شركات التصميم، ولكن فريق دايبورت كان الأكثر احترافية وإبداعًا. موقعي الجديد ساعد في زيادة مبيعاتي بنسبة 40% خلال شهرين فقط."
+                </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="عميل 1">
+                    <div>
+                        <h4>أحمد السيد</h4>
+                        <p>مدير شركة التقنية الماسية</p>
                     </div>
                 </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-text">
-                        "تجربة رائعة من البداية إلى النهاية. استمع فريق العمل لاحتياجاتي وحولها إلى واقع يفوق توقعاتي. المتجر الإلكتروني الذي صممته لنا دايبورت سهل الاستخدام وجذاب للعملاء."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميل 2">
-                        <div>
-                            <h4>سارة محمد</h4>
-                            <p>مالكة متجر إلكتروني</p>
-                        </div>
-                    </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-text">
+                    "تجربة رائعة من البداية إلى النهاية. استمع فريق العمل لاحتياجاتي وحولها إلى واقع يفوق توقعاتي. المتجر الإلكتروني الذي صممته لنا دايبورت سهل الاستخدام وجذاب للعملاء."
                 </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="testimonial-text">
-                        "الدعم الفني المتميز والالتزام بمواعيد التسليم جعلوا التعامل مع دايبورت تجربة ممتعة. أنصح أي شخص يبحث عن موقع إلكتروني احترافي أن يتعامل معهم."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="عميل 3">
-                        <div>
-                            <h4>خالد محمود</h4>
-                            <p>مدير مركز التدريب المتقدم</p>
-                        </div>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميل 2">
+                    <div>
+                        <h4>سارة محمد</h4>
+                        <p>مالكة متجر إلكتروني</p>
                     </div>
                 </div>
             </div>
@@ -1143,12 +1031,12 @@
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
-                <h2 data-aos="fade-up">اتصل بنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">نحن هنا لمساعدتك وتقديم الاستشارة المجانية لمشروعك القادم</p>
+                <h2>اتصل بنا</h2>
+                <p>نحن هنا لمساعدتك وتقديم الاستشارة المجانية لمشروعك القادم</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="200">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
@@ -1157,7 +1045,7 @@
                             <p>القاهرة، مصر</p>
                         </div>
                     </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="300">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
                         </div>
@@ -1166,7 +1054,7 @@
                             <p>+20 106 0474 659</p>
                         </div>
                     </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="400">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -1175,7 +1063,7 @@
                             <p>info@daport.com</p>
                         </div>
                     </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="500">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-clock"></i>
                         </div>
@@ -1185,7 +1073,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-form" data-aos="fade-left" data-aos-delay="200">
+                <div class="contact-form">
                     <form>
                         <div class="form-group">
                             <label for="name">الاسم بالكامل</label>
@@ -1259,201 +1147,120 @@
         </div>
     </footer>
 
-    <!-- مكتبات JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"></script>
-    
     <script>
-        // تهيئة AOS للانيميشن
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
+        // إدارة القائمة المتنقلة
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const closeMenuBtn = document.querySelector('.close-menu');
+        const menuOverlay = document.querySelector('.menu-overlay');
+        const body = document.body;
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            menuOverlay.classList.add('active');
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            menuOverlay.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        closeMenuBtn.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // إغلاق القائمة عند النقر على رابط
+        const menuLinks = document.querySelectorAll('.mobile-menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
-        
-        // تهيئة Owl Carousel للآراء
-        $('.testimonial-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 3
+
+        // التمرير السلس للروابط
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    // إغلاق القائمة إذا كانت مفتوحة
+                    closeMenu();
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
                 }
-            }
-        });
-        
-        // تهيئة particles.js
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#ffffff'
-                },
-                shape: {
-                    type: 'circle',
-                    stroke: {
-                        width: 0,
-                        color: '#000000'
-                    }
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false,
-                    anim: {
-                        enable: false,
-                        speed: 1,
-                        opacity_min: 0.1,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 3,
-                    random: true,
-                    anim: {
-                        enable: false,
-                        speed: 40,
-                        size_min: 0.1,
-                        sync: false
-                    }
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#ffffff',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false,
-                    attract: {
-                        enable: false,
-                        rotateX: 600,
-                        rotateY: 1200
-                    }
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                },
-                modes: {
-                    grab: {
-                        distance: 140,
-                        line_linked: {
-                            opacity: 1
-                        }
-                    },
-                    push: {
-                        particles_nb: 4
-                    }
-                }
-            },
-            retina_detect: true
-        });
-        
-        // العدادات
-        $('.stat-number').counterUp({
-            delay: 10,
-            time: 2000
-        });
-        
-        // القائمة المتنقلة
-        $('.mobile-menu-btn').click(function() {
-            $('.mobile-menu').addClass('active');
-        });
-        
-        $('.close-menu').click(function() {
-            $('.mobile-menu').removeClass('active');
-        });
-        
-        // التمرير السلس
-        $('a[href^="#"]').on('click', function(e) {
-            e.preventDefault();
-            
-            var target = this.hash;
-            var $target = $(target);
-            
-            $('html, body').animate({
-                'scrollTop': $target.offset().top - 80
-            }, 800, 'swing', function() {
-                window.location.hash = target;
             });
         });
-        
+
         // زر العودة للأعلى
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 300) {
-                $('.scroll-to-top').addClass('active');
+        const scrollToTopBtn = document.querySelector('.scroll-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add('active');
             } else {
-                $('.scroll-to-top').removeClass('active');
+                scrollToTopBtn.classList.remove('active');
             }
         });
         
-        $('.scroll-to-top').click(function() {
-            $('html, body').animate({
-                scrollTop: 0
-            }, 800);
-            return false;
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
-        
-        // تغيير شكل الهيدر عند التمرير
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                $('#header').addClass('sticky');
-            } else {
-                $('#header').removeClass('sticky');
-            }
+
+        // إرسال النماذج
+        const contactForm = document.querySelector('.contact-form form');
+        if(contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
+                this.reset();
+            });
+        }
+
+        const newsletterForm = document.querySelector('.newsletter-form');
+        if(newsletterForm) {
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('شكراً لك على الاشتراك في النشرة البريدية!');
+                this.reset();
+            });
+        }
+
+        // تأثيرات عند التمرير
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item, .stat-item');
+            
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                
+                // إذا كان العنصر في نطاق الرؤية
+                if(position.top < window.innerHeight - 100) {
+                    element.style.opacity = 1;
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // تهيئة العناصر للتحريك
+        document.querySelectorAll('.service-card, .portfolio-item, .stat-item').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         });
-        
-        // إرسال النموذج
-        $('.contact-form form').submit(function(e) {
-            e.preventDefault();
-            alert('شكراً لتواصلك معنا! سنرد عليك في أقرب وقت ممكن.');
-            this.reset();
-        });
-        
-        $('.newsletter-form').submit(function(e) {
-            e.preventDefault();
-            alert('شكراً لك على الاشتراك في النشرة البريدية!');
-            this.reset();
-        });
+
+        // الاستماع لأحداث التمرير
+        window.addEventListener('scroll', animateOnScroll);
+        // التحقق الأولي عند تحميل الصفحة
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
