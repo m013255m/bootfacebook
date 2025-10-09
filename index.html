@@ -2,18 +2,31 @@
 <html lang="ar" dir="rtl">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17519857014">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17519857014');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17519857014"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17519857014');
+    </script>
+    
+    <!-- Meta Tags للسيو -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دايبورت - شركة تصميم مواقع ويب احترافية</title>
+    <meta name="description" content="دايبورت - شركة تصميم مواقع ويب احترافية، متاجر إلكترونية، تطبيقات جوال، SEO. أفضل شركة تصميم مواقع في مصر والوطن العربي.">
+    <meta name="keywords" content="تصميم مواقع, تصميم موقع, شركة تصميم مواقع, مواقع انترنت, متجر الكتروني, تطبيقات جوال, SEO, تسويق الكتروني, برمجة مواقع, استضافة مواقع, شعارات, هوية بصرية, تطوير ويب, ووردبريس, تصميم متجاوب, تطوير مواقع, برمجة تطبيقات, تسويق رقمي, اعلانات, كورسات تصميم مواقع, تعلم تصميم مواقع, سيو, تحسين محركات البحث, تصميم جرافيك, براندنج, هوية تجارية, تطوير اعمال, رفع موقع في جوجل, انشاء موقع, موقع شخصي, موقع شركة, متجر على الانترنت, تصميم احترافي, واجهة مستخدم, تجربة مستخدم, تطوير برمجيات, برمجة, برمجة مواقع, برمجة تطبيقات, تطبيقات اندرويد, تطبيقات ايفون, فلاتر, تصميم UI/UX, تطوير ويب, لارافيل, ريأكت, انجولار, فوتوشوب, تصميم شعار, تصميم هوية, تسويق عبر السوشيال ميديا, ادارة وسائل التواصل الاجتماعي, اعلانات فيسبوك, اعلانات جوجل, اعلانات انستجرام, تسويق بالمحتوى, كتابة محتوى, مدونة, بلوجر, ووردبريس, تصميم قوالب, برمجة قوالب, برمجة بلغات, جافا سكريبت, بايثون, بي اتش بي, HTML, CSS, تطوير واجهات, برمجة خلفية, قاعدة بيانات, ماي اس كيو ال, مونجو دي بي, Node.js, Express.js, تطوير مواقع ديناميكية, مواقع ثابتة, استضافة, سيرفر, دومين, نطاق, حجز دومين, ترقية موقع, صيانة موقع, دعم فني, ادارة مواقع, تحليل مواقع, ادوات تحليل, جوجل انالتكس, ادسنس, الربح من الانترنت, التجارة الالكترونية, دروبشيبينغ, باي بال, الدفع الالكتروني, بوابة دفع, شحن, متاجر, عربي, مصر, السعودية, الامارات, الخليج, الوطن العربي">
+    <meta name="author" content="دايبورت - Daport">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="دايبورت - شركة تصميم مواقع ويب احترافية">
+    <meta property="og:description" content="شركة دايبورت لتصميم المواقع الإلكترونية، تطبيقات الجوال، المتاجر الإلكترونية، SEO وتحسين محركات البحث">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://daport.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="دايبورت - شركة تصميم مواقع ويب احترافية">
+    <meta name="twitter:description" content="شركة دايبورت لتصميم المواقع الإلكترونية، تطبيقات الجوال، المتاجر الإلكترونية، SEO وتحسين محركات البحث">
+    
+    <title>دايبورت - شركة تصميم مواقع ويب احترافية | متاجر إلكترونية | تطبيقات جوال | SEO</title>
     
     <!-- مكتبات CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -95,14 +108,63 @@
             align-items: center;
         }
         
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::before {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 8px;
+            transform: rotate(45deg);
+        }
+        
+        .logo-icon::after {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-color);
+            border-radius: 4px;
+            transform: rotate(45deg);
+            bottom: 8px;
+            right: 8px;
+        }
+        
         .logo h1 {
             font-size: 1.8rem;
             margin-right: 10px;
             font-weight: 800;
+            display: flex;
+            align-items: center;
         }
         
         .logo span {
             color: var(--accent-color);
+        }
+        
+        .logo-tagline {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-top: 3px;
+            font-weight: 600;
         }
         
         nav ul {
@@ -1035,6 +1097,50 @@
             }
         }
         
+        /* Media Section - جديد */
+        .media {
+            padding: 5rem 0;
+            background: white;
+            width: 100%;
+        }
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .media-item {
+            background: var(--light-color);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .media-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .media-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .media-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .media-item p {
+            color: #64748B;
+            line-height: 1.6;
+        }
+        
         /* Responsive Design - محسّن للهواتف */
         @media (max-width: 1200px) {
             .hero h2 {
@@ -1091,6 +1197,11 @@
             
             .logo h1 {
                 font-size: 1.6rem;
+            }
+            
+            .logo-icon {
+                width: 40px;
+                height: 40px;
             }
             
             .hero {
@@ -1273,14 +1384,21 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-content">
-            <div class="logo">
-                <h1>داي<span>بورت</span></h1>
+            <div class="logo-container">
+                <div class="logo">
+                    <div class="logo-icon"></div>
+                    <div>
+                        <h1>داي<span>بورت</span></h1>
+                        <div class="logo-tagline">Daport Media</div>
+                    </div>
+                </div>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">الرئيسية</a></li>
                     <li><a href="#services">خدماتنا</a></li>
                     <li><a href="#portfolio">معرض الأعمال</a></li>
+                    <li><a href="#media">ميديا</a></li>
                     <li><a href="#about">من نحن</a></li>
                     <li><a href="#contact">اتصل بنا</a></li>
                 </ul>
@@ -1304,6 +1422,7 @@
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#services">خدماتنا</a></li>
             <li><a href="#portfolio">معرض الأعمال</a></li>
+            <li><a href="#media">ميديا</a></li>
             <li><a href="#about">من نحن</a></li>
             <li><a href="#contact">اتصل بنا</a></li>
         </ul>
@@ -1316,7 +1435,7 @@
     <section class="hero" id="home">
         <div id="particles-js"></div>
         <div class="container hero-content">
-            <h2 class="animate__animated animate__fadeInDown">شركة دايبورت لتصميم المواقع الإلكترونية</h2>
+            <h2 class="animate__animated animate__fadeInDown">دايبورت ميديا - شركة تصميم مواقع ويب احترافية</h2>
             <p class="animate__animated animate__fadeInUp">نحن نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار في العالم الرقمي. تصاميمنا إبداعية وسريعة الاستجابة وتلبي جميع احتياجاتك.</p>
             <a href="#contact" class="btn animate__animated animate__pulse animate__infinite">اطلب خدمتك الآن</a>
         </div>
@@ -1430,6 +1549,46 @@
         </div>
     </section>
 
+    <!-- Media Section -->
+    <section class="media" id="media">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">دايبورت ميديا</h2>
+                <p data-aos="fade-up" data-aos-delay="100">خدمات ميديا متكاملة لتسويق علامتك التجارية وزيادة وصولك للجمهور المستهدف</p>
+            </div>
+            <div class="media-grid">
+                <div class="media-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="media-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>إنتاج فيديو</h3>
+                    <p>إنتاج محتوى فيديو احترافي لتسويق منتجاتك وخدماتك عبر منصات التواصل الاجتماعي</p>
+                </div>
+                <div class="media-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="media-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3>تصميم جرافيك</h3>
+                    <p>تصميم محتوى بصري جذاب لوسائل التواصل الاجتماعي والإعلانات الرقمية</p>
+                </div>
+                <div class="media-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="media-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>إعلانات مدمجة</h3>
+                    <p>تصميم وإدارة حملات إعلانية مدمجة عبر مختلف المنصات الرقمية</p>
+                </div>
+                <div class="media-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="media-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>تسويق بالمحتوى</h3>
+                    <p>إنشاء استراتيجيات تسويق بالمحتوى لزيادة الوعي بالعلامة التجارية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
@@ -1459,7 +1618,7 @@
         <div class="container">
             <div class="section-title">
                 <h2 data-aos="fade-up">من نحن</h2>
-                <p data-aos="fade-up" data-aos-delay="100">شركة دايبورت هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
+                <p data-aos="fade-up" data-aos-delay="100">شركة دايبورت ميديا هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
             </div>
             <div class="about-content">
                 <div class="about-image" data-aos="fade-right" data-aos-delay="200">
@@ -1467,7 +1626,7 @@
                 </div>
                 <div class="about-text" data-aos="fade-left" data-aos-delay="300">
                     <h3>خبرة وإبداع في عالم التصميم الرقمي</h3>
-                    <p>دايبورت هي شركة رائدة في مجال تصميم وتطوير المواقع الإلكترونية والتطبيقات، تأسست عام 2010، وتمتلك فريقًا من المصممين والمطورين المحترفين الذين يجمعون بين الإبداع والخبرة التقنية.</p>
+                    <p>دايبورت ميديا هي شركة رائدة في مجال تصميم وتطوير المواقع الإلكترونية والتطبيقات، تأسست عام 2010، وتمتلك فريقًا من المصممين والمطورين المحترفين الذين يجمعون بين الإبداع والخبرة التقنية.</p>
                     <p>نحن نؤمن بأن وجودك الرقمي هو انعكاس لهويتك ورسالتك، لذلك نعمل على تحويل رؤيتك إلى واقع ملموس عبر تصاميم مبتكرة وتجارب مستخدم استثنائية.</p>
                     <p>نسعى دائمًا لمواكبة أحدث التقنيات والاتجاهات في عالم التصميم لضمان حصولك على أفضل الحلول الرقمية التي تلبي توقعاتك وتتفوق عليها.</p>
                     <a href="#contact" class="btn">تواصل معنا</a>
@@ -1600,7 +1759,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>داي<span>بورت</span></h2>
+                    <h2>داي<span>بورت</span> ميديا</h2>
                     <p>شركة رائدة في تصميم وتطوير المواقع الإلكترونية والتطبيقات، نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -1615,6 +1774,7 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#portfolio">معرض الأعمال</a></li>
+                        <li><a href="#media">ميديا</a></li>
                         <li><a href="#about">من نحن</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
                     </ul>
@@ -1639,7 +1799,7 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 دايبورت. جميع الحقوق محفوظة.</p>
+                <p>&copy; 2023 دايبورت ميديا. جميع الحقوق محفوظة.</p>
             </div>
         </div>
     </footer>
@@ -1854,4 +2014,3 @@
     </script>
 </body>
 </html>
-
