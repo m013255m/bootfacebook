@@ -234,6 +234,24 @@
             z-index: 1001;
         }
         
+        /* زر Dark Mode */
+        .dark-mode-toggle {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            margin: 0 0.3rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
         /* Mobile Menu - محسّن */
         .mobile-menu {
             position: fixed;
@@ -1144,6 +1162,122 @@
             line-height: 1.6;
         }
         
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .services {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .service-card {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .service-card h3 {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .service-card p {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .portfolio {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .about {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .about-text h3 {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .about-text p {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .stats {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .stat-item {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .stat-title {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .media {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .media-item {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .media-item h3 {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .media-item p {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .contact {
+            background: #1e293b;
+        }
+        
+        body.dark-mode .contact-info-item {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .contact-info-text h3 {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .contact-info-text p {
+            color: #cbd5e1;
+        }
+        
+        body.dark-mode .contact-form {
+            background: #334155;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .form-group label {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .form-group input,
+        body.dark-mode .form-group textarea {
+            background: #475569;
+            border-color: #64748b;
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .form-group input:focus,
+        body.dark-mode .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.3);
+        }
+        
+        body.dark-mode .section-title h2 {
+            color: #e2e8f0;
+        }
+        
+        body.dark-mode .section-title p {
+            color: #cbd5e1;
+        }
+        
         /* Responsive Design - محسّن للهواتف */
         @media (max-width: 1200px) {
             .hero h2 {
@@ -1407,6 +1541,9 @@
                 </ul>
             </nav>
             <div class="language-switcher">
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
                 <button>AR</button>
                 <button>EN</button>
             </div>
@@ -2000,6 +2137,28 @@
             alert('شكراً لك على الاشتراك في النشرة البريدية!');
             this.reset();
         });
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        
+        darkModeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
     </script>
 </body>
 </html>
