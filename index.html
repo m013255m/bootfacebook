@@ -38,9 +38,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
     
-    <!-- مكتبة Hover.css للتأثيرات -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
-    
     <style>
         :root {
             --primary-color: #2D5BFF;
@@ -55,13 +52,12 @@
             --header-height: 80px;
             
             /* ألوان جديدة للشريط الجانبي */
-            --sidebar-bg: rgba(10, 10, 10, 0.95); /* أسود شفاف */
-            --sidebar-border: rgba(212, 175, 55, 0.4); /* ذهبي شفاف */
-            --sidebar-gold: #D4AF37; /* ذهبي */
-            --sidebar-gold-light: rgba(212, 175, 55, 0.8); /* ذهبي فاتح */
+            --sidebar-bg: rgba(15, 23, 42, 0.95);
+            --sidebar-border: rgba(212, 175, 55, 0.4);
+            --sidebar-gold: #D4AF37;
+            --sidebar-gold-light: rgba(212, 175, 55, 0.8);
             --sidebar-text: #E2E8F0;
             --sidebar-hover: rgba(212, 175, 55, 0.15);
-            --sidebar-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
         }
         
         * {
@@ -234,6 +230,26 @@
         .language-switcher button:hover {
             background: white;
             color: var(--primary-color);
+        }
+        
+        /* زر الشريط الجانبي في الهيدر */
+        .sidebar-header-toggle {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: var(--sidebar-gold);
+            padding: 0.5rem 0.8rem;
+            margin: 0 0.3rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-header-toggle:hover {
+            background: var(--sidebar-gold);
+            color: var(--dark-color);
+            transform: scale(1.1);
         }
         
         .mobile-menu-btn {
@@ -445,7 +461,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-left: 1px solid var(--sidebar-border);
-            box-shadow: var(--sidebar-shadow);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
             z-index: 1002;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             overflow-y: auto;
@@ -646,7 +662,7 @@
             padding: 15px 10px;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: var(--sidebar-shadow);
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
             transition: all 0.4s;
             font-size: 1.3rem;
         }
@@ -664,7 +680,7 @@
             transform: scale(1.2);
         }
         
-        /* Services Section - محسّن */
+        /* باقي الأقسام تبقى كما هي بدون تغيير */
         .services {
             padding: 5rem 0;
             background: var(--light-color);
@@ -1804,6 +1820,9 @@
                 <button class="dark-mode-toggle" id="darkModeToggle">
                     <i class="fas fa-moon"></i>
                 </button>
+                <button class="sidebar-header-toggle" id="sidebarHeaderToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <button>AR</button>
                 <button>EN</button>
             </div>
@@ -1886,7 +1905,7 @@
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- باقي الأقسام تبقى كما هي بدون تغيير -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
@@ -1940,6 +1959,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- Portfolio Section -->
     <section class="portfolio" id="portfolio">
         <div class="container">
@@ -1994,6 +2014,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- Media Section -->
     <section class="media" id="media">
         <div class="container">
@@ -2034,6 +2055,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- Stats Section -->
     <section class="stats">
         <div class="container">
@@ -2058,6 +2080,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
@@ -2080,6 +2103,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- Testimonials Section -->
     <section class="testimonials">
         <div class="container">
@@ -2128,6 +2152,7 @@
         </div>
     </section>
 
+    <!-- باقي الأقسام تبقى كما هي -->
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -2468,9 +2493,14 @@
         // الشريط الجانبي
         const sidebar = document.getElementById('sidebar');
         const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarHeaderToggle = document.getElementById('sidebarHeaderToggle');
         const sidebarClose = document.getElementById('sidebarClose');
         
         sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.add('active');
+        });
+        
+        sidebarHeaderToggle.addEventListener('click', function() {
             sidebar.classList.add('active');
         });
         
@@ -2481,7 +2511,7 @@
         // إغلاق الشريط الجانبي عند النقر خارجيه
         document.addEventListener('click', function(event) {
             const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickInsideToggle = sidebarToggle.contains(event.target);
+            const isClickInsideToggle = sidebarToggle.contains(event.target) || sidebarHeaderToggle.contains(event.target);
             
             if (!isClickInsideSidebar && !isClickInsideToggle && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
