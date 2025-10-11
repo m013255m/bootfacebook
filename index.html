@@ -232,24 +232,30 @@
             color: var(--primary-color);
         }
         
-        /* زر الشريط الجانبي في الهيدر */
+        /* زر الشريط الجانبي في الهيدر - محسّن */
         .sidebar-header-toggle {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: var(--sidebar-gold);
-            padding: 0.5rem 0.8rem;
-            margin: 0 0.3rem;
-            border-radius: 6px;
+            padding: 0.6rem 0.8rem;
+            margin: 0 0.5rem;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
         }
         
         .sidebar-header-toggle:hover {
             background: var(--sidebar-gold);
             color: var(--dark-color);
             transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
         
         .mobile-menu-btn {
@@ -650,34 +656,9 @@
             opacity: 0.7;
         }
         
+        /* إزالة الأيقونة الجانبية تماماً */
         .sidebar-toggle {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            background: var(--sidebar-bg);
-            color: var(--sidebar-gold);
-            border: none;
-            border-radius: 5px 0 0 5px;
-            padding: 15px 10px;
-            cursor: pointer;
-            z-index: 1001;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.4s;
-            font-size: 1.3rem;
-        }
-        
-        .sidebar-toggle:hover {
-            padding-right: 15px;
-            background: rgba(10, 10, 10, 0.98);
-        }
-        
-        .sidebar-toggle i {
-            transition: all 0.3s;
-        }
-        
-        .sidebar-toggle:hover i {
-            transform: scale(1.2);
+            display: none;
         }
         
         /* باقي الأقسام تبقى كما هي بدون تغيير */
@@ -1833,10 +1814,6 @@
     </header>
 
     <!-- الشريط الجانبي الجديد -->
-    <button class="sidebar-toggle" id="sidebarToggle">
-        <i class="fas fa-bars"></i>
-    </button>
-    
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <button class="sidebar-close" id="sidebarClose">
@@ -2492,13 +2469,8 @@
         
         // الشريط الجانبي
         const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
         const sidebarHeaderToggle = document.getElementById('sidebarHeaderToggle');
         const sidebarClose = document.getElementById('sidebarClose');
-        
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.add('active');
-        });
         
         sidebarHeaderToggle.addEventListener('click', function() {
             sidebar.classList.add('active');
@@ -2511,7 +2483,7 @@
         // إغلاق الشريط الجانبي عند النقر خارجيه
         document.addEventListener('click', function(event) {
             const isClickInsideSidebar = sidebar.contains(event.target);
-            const isClickInsideToggle = sidebarToggle.contains(event.target) || sidebarHeaderToggle.contains(event.target);
+            const isClickInsideToggle = sidebarHeaderToggle.contains(event.target);
             
             if (!isClickInsideSidebar && !isClickInsideToggle && sidebar.classList.contains('active')) {
                 sidebar.classList.remove('active');
