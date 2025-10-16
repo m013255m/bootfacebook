@@ -52,12 +52,12 @@
             --header-height: 80px;
             
             /* ألوان جديدة للشريط الجانبي */
-            --sidebar-bg: rgba(15, 23, 42, 0.95);
-            --sidebar-border: rgba(212, 175, 55, 0.4);
+            --sidebar-bg: rgba(15, 23, 42, 0.98);
+            --sidebar-border: rgba(212, 175, 55, 0.5);
             --sidebar-gold: #D4AF37;
             --sidebar-gold-light: rgba(212, 175, 55, 0.8);
             --sidebar-text: #E2E8F0;
-            --sidebar-hover: rgba(212, 175, 55, 0.15);
+            --sidebar-hover: rgba(212, 175, 55, 0.2);
         }
         
         * {
@@ -162,6 +162,7 @@
             font-weight: 800;
             display: flex;
             align-items: center;
+            letter-spacing: -0.5px;
         }
         
         .logo span {
@@ -246,6 +247,8 @@
             border-radius: 25px;
             transition: all 0.3s;
             animation: phonePulse 2s infinite;
+            text-decoration: none;
+            color: white;
         }
         
         .phone-header:hover {
@@ -474,7 +477,7 @@
             left: 0;
         }
         
-        /* الشريط الجانبي الجديد */
+        /* الشريط الجانبي الجديد - محسّن */
         .sidebar {
             position: fixed;
             top: 0;
@@ -485,7 +488,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-left: 1px solid var(--sidebar-border);
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.4);
             z-index: 1002;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             overflow-y: auto;
@@ -494,6 +497,20 @@
         
         .sidebar.active {
             right: 0;
+            animation: slideInRight 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+        
+        @keyframes slideInRight {
+            0% {
+                right: -320px;
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            100% {
+                right: 0;
+                opacity: 1;
+                transform: scale(1);
+            }
         }
         
         .sidebar-header {
@@ -522,10 +539,20 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
             position: relative;
             overflow: hidden;
             border: 2px solid var(--sidebar-gold);
+            animation: logoGlow 3s infinite alternate;
+        }
+        
+        @keyframes logoGlow {
+            0% {
+                box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            }
+            100% {
+                box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
+            }
         }
         
         .sidebar-logo-icon::before {
@@ -556,6 +583,7 @@
             font-weight: 800;
             margin: 0;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            letter-spacing: -0.5px;
         }
         
         .sidebar-tagline {
@@ -674,7 +702,7 @@
             opacity: 0.7;
         }
         
-        /* إزالة الأيقونة الجانبية تماماً */
+        /* إزالة الأيقونة الجانبية القديمة تماماً */
         .sidebar-toggle {
             display: none;
         }
@@ -1176,6 +1204,7 @@
             font-size: 2.2rem;
             margin-bottom: 1.2rem;
             font-weight: 800;
+            letter-spacing: -0.5px;
         }
         
         .footer-logo span {
@@ -1808,7 +1837,7 @@
                 <div class="logo">
                     <div class="logo-icon"></div>
                     <div>
-                        <h1>داي<span>بورت</span></h1>
+                        <h1>دايبورت</h1>
                         <div class="logo-tagline">Daport Media</div>
                     </div>
                 </div>
@@ -2234,7 +2263,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <h2>داي<span>بورت</span> ميديا</h2>
+                    <h2>دايبورت ميديا</h2>
                     <p>شركة رائدة في تصميم وتطوير المواقع الإلكترونية والتطبيقات، نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار.</p>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
