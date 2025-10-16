@@ -121,39 +121,19 @@
             align-items: center;
         }
         
+        /* تعديل الأيقونة - إزالة المربع الأبيض ووضع المربع البرتقالي فقط */
         .logo-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             margin-left: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            background: var(--accent-color);
+            border-radius: 8px;
             position: relative;
             overflow: hidden;
-        }
-        
-        .logo-icon::before {
-            content: "";
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: white;
-            border-radius: 8px;
             transform: rotate(45deg);
-        }
-        
-        .logo-icon::after {
-            content: "";
-            position: absolute;
-            width: 15px;
-            height: 15px;
-            background: var(--accent-color);
-            border-radius: 4px;
-            transform: rotate(45deg);
-            bottom: 8px;
-            right: 8px;
         }
         
         .logo h1 {
@@ -163,10 +143,14 @@
             display: flex;
             align-items: center;
             letter-spacing: -0.5px;
-        }
-        
-        .logo span {
-            color: var(--accent-color);
+            /* تأثير 3D للاسم */
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
+                        3px 3px 0px rgba(0,0,0,0.05),
+                        4px 4px 0px rgba(0,0,0,0.05);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .logo-tagline {
@@ -279,6 +263,29 @@
             }
         }
         
+        /* زر Dark Mode - محسّن الحجم */
+        .dark-mode-toggle {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.5rem;
+            margin: 0 0.3rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .dark-mode-toggle:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -287,24 +294,6 @@
             font-size: 1.7rem;
             cursor: pointer;
             z-index: 1001;
-        }
-        
-        /* زر Dark Mode */
-        .dark-mode-toggle {
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            color: white;
-            padding: 0.4rem 0.9rem;
-            margin: 0 0.3rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-        
-        .dark-mode-toggle:hover {
-            background: white;
-            color: var(--primary-color);
         }
         
         /* Mobile Menu - محسّن */
@@ -531,50 +520,18 @@
         }
         
         .sidebar-logo-icon {
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--sidebar-gold), #F7EF8A);
-            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            background: var(--accent-color);
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--sidebar-gold);
-            animation: logoGlow 3s infinite alternate;
-        }
-        
-        @keyframes logoGlow {
-            0% {
-                box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
-            }
-            100% {
-                box-shadow: 0 0 25px rgba(212, 175, 55, 0.8);
-            }
-        }
-        
-        .sidebar-logo-icon::before {
-            content: "";
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 10px;
             transform: rotate(45deg);
-        }
-        
-        .sidebar-logo-icon::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--sidebar-gold);
-            border-radius: 5px;
-            transform: rotate(45deg);
-            bottom: 12px;
-            right: 12px;
         }
         
         .sidebar-title {
@@ -680,6 +637,35 @@
             background: rgba(212, 175, 55, 0.15);
             color: var(--sidebar-gold);
             border-right: 3px solid var(--sidebar-gold);
+        }
+        
+        /* زر Dark Mode في الشريط الجانبي */
+        .sidebar-dark-mode {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 25px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid var(--sidebar-border);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .sidebar-dark-mode:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .sidebar-dark-mode i {
+            color: var(--sidebar-gold);
+            font-size: 1.2rem;
+            margin-left: 10px;
+        }
+        
+        .sidebar-dark-mode span {
+            color: var(--sidebar-text);
+            font-weight: 600;
         }
         
         .sidebar-divider {
@@ -1205,6 +1191,13 @@
             margin-bottom: 1.2rem;
             font-weight: 800;
             letter-spacing: -0.5px;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
+                        3px 3px 0px rgba(0,0,0,0.05),
+                        4px 4px 0px rgba(0,0,0,0.05);
+            background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .footer-logo span {
@@ -1631,8 +1624,8 @@
             }
             
             .logo-icon {
-                width: 40px;
-                height: 40px;
+                width: 35px;
+                height: 35px;
             }
             
             .hero {
@@ -1809,8 +1802,8 @@
             }
             
             .sidebar-logo-icon {
-                width: 60px;
-                height: 60px;
+                width: 50px;
+                height: 50px;
             }
             
             .sidebar-title {
@@ -1891,6 +1884,14 @@
             <li><a href="about.html"><i class="fas fa-users"></i> من نحن</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
         </ul>
+        
+        <div class="sidebar-divider"></div>
+        
+        <!-- زر Dark Mode في الشريط الجانبي -->
+        <div class="sidebar-dark-mode" id="sidebarDarkModeToggle">
+            <i class="fas fa-moon"></i>
+            <span>الوضع الليلي</span>
+        </div>
         
         <div class="sidebar-divider"></div>
         
@@ -2504,24 +2505,31 @@
         
         // Dark Mode Toggle
         const darkModeToggle = document.getElementById('darkModeToggle');
+        const sidebarDarkModeToggle = document.getElementById('sidebarDarkModeToggle');
         const body = document.body;
         
-        darkModeToggle.addEventListener('click', function() {
+        function toggleDarkMode() {
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
                 darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                sidebarDarkModeToggle.innerHTML = '<i class="fas fa-sun"></i><span>الوضع النهاري</span>';
                 localStorage.setItem('darkMode', 'enabled');
             } else {
                 darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                sidebarDarkModeToggle.innerHTML = '<i class="fas fa-moon"></i><span>الوضع الليلي</span>';
                 localStorage.setItem('darkMode', 'disabled');
             }
-        });
+        }
+        
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        sidebarDarkModeToggle.addEventListener('click', toggleDarkMode);
         
         // Check for saved dark mode preference
         if (localStorage.getItem('darkMode') === 'enabled') {
             body.classList.add('dark-mode');
             darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            sidebarDarkModeToggle.innerHTML = '<i class="fas fa-sun"></i><span>الوضع النهاري</span>';
         }
         
         // الشريط الجانبي
