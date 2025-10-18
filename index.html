@@ -31,6 +31,10 @@
     <!-- مكتبات CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- مكتبات الخطوط الاحترافية -->
+    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
@@ -58,6 +62,12 @@
             --sidebar-gold-light: rgba(212, 175, 55, 0.8);
             --sidebar-text: #E2E8F0;
             --sidebar-hover: rgba(212, 175, 55, 0.2);
+            
+            /* ألوان احترافية جديدة */
+            --professional-red: #DC2626;
+            --professional-dark-red: #B91C1C;
+            --professional-gold: #D97706;
+            --professional-dark: #0F172A;
         }
         
         * {
@@ -69,7 +79,7 @@
         html, body {
             width: 100%;
             overflow-x: hidden;
-            font-family: 'Cairo', 'Open Sans', sans-serif;
+            font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
             line-height: 1.6;
             color: #334155;
             background-color: #FFFFFF;
@@ -166,15 +176,38 @@
             text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
                         3px 3px 0px rgba(0,0,0,0.05),
                         4px 4px 0px rgba(0,0,0,0.05);
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
-        /* تغيير ألوان كلمة داي بورت */
+        /* تصميم احترافي لكلمة داي بورت */
         .logo .day {
-            color: #FF0000; /* أحمر */
+            color: var(--professional-red);
+            font-weight: 800;
+            text-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
+            background: linear-gradient(135deg, var(--professional-red), var(--professional-dark-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding: 0 2px;
+        }
+        
+        .logo .day::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--professional-red), transparent);
+            border-radius: 2px;
         }
         
         .logo .port {
-            color: #FFFFFF; /* أبيض */
+            color: #FFFFFF;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            margin-right: 2px;
         }
         
         .logo-tagline {
@@ -182,41 +215,12 @@
             opacity: 0.9;
             margin-top: 3px;
             font-weight: 600;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        nav ul li {
-            margin-left: 1.8rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            padding: 0.5rem;
-            position: relative;
-            font-size: 1.05rem;
-        }
-        
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 0;
-            height: 3px;
-            background: var(--accent-color);
-            transition: width 0.3s;
-            border-radius: 2px;
-        }
-        
-        nav ul li a:hover::after {
-            width: 100%;
+        /* إزالة القائمة الأصلية */
+        nav {
+            display: none;
         }
         
         /* زر الشريط الجانبي في الهيدر - محسّن */
@@ -243,48 +247,6 @@
             transform: scale(1.1);
         }
         
-        /* زر الهاتف في الهيدر */
-        .phone-header {
-            display: flex;
-            align-items: center;
-            margin-left: 15px;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 8px 15px;
-            border-radius: 25px;
-            transition: all 0.3s;
-            animation: phonePulse 2s infinite;
-            text-decoration: none;
-            color: white;
-        }
-        
-        .phone-header:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
-        }
-        
-        .phone-icon {
-            margin-left: 8px;
-            font-size: 1.1rem;
-            color: var(--accent-color);
-        }
-        
-        .phone-number {
-            font-weight: 700;
-            font-size: 1rem;
-        }
-        
-        @keyframes phonePulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
-            }
-        }
-        
         .mobile-menu-btn {
             display: none;
             background: transparent;
@@ -293,176 +255,6 @@
             font-size: 1.7rem;
             cursor: pointer;
             z-index: 1001;
-        }
-        
-        /* Mobile Menu - محسّن */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 85%;
-            max-width: 400px;
-            height: 100vh;
-            background: linear-gradient(135deg, rgba(45, 91, 255, 0.95), rgba(30, 58, 138, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            color: white;
-            padding: 5rem 2rem 2rem;
-            transition: all 0.4s ease;
-            z-index: 999;
-            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
-            overflow-y: auto;
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu ul {
-            list-style: none;
-            margin-top: 2rem;
-        }
-        
-        .mobile-menu ul li {
-            margin-bottom: 1.8rem;
-        }
-        
-        .mobile-menu ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.3rem;
-            font-weight: 700;
-            display: block;
-            padding: 0.5rem 0;
-            transition: all 0.3s;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .mobile-menu ul li a:hover {
-            color: var(--accent-color);
-            padding-right: 10px;
-        }
-        
-        .close-menu {
-            position: absolute;
-            top: 1.5rem;
-            left: 1.5rem;
-            background: transparent;
-            border: none;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 998;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-        }
-        
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        /* Hero Section - محسّن */
-        .hero {
-            background: var(--gradient);
-            color: white;
-            padding: calc(var(--header-height) + 2rem) 0 5rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            width: 100%;
-        }
-        
-        .hero h2 {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 2.5rem;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: var(--accent-color);
-            color: white;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            font-size: 1.05rem;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-        }
-        
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background: var(--secondary-color);
-            transition: all 0.4s;
-            z-index: -1;
-        }
-        
-        .btn:hover::before {
-            width: 100%;
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
-        }
-        
-        /* Particles Background */
-        #particles-js {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
         }
         
         /* الشريط الجانبي الجديد - محسّن */
@@ -562,6 +354,17 @@
             margin: 0;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
             letter-spacing: -0.5px;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
+        }
+        
+        .sidebar-title .day {
+            color: var(--professional-red);
+            font-weight: 800;
+        }
+        
+        .sidebar-title .port {
+            color: var(--sidebar-gold);
+            font-weight: 700;
         }
         
         .sidebar-tagline {
@@ -569,6 +372,7 @@
             font-size: 0.85rem;
             opacity: 0.8;
             margin-top: 5px;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .sidebar-close {
@@ -617,6 +421,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .sidebar-menu li a::before {
@@ -678,6 +483,7 @@
             font-size: 0.85rem;
             margin-bottom: 15px;
             opacity: 0.7;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* باقي الأقسام تبقى كما هي بدون تغيير */
@@ -699,6 +505,7 @@
             position: relative;
             display: inline-block;
             font-weight: 800;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .section-title h2::after {
@@ -719,6 +526,7 @@
             margin: 0 auto;
             font-size: 1.1rem;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .services-grid {
@@ -787,12 +595,14 @@
             color: var(--secondary-color);
             transition: color 0.3s;
             font-weight: 700;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .service-card p {
             color: #64748B;
             transition: color 0.3s;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .service-card:hover p {
@@ -863,11 +673,13 @@
             font-size: 1.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .portfolio-overlay p {
             font-size: 1rem;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* About Section - محسّن */
@@ -906,6 +718,7 @@
             margin-bottom: 1.5rem;
             color: var(--secondary-color);
             font-weight: 800;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .about-text p {
@@ -913,6 +726,7 @@
             color: #64748B;
             line-height: 1.7;
             font-size: 1.05rem;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* Testimonials - محسّن */
@@ -961,6 +775,7 @@
             padding: 0 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .testimonial-text::before,
@@ -999,11 +814,13 @@
         .testimonial-author h4 {
             font-size: 1.2rem;
             margin-bottom: 0.3rem;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .testimonial-author p {
             opacity: 0.8;
             font-size: 0.95rem;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* Stats Section - محسّن */
@@ -1041,6 +858,7 @@
             font-weight: 800;
             margin-bottom: 0.5rem;
             transition: color 0.3s;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .stat-item:hover .stat-number {
@@ -1052,6 +870,7 @@
             font-weight: 600;
             color: #64748B;
             transition: color 0.3s;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .stat-item:hover .stat-title {
@@ -1110,11 +929,13 @@
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--secondary-color);
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .contact-info-text p {
             color: #64748B;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .contact-form {
@@ -1133,6 +954,7 @@
             margin-bottom: 0.6rem;
             font-weight: 600;
             color: var(--secondary-color);
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .form-group input,
@@ -1144,6 +966,7 @@
             font-family: inherit;
             transition: all 0.3s;
             font-size: 1rem;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .form-group input:focus,
@@ -1181,21 +1004,29 @@
             text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
                         3px 3px 0px rgba(0,0,0,0.05),
                         4px 4px 0px rgba(0,0,0,0.05);
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* تغيير ألوان كلمة داي بورت في الفوتر */
         .footer-logo .day {
-            color: #FF0000; /* أحمر */
+            color: var(--professional-red);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--professional-red), var(--professional-dark-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .footer-logo .port {
-            color: #FFFFFF; /* أبيض */
+            color: #FFFFFF;
+            font-weight: 700;
         }
         
         .footer-logo p {
             color: #CBD5E1;
             line-height: 1.7;
             margin-bottom: 1.5rem;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .footer-links h3,
@@ -1205,6 +1036,7 @@
             position: relative;
             padding-bottom: 0.8rem;
             font-weight: 700;
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .footer-links h3::after,
@@ -1233,6 +1065,7 @@
             transition: all 0.3s;
             display: block;
             padding: 0.3rem 0;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .footer-links ul li a:hover {
@@ -1244,6 +1077,7 @@
             color: #CBD5E1;
             margin-bottom: 1.5rem;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .newsletter-form {
@@ -1259,6 +1093,7 @@
             border: none;
             background: transparent;
             color: white;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         .newsletter-form input::placeholder {
@@ -1309,6 +1144,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #94A3B8;
             font-size: 0.95rem;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* WhatsApp Float */
@@ -1422,11 +1258,13 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--secondary-color);
+            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
         }
         
         .media-item p {
             color: #64748B;
             line-height: 1.6;
+            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* Responsive Design - محسّن للهواتف */
@@ -1456,21 +1294,8 @@
                 font-size: 2.3rem;
             }
             
-            nav ul {
-                display: none;
-            }
-            
             .mobile-menu-btn {
                 display: block;
-            }
-            
-            .phone-header {
-                margin-left: 10px;
-                padding: 6px 12px;
-            }
-            
-            .phone-number {
-                font-size: 0.9rem;
             }
             
             .sidebar {
@@ -1577,10 +1402,6 @@
                 width: 85%;
                 right: -85%;
             }
-            
-            .phone-header {
-                display: none;
-            }
         }
         
         @media (max-width: 576px) {
@@ -1669,10 +1490,6 @@
                 margin: 0 0.4rem;
             }
             
-            .mobile-menu {
-                width: 80%;
-            }
-            
             .sidebar-logo-icon {
                 width: 60px;
                 height: 60px;
@@ -1707,18 +1524,10 @@
                     </div>
                 </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">الرئيسية</a></li>
-                    <li><a href="services.html">خدماتنا</a></li>
-                    <li><a href="portfolio.html">معرض الأعمال</a></li>
-                    <li><a href="media.html">ميديا</a></li>
-                    <li><a href="about.html">من نحن</a></li>
-                    <li><a href="contact.html">اتصل بنا</a></li>
-                </ul>
-            </nav>
+            
+            <!-- تم إزالة القائمة الأصلية -->
+            
             <div class="language-switcher">
-                <!-- تم إزالة زر الهاتف فقط -->
                 <button class="sidebar-toggle" id="sidebarToggle">
                     <i class="fas fa-bars"></i>
                 </button>
