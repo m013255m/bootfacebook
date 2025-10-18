@@ -31,8 +31,7 @@
     <!-- مكتبات CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-    <!-- مكتبات الخطوط الاحترافية -->
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <!-- مكتبات متقدمة -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -41,6 +40,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.5/swiper-bundle.min.css">
+    <!-- مكتبة navbar متقدمة -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     
     <style>
         :root {
@@ -79,7 +80,7 @@
         html, body {
             width: 100%;
             overflow-x: hidden;
-            font-family: 'Cairo', 'Tajawal', 'Almarai', sans-serif;
+            font-family: 'Cairo', 'Tajawal', sans-serif;
             line-height: 1.6;
             color: #334155;
             background-color: #FFFFFF;
@@ -92,11 +93,10 @@
             margin: 0 auto;
             padding: 0 15px;
         }
-        
-        /* Header Styles - محسّن */
-        header {
-            background: var(--gradient);
-            color: white;
+
+        /* ========== NAVBAR متقدم ========== */
+        .navbar-custom {
+            background: var(--gradient) !important;
             padding: 0.8rem 0;
             position: fixed;
             width: 100%;
@@ -105,131 +105,157 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
             height: var(--header-height);
-        }
-        
-        header.sticky {
-            padding: 0.5rem 0;
-            background: rgba(45, 91, 255, 0.97);
             backdrop-filter: blur(10px);
+        }
+
+        .navbar-custom.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(45, 91, 255, 0.97) !important;
             height: 70px;
         }
-        
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 100%;
-        }
-        
-        .logo {
+
+        .navbar-brand-custom {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo-icon {
-            width: 50px;
-            height: 50px;
+
+        .logo-icon-nav {
+            width: 45px;
+            height: 45px;
             margin-left: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            border-radius: 10px;
             position: relative;
             overflow: hidden;
         }
-        
-        .logo-icon::before {
+
+        .logo-icon-nav::before {
             content: "";
             position: absolute;
-            width: 30px;
-            height: 30px;
+            width: 25px;
+            height: 25px;
             background: white;
-            border-radius: 8px;
+            border-radius: 6px;
             transform: rotate(45deg);
         }
-        
-        .logo-icon::after {
+
+        .logo-icon-nav::after {
             content: "";
             position: absolute;
-            width: 15px;
-            height: 15px;
+            width: 12px;
+            height: 12px;
             background: var(--accent-color);
-            border-radius: 4px;
+            border-radius: 3px;
             transform: rotate(45deg);
-            bottom: 8px;
-            right: 8px;
+            bottom: 6px;
+            right: 6px;
         }
-        
-        .logo h1 {
-            font-size: 1.8rem;
-            margin-right: 10px;
+
+        .navbar-brand-custom h1 {
+            font-size: 1.7rem;
+            margin: 0;
             font-weight: 800;
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.5px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
-                        3px 3px 0px rgba(0,0,0,0.05),
-                        4px 4px 0px rgba(0,0,0,0.05);
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
+            color: white;
+            font-family: 'El Messiri', 'Cairo', sans-serif;
         }
-        
-        /* تصميم احترافي لكلمة داي بورت */
-        .logo .day {
-            color: var(--professional-red);
+
+        .navbar-brand-custom .day {
+            color: #FF6B6B;
             font-weight: 800;
-            text-shadow: 0 2px 4px rgba(220, 38, 38, 0.3);
-            background: linear-gradient(135deg, var(--professional-red), var(--professional-dark-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-            padding: 0 2px;
         }
-        
-        .logo .day::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--professional-red), transparent);
-            border-radius: 2px;
-        }
-        
-        .logo .port {
-            color: #FFFFFF;
+
+        .navbar-brand-custom .port {
+            color: white;
             font-weight: 700;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-            margin-right: 2px;
         }
-        
-        .logo-tagline {
-            font-size: 0.8rem;
+
+        .navbar-tagline {
+            font-size: 0.75rem;
             opacity: 0.9;
-            margin-top: 3px;
+            color: white;
             font-weight: 600;
+        }
+
+        .navbar-nav-custom {
+            margin-right: auto;
+        }
+
+        .nav-link-custom {
+            color: white !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.2rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            position: relative;
             font-family: 'Tajawal', 'Cairo', sans-serif;
         }
-        
-        /* إزالة القائمة الأصلية */
-        nav {
-            display: none;
+
+        .nav-link-custom:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
         }
-        
-        /* زر الشريط الجانبي في الهيدر - محسّن */
-        .sidebar-toggle {
+
+        .nav-link-custom::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background: var(--accent-color);
+            transition: width 0.3s;
+            border-radius: 2px;
+        }
+
+        .nav-link-custom:hover::after {
+            width: 100%;
+        }
+
+        .nav-link-custom.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .phone-nav {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 8px 15px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            animation: phonePulse 2s infinite;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .phone-nav:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            color: white;
+            text-decoration: none;
+        }
+
+        .phone-nav i {
+            margin-left: 8px;
+            color: var(--accent-color);
+        }
+
+        .sidebar-toggle-nav {
             background: transparent;
             border: 1px solid rgba(255, 255, 255, 0.5);
             color: white;
             padding: 0.6rem 0.8rem;
-            margin: 0 0.5rem;
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s;
@@ -241,23 +267,35 @@
             width: 45px;
             height: 45px;
         }
-        
-        .sidebar-toggle:hover {
+
+        .sidebar-toggle-nav:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: scale(1.1);
         }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
+
+        .navbar-toggler-custom {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0.25rem 0.5rem;
             color: white;
-            font-size: 1.7rem;
-            cursor: pointer;
-            z-index: 1001;
         }
-        
-        /* الشريط الجانبي الجديد - محسّن */
+
+        .navbar-toggler-custom:focus {
+            box-shadow: none;
+        }
+
+        @keyframes phonePulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+            }
+        }
+
+        /* ========== الشريط الجانبي المحسن ========== */
         .sidebar {
             position: fixed;
             top: 0;
@@ -354,17 +392,7 @@
             margin: 0;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
             letter-spacing: -0.5px;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .sidebar-title .day {
-            color: var(--professional-red);
-            font-weight: 800;
-        }
-        
-        .sidebar-title .port {
-            color: var(--sidebar-gold);
-            font-weight: 700;
+            font-family: 'El Messiri', 'Cairo', sans-serif;
         }
         
         .sidebar-tagline {
@@ -485,8 +513,52 @@
             opacity: 0.7;
             font-family: 'Tajawal', 'Cairo', sans-serif;
         }
-        
-        /* باقي الأقسام تبقى كما هي بدون تغيير */
+
+        /* ========== تحسينات عامة ========== */
+        .hero {
+            padding: calc(var(--header-height) + 2rem) 0 5rem;
+        }
+
+        /* تحسينات للاستجابة */
+        @media (max-width: 992px) {
+            .navbar-nav-custom {
+                background: rgba(45, 91, 255, 0.95);
+                padding: 1rem;
+                border-radius: 10px;
+                margin-top: 1rem;
+            }
+
+            .nav-link-custom {
+                margin: 0.2rem 0;
+                text-align: center;
+            }
+
+            .phone-nav {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar-custom {
+                height: 70px;
+            }
+
+            .navbar-custom.scrolled {
+                height: 60px;
+            }
+
+            .navbar-brand-custom h1 {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon-nav {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* باقي الأنماط تبقى كما هي */
         .services {
             padding: 5rem 0;
             background: var(--light-color);
@@ -505,7 +577,7 @@
             position: relative;
             display: inline-block;
             font-weight: 800;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
+            font-family: 'El Messiri', 'Cairo', sans-serif;
         }
         
         .section-title h2::after {
@@ -595,7 +667,7 @@
             color: var(--secondary-color);
             transition: color 0.3s;
             font-weight: 700;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
+            font-family: 'El Messiri', 'Cairo', sans-serif;
         }
         
         .service-card p {
@@ -607,544 +679,6 @@
         
         .service-card:hover p {
             color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Portfolio Section - محسّن */
-        .portfolio {
-            padding: 5rem 0;
-            background: white;
-            width: 100%;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            height: 280px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(45, 91, 255, 0.9);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.4s;
-            padding: 2rem;
-            text-align: center;
-            color: white;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-overlay h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .portfolio-overlay p {
-            font-size: 1rem;
-            line-height: 1.6;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        /* About Section - محسّن */
-        .about {
-            padding: 5rem 0;
-            background: var(--light-color);
-            width: 100%;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-image {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            border-radius: 16px;
-            transition: transform 0.5s;
-        }
-        
-        .about-image:hover img {
-            transform: scale(1.03);
-        }
-        
-        .about-text h3 {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--secondary-color);
-            font-weight: 800;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .about-text p {
-            margin-bottom: 1.2rem;
-            color: #64748B;
-            line-height: 1.7;
-            font-size: 1.05rem;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        /* Testimonials - محسّن */
-        .testimonials {
-            padding: 5rem 0;
-            background: var(--gradient);
-            color: white;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .testimonial-slider {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 2.5rem;
-            border-radius: 16px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin: 0 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.8rem;
-            position: relative;
-            padding: 0 2rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .testimonial-text::before,
-        .testimonial-text::after {
-            content: '"';
-            font-size: 3.5rem;
-            position: absolute;
-            color: rgba(255, 255, 255, 0.2);
-            font-family: sans-serif;
-        }
-        
-        .testimonial-text::before {
-            top: -1rem;
-            left: 0;
-        }
-        
-        .testimonial-text::after {
-            bottom: -2.5rem;
-            right: 0;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-        }
-        
-        .testimonial-author img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-left: 1.2rem;
-            object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .testimonial-author h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.3rem;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .testimonial-author p {
-            opacity: 0.8;
-            font-size: 0.95rem;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        /* Stats Section - محسّن */
-        .stats {
-            padding: 5rem 0;
-            background: white;
-            width: 100%;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2.5rem;
-            text-align: center;
-        }
-        
-        .stat-item {
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            background: var(--light-color);
-            transition: all 0.4s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
-        }
-        
-        .stat-item:hover {
-            transform: translateY(-8px);
-            background: var(--gradient);
-            color: white;
-            box-shadow: 0 15px 30px rgba(45, 91, 255, 0.2);
-        }
-        
-        .stat-number {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .stat-item:hover .stat-number {
-            color: white;
-        }
-        
-        .stat-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #64748B;
-            transition: color 0.3s;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .stat-item:hover .stat-title {
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        /* Contact Section - محسّن */
-        .contact {
-            padding: 5rem 0;
-            background: var(--light-color);
-            width: 100%;
-        }
-        
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-        }
-        
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .contact-info-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 2rem;
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-        }
-        
-        .contact-info-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .contact-icon {
-            width: 55px;
-            height: 55px;
-            background: var(--gradient);
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 1.2rem;
-            color: white;
-            font-size: 1.3rem;
-            flex-shrink: 0;
-        }
-        
-        .contact-info-text h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            color: var(--secondary-color);
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .contact-info-text p {
-            color: #64748B;
-            line-height: 1.6;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-        }
-        
-        .form-group {
-            margin-bottom: 1.8rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.6rem;
-            font-weight: 600;
-            color: var(--secondary-color);
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-family: inherit;
-            transition: all 0.3s;
-            font-size: 1rem;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.1);
-        }
-        
-        .form-group textarea {
-            min-height: 160px;
-            resize: vertical;
-        }
-        
-        /* Footer - محسّن */
-        footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 4rem 0 1.5rem;
-            width: 100%;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-logo h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1),
-                        3px 3px 0px rgba(0,0,0,0.05),
-                        4px 4px 0px rgba(0,0,0,0.05);
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        /* تغيير ألوان كلمة داي بورت في الفوتر */
-        .footer-logo .day {
-            color: var(--professional-red);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--professional-red), var(--professional-dark-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .footer-logo .port {
-            color: #FFFFFF;
-            font-weight: 700;
-        }
-        
-        .footer-logo p {
-            color: #CBD5E1;
-            line-height: 1.7;
-            margin-bottom: 1.5rem;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .footer-links h3,
-        .footer-newsletter h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.8rem;
-            font-weight: 700;
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .footer-links h3::after,
-        .footer-newsletter h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            border-radius: 2px;
-        }
-        
-        .footer-links ul {
-            list-style: none;
-        }
-        
-        .footer-links ul li {
-            margin-bottom: 0.9rem;
-        }
-        
-        .footer-links ul li a {
-            color: #CBD5E1;
-            text-decoration: none;
-            transition: all 0.3s;
-            display: block;
-            padding: 0.3rem 0;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .footer-links ul li a:hover {
-            color: var(--accent-color);
-            padding-right: 8px;
-        }
-        
-        .footer-newsletter p {
-            color: #CBD5E1;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .newsletter-form {
-            display: flex;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.9rem 1.2rem;
-            border: none;
-            background: transparent;
-            color: white;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .newsletter-form input::placeholder {
-            color: #94A3B8;
-        }
-        
-        .newsletter-form button {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 0 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .newsletter-form button:hover {
-            background: #FF5A1F;
-        }
-        
-        .social-icons {
-            display: flex;
-            margin-top: 1.8rem;
-        }
-        
-        .social-icons a {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-left: 0.8rem;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-        }
-        
-        .social-icons a:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94A3B8;
-            font-size: 0.95rem;
-            font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
         /* WhatsApp Float */
@@ -1204,300 +738,82 @@
             background: #FF5A1F;
             transform: translateY(-3px);
         }
-        
-        /* Animations */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-        
-        /* Media Section - جديد */
-        .media {
-            padding: 5rem 0;
-            background: white;
-            width: 100%;
-        }
-        
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-        
-        .media-item {
-            background: var(--light-color);
-            border-radius: 16px;
-            padding: 2rem;
-            text-align: center;
+
+        /* تحسينات إضافية */
+        .btn {
+            display: inline-block;
+            background: var(--accent-color);
+            color: white;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .media-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .media-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-        
-        .media-item h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--secondary-color);
-            font-family: 'El Messiri', 'Tajawal', 'Cairo', sans-serif;
-        }
-        
-        .media-item p {
-            color: #64748B;
-            line-height: 1.6;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            font-size: 1.05rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
             font-family: 'Tajawal', 'Cairo', sans-serif;
         }
         
-        /* Responsive Design - محسّن للهواتف */
-        @media (max-width: 1200px) {
-            .hero h2 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2.3rem;
-            }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background: var(--secondary-color);
+            transition: all 0.4s;
+            z-index: -1;
         }
         
-        @media (max-width: 992px) {
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-            
-            .about-image {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-            
-            .hero h2 {
-                font-size: 2.3rem;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .sidebar {
-                width: 280px;
-            }
+        .btn:hover::before {
+            width: 100%;
         }
         
-        @media (max-width: 768px) {
-            :root {
-                --header-height: 70px;
-            }
-            
-            header.sticky {
-                height: 60px;
-            }
-            
-            .header-content {
-                padding: 0 10px;
-            }
-            
-            .logo h1 {
-                font-size: 1.6rem;
-            }
-            
-            .logo-icon {
-                width: 40px;
-                height: 40px;
-            }
-            
-            .hero {
-                padding: calc(var(--header-height) + 1.5rem) 0 4rem;
-            }
-            
-            .hero h2 {
-                font-size: 2rem;
-                padding: 0 10px;
-            }
-            
-            .hero p {
-                font-size: 1.1rem;
-                padding: 0 10px;
-            }
-            
-            .section-title {
-                margin-bottom: 3rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .section-title p {
-                padding: 0 15px;
-            }
-            
-            .services-grid,
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .service-card {
-                padding: 2rem 1.5rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .testimonial-card {
-                padding: 2rem;
-            }
-            
-            .testimonial-text {
-                padding: 0 1rem;
-            }
-            
-            .contact-form {
-                padding: 2rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                font-size: 1.7rem;
-                bottom: 20px;
-                left: 20px;
-            }
-            
-            .scroll-to-top {
-                width: 50px;
-                height: 50px;
-                bottom: 85px;
-                right: 20px;
-            }
-            
-            .sidebar {
-                width: 85%;
-                right: -85%;
-            }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
         }
-        
-        @media (max-width: 576px) {
-            .hero h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .btn {
-                padding: 0.8rem 1.8rem;
-                font-size: 1rem;
-            }
-            
-            .section-title h2 {
-                font-size: 1.8rem;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stat-item {
-                padding: 2rem 1rem;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .testimonial-card {
-                padding: 1.5rem;
-                margin: 0 0.5rem;
-            }
-            
-            .testimonial-text {
-                font-size: 1rem;
-                padding: 0;
-            }
-            
-            .testimonial-author img {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .contact-info-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem 1rem;
-            }
-            
-            .contact-icon {
-                margin-left: 0;
-                margin-bottom: 1rem;
-            }
-            
-            .contact-form {
-                padding: 1.5rem;
-            }
-            
-            .form-group input,
-            .form-group textarea {
-                padding: 0.9rem;
-            }
-            
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
-            .newsletter-form input {
-                padding: 0.9rem;
-                text-align: center;
-            }
-            
-            .newsletter-form button {
-                padding: 0.9rem;
-            }
-            
-            .social-icons {
-                justify-content: center;
-            }
-            
-            .social-icons a {
-                margin: 0 0.4rem;
-            }
-            
-            .sidebar-logo-icon {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .sidebar-title {
-                font-size: 1.3rem;
-            }
+
+        /* تأثيرات الظلال المحسنة */
+        .shadow-custom {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .shadow-custom-lg {
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+        }
+
+        /* تحسينات النص */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* تحسينات الصور */
+        .img-hover-zoom {
+            transition: transform 0.5s ease;
+        }
+
+        .img-hover-zoom:hover {
+            transform: scale(1.05);
+        }
+
+        /* تحسينات الحركة */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
     </style>
 </head>
@@ -1512,33 +828,57 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
-    <!-- Header -->
-    <header id="header">
-        <div class="container header-content">
-            <div class="logo-container">
-                <div class="logo">
-                    <div class="logo-icon"></div>
-                    <div>
-                        <h1><span class="day">داي</span><span class="port">بورت</span></h1>
-                        <div class="logo-tagline">Daport Media</div>
-                    </div>
+    <!-- Navbar متقدم -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+        <div class="container">
+            <a class="navbar-brand-custom" href="index.html">
+                <div class="logo-icon-nav"></div>
+                <div>
+                    <h1><span class="day">داي</span><span class="port">بورت</span></h1>
+                    <div class="navbar-tagline">Daport Media</div>
                 </div>
-            </div>
+            </a>
             
-            <!-- تم إزالة القائمة الأصلية -->
-            
-            <div class="language-switcher">
-                <button class="sidebar-toggle" id="sidebarToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-            <button class="mobile-menu-btn">
+            <button class="navbar-toggler navbar-toggler-custom" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <i class="fas fa-bars"></i>
             </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav navbar-nav-custom">
+                    <li class="nav-item">
+                        <a class="nav-link-custom active" href="index.html">الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="services.html">خدماتنا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="portfolio.html">معرض الأعمال</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="media.html">ميديا</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="about.html">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-custom" href="contact.html">اتصل بنا</a>
+                    </li>
+                </ul>
+                
+                <div class="navbar-actions">
+                    <a href="tel:01060474659" class="phone-nav">
+                        <i class="fas fa-phone-alt"></i>
+                        01060474659
+                    </a>
+                    <button class="sidebar-toggle-nav" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-    </header>
+    </nav>
 
-    <!-- الشريط الجانبي الجديد -->
+    <!-- الشريط الجانبي -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <button class="sidebar-close" id="sidebarClose">
@@ -1546,7 +886,7 @@
             </button>
             <div class="sidebar-logo">
                 <div class="sidebar-logo-icon"></div>
-                <h2 class="sidebar-title"><span class="day">داي</span><span class="port">بورت</span></h2>
+                <h2 class="sidebar-title">داي بورت</h2>
                 <div class="sidebar-tagline">Daport Media</div>
             </div>
         </div>
@@ -1579,25 +919,7 @@
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <button class="close-menu">
-            <i class="fas fa-times"></i>
-        </button>
-        <ul>
-            <li><a href="index.html">الرئيسية</a></li>
-            <li><a href="services.html">خدماتنا</a></li>
-            <li><a href="portfolio.html">معرض الأعمال</a></li>
-            <li><a href="media.html">ميديا</a></li>
-            <li><a href="about.html">من نحن</a></li>
-            <li><a href="contact.html">اتصل بنا</a></li>
-        </ul>
-    </div>
-
-    <!-- Overlay for mobile menu -->
-    <div class="overlay"></div>
-
-    <!-- Hero Section -->
+    <!-- باقي المحتوى يبقى كما هو -->
     <section class="hero" id="home">
         <div id="particles-js"></div>
         <div class="container hero-content">
@@ -1607,7 +929,7 @@
         </div>
     </section>
 
-    <!-- باقي الأقسام تبقى كما هي بدون تغيير -->
+    <!-- باقي الأقسام تبقى كما هي -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
@@ -1662,322 +984,10 @@
     </section>
 
     <!-- باقي الأقسام تبقى كما هي -->
-    <!-- Portfolio Section -->
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">معرض أعمالنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">إليك بعض المشاريع التي نفخر بها والتي تعكس إبداعنا وخبرتنا في مجال تصميم المواقع</p>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 1">
-                    <div class="portfolio-overlay">
-                        <h3>موقع شركة تقنية</h3>
-                        <p>تصميم حديث وسريع الاستجابة لشركة تقنية ناشئة</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="300">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 2">
-                    <div class="portfolio-overlay">
-                        <h3>متجر إلكتروني</h3>
-                        <p>متجر إلكتروني متكامل بجميع خصائص البيع عبر الإنترنت</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="400">
-                    <img src="https://images.unsplash.com/photo-1496171367470-9ed9a91ea931?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 3">
-                    <div class="portfolio-overlay">
-                        <h3>موقع شخصي</h3>
-                        <p>تصميم موقع شخصي لمصمم جرافيك مع عرض أعماله</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="500">
-                    <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 4">
-                    <div class="portfolio-overlay">
-                        <h3>مدونة تعليمية</h3>
-                        <p>تصميم مدونة تعليمية بتجربة مستخدم محسنة</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="600">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 5">
-                    <div class="portfolio-overlay">
-                        <h3>موقع مطعم</h3>
-                        <p>تصميم موقع لمطعم مع قائمة طعام ونظام حجوزات</p>
-                    </div>
-                </div>
-                <div class="portfolio-item" data-aos="flip-left" data-aos-delay="700">
-                    <img src="https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مشروع تصميم موقع 6">
-                    <div class="portfolio-overlay">
-                        <h3>منصة تعليمية</h3>
-                        <p>تصميم منصة تعليمية بدورات تدريبية عبر الإنترنت</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي -->
-    <!-- Media Section -->
-    <section class="media" id="media">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">داي بورت ميديا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">خدمات ميديا متكاملة لتسويق علامتك التجارية وزيادة وصولك للجمهور المستهدف</p>
-            </div>
-            <div class="media-grid">
-                <div class="media-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="media-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>إنتاج فيديو</h3>
-                    <p>إنتاج محتوى فيديو احترافي لتسويق منتجاتك وخدماتك عبر منصات التواصل الاجتماعي</p>
-                </div>
-                <div class="media-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="media-icon">
-                        <i class="fas fa-photo-video"></i>
-                    </div>
-                    <h3>تصميم جرافيك</h3>
-                    <p>تصميم محتوى بصري جذاب لوسائل التواصل الاجتماعي والإعلانات الرقمية</p>
-                </div>
-                <div class="media-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="media-icon">
-                        <i class="fas fa-ad"></i>
-                    </div>
-                    <h3>إعلانات مدمجة</h3>
-                    <p>تصميم وإدارة حملات إعلانية مدمجة عبر مختلف المنصات الرقمية</p>
-                </div>
-                <div class="media-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="media-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3>تسويق بالمحتوى</h3>
-                    <p>إنشاء استراتيجيات تسويق بالمحتوى لزيادة الوعي بالعلامة التجارية</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي -->
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number" data-count="150">0</div>
-                    <div class="stat-title">مشروع مكتمل</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-number" data-count="95">0</div>
-                    <div class="stat-title">عميل سعيد</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-number" data-count="12">0</div>
-                    <div class="stat-title">جائزة فوز</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="stat-number" data-count="50">0</div>
-                    <div class="stat-title">مصمم محترف</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي -->
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">من نحن</h2>
-                <p data-aos="fade-up" data-aos-delay="100">شركة داي بورت ميديا هي شريكك المثالي في رحلتك الرقمية نحو النجاح والتميز</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image" data-aos="fade-right" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="فريق داي بورت">
-                </div>
-                <div class="about-text" data-aos="fade-left" data-aos-delay="300">
-                    <h3>خبرة وإبداع في عالم التصميم الرقمي</h3>
-                    <p>داي بورت ميديا هي شركة رائدة في مجال تصميم وتطوير المواقع الإلكترونية والتطبيقات، تأسست عام 2010، وتمتلك فريقًا من المصممين والمطورين المحترفين الذين يجمعون بين الإبداع والخبرة التقنية.</p>
-                    <p>نحن نؤمن بأن وجودك الرقمي هو انعكاس لهويتك ورسالتك، لذلك نعمل على تحويل رؤيتك إلى واقع ملموس عبر تصاميم مبتكرة وتجارب مستخدم استثنائية.</p>
-                    <p>نسعى دائمًا لمواكبة أحدث التقنيات والاتجاهات في عالم التصميم لضمان حصولك على أفضل الحلول الرقمية التي تلبي توقعاتك وتتفوق عليها.</p>
-                    <a href="contact.html" class="btn">تواصل معنا</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي -->
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">آراء عملائنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">انطباعات عملائنا تعني الكثير لنا، وهنا بعض مما قالوه عن تجربتهم معنا</p>
-            </div>
-            <div class="testimonial-slider owl-carousel owl-theme">
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-text">
-                        "تعاملت مع العديد من شركات التصميم، ولكن فريق داي بورت كان الأكثر احترافية وإبداعًا. موقعي الجديد ساعد في زيادة مبيعاتي بنسبة 40% خلال شهرين فقط."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="عميل 1">
-                        <div>
-                            <h4>أحمد السيد</h4>
-                            <p>مدير شركة التقنية الماسية</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-text">
-                        "تجربة رائعة من البداية إلى النهاية. استمع فريق العمل لاحتياجاتي وحولها إلى واقع يفوق توقعاتي. المتجر الإلكتروني الذي صممته لنا داي بورت سهل الاستخدام وجذاب للعملاء."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="عميل 2">
-                        <div>
-                            <h4>سارة محمد</h4>
-                            <p>مالكة متجر إلكتروني</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="testimonial-text">
-                        "الدعم الفني المتميز والالتزام بمواعيد التسليم جعلوا التعامل مع داي بورت تجربة ممتعة. أنصح أي شخص يبحث عن موقع إلكتروني احترافي أن يتعامل معهم."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/62.jpg" alt="عميل 3">
-                        <div>
-                            <h4>خالد محمود</h4>
-                            <p>مدير مركز التدريب المتقدم</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- باقي الأقسام تبقى كما هي -->
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2 data-aos="fade-up">اتصل بنا</h2>
-                <p data-aos="fade-up" data-aos-delay="100">نحن هنا لمساعدتك وتقديم الاستشارة المجانية لمشروعك القادم</p>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="200">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-info-text">
-                            <h3>عنواننا</h3>
-                            <p>القاهرة، مصر</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="300">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-info-text">
-                            <h3>هاتفنا</h3>
-                            <p>+20 106 0474 659</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="400">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-info-text">
-                            <h3>بريدنا الإلكتروني</h3>
-                            <p>info@daport.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-info-item" data-aos="fade-right" data-aos-delay="500">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div class="contact-info-text">
-                            <h3>ساعات العمل</h3>
-                            <p>الأحد - الخميس: 9 ص - 5 م</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form" data-aos="fade-left" data-aos-delay="200">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">الاسم بالكامل</label>
-                            <input type="text" id="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">رسالتك</label>
-                            <textarea id="message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">إرسال الرسالة</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2><span class="day">داي</span><span class="port">بورت</span> ميديا</h2>
-                    <p>شركة رائدة في تصميم وتطوير المواقع الإلكترونية والتطبيقات، نقدم حلولاً رقمية مبتكرة تساعد عملك على النمو والازدهار.</p>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h3>روابط سريعة</h3>
-                    <ul>
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="services.html">خدماتنا</a></li>
-                        <li><a href="portfolio.html">معرض الأعمال</a></li>
-                        <li><a href="media.html">ميديا</a></li>
-                        <li><a href="about.html">من نحن</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h3>خدماتنا</h3>
-                    <ul>
-                        <li><a href="services.html">تصميم مواقع ويب</a></li>
-                        <li><a href="services.html">تطبيقات الجوال</a></li>
-                        <li><a href="services.html">متاجر إلكترونية</a></li>
-                        <li><a href="services.html">تحسين محركات البحث</a></li>
-                        <li><a href="services.html">استضافة المواقع</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h3>اشترك في النشرة البريدية</h3>
-                    <p>اشترك ليصلك كل جديد عن خدماتنا وعروضنا الخاصة</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="بريدك الإلكتروني" required>
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 داي بورت ميديا. جميع الحقوق محفوظة.</p>
-            </div>
-        </div>
-    </footer>
 
     <!-- مكتبات JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -1994,28 +1004,15 @@
             offset: 100
         });
         
-        // تهيئة Owl Carousel للآراء
-        $('.testimonial-slider').owlCarousel({
-            loop: true,
-            margin: 20,
-            nav: true,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            rtl: true,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                768: {
-                    items: 2
-                },
-                992: {
-                    items: 3
-                }
+        // Navbar scroll effect
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('.navbar-custom').addClass('scrolled');
+            } else {
+                $('.navbar-custom').removeClass('scrolled');
             }
         });
-        
+
         // تهيئة particles.js
         particlesJS('particles-js', {
             particles: {
@@ -2112,26 +1109,6 @@
             time: 2000
         });
         
-        // القائمة المتنقلة
-        $('.mobile-menu-btn').click(function() {
-            $('.mobile-menu').addClass('active');
-            $('.overlay').addClass('active');
-            $('body').css('overflow', 'hidden');
-        });
-        
-        $('.close-menu, .overlay').click(function() {
-            $('.mobile-menu').removeClass('active');
-            $('.overlay').removeClass('active');
-            $('body').css('overflow', 'auto');
-        });
-        
-        // إغلاق القائمة عند النقر على رابط
-        $('.mobile-menu a').click(function() {
-            $('.mobile-menu').removeClass('active');
-            $('.overlay').removeClass('active');
-            $('body').css('overflow', 'auto');
-        });
-        
         // زر العودة للأعلى
         $(window).scroll(function() {
             if ($(this).scrollTop() > 300) {
@@ -2146,15 +1123,6 @@
                 scrollTop: 0
             }, 800);
             return false;
-        });
-        
-        // تغيير شكل الهيدر عند التمرير
-        $(window).scroll(function() {
-            if ($(this).scrollTop() > 100) {
-                $('#header').addClass('sticky');
-            } else {
-                $('#header').removeClass('sticky');
-            }
         });
         
         // إرسال النموذج
@@ -2199,6 +1167,11 @@
             link.addEventListener('click', function() {
                 sidebar.classList.remove('active');
             });
+        });
+
+        // إغلاق navbar عند النقر على رابط في mobile
+        $('.nav-link-custom').click(function() {
+            $('.navbar-collapse').collapse('hide');
         });
     </script>
 </body>
