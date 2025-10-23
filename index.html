@@ -40,11 +40,11 @@
     
     <style>
         :root {
-            --primary-color: #2D5BFF;
-            --secondary-color: #1E3A8A;
-            --accent-color: #FF6B35;
-            --light-color: #F8FAFC;
-            --dark-color: #1E293B;
+            --primary-color: #D4AF37; /* ذهبي */
+            --secondary-color: #4A154B; /* بنفسجي داكن */
+            --accent-color: #8B4513; /* بني ذهبي */
+            --light-color: #1A1A1A; /* أسود فاتح */
+            --dark-color: #0A0A0A; /* أسود داكن */
             --success-color: #10B981;
             --warning-color: #F59E0B;
             --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
@@ -71,8 +71,8 @@
             overflow-x: hidden;
             font-family: 'Cairo', 'Open Sans', sans-serif;
             line-height: 1.6;
-            color: #334155;
-            background-color: #FFFFFF;
+            color: #E2E8F0;
+            background-color: #0A0A0A;
             scroll-behavior: smooth;
         }
         
@@ -83,12 +83,54 @@
             padding: 0 15px;
         }
         
+        /* الشريط العلوي الجديد */
+        .top-bar {
+            background: linear-gradient(135deg, var(--dark-color), var(--secondary-color));
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .site-name {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .site-name i {
+            color: var(--primary-color);
+            margin-left: 8px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .contact-item i {
+            color: var(--primary-color);
+        }
+        
         /* Header Styles - محسّن */
         header {
             background: var(--gradient);
             color: white;
             padding: 0.8rem 0;
-            position: fixed;
+            position: sticky;
             width: 100%;
             top: 0;
             z-index: 1000;
@@ -99,7 +141,7 @@
         
         header.sticky {
             padding: 0.5rem 0;
-            background: rgba(45, 91, 255, 0.97);
+            background: rgba(212, 175, 55, 0.97);
             backdrop-filter: blur(10px);
             height: 70px;
         }
@@ -274,13 +316,13 @@
         
         @keyframes phonePulse {
             0% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.4);
+                box-shadow: 0 0 0 0 rgba(139, 69, 19, 0.4);
             }
             70% {
-                box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+                box-shadow: 0 0 0 10px rgba(139, 69, 19, 0);
             }
             100% {
-                box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+                box-shadow: 0 0 0 0 rgba(139, 69, 19, 0);
             }
         }
         
@@ -302,7 +344,7 @@
             width: 85%;
             max-width: 400px;
             height: 100vh;
-            background: linear-gradient(135deg, rgba(45, 91, 255, 0.95), rgba(30, 58, 138, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.95), rgba(74, 21, 75, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
             color: white;
             padding: 5rem 2rem 2rem;
             transition: all 0.4s ease;
@@ -431,7 +473,7 @@
             overflow: hidden;
             z-index: 1;
             font-size: 1.05rem;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
         }
         
         .btn::before {
@@ -452,7 +494,7 @@
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.5);
+            box-shadow: 0 8px 20px rgba(139, 69, 19, 0.5);
         }
         
         /* Particles Background */
@@ -679,7 +721,7 @@
             opacity: 0.7;
         }
         
-        /* باقي الأقسام تبقى كما هي بدون تغيير */
+        /* باقي الأقسام تبقى كما هي مع تعديل الألوان */
         .services {
             padding: 5rem 0;
             background: var(--light-color);
@@ -693,7 +735,7 @@
         
         .section-title h2 {
             font-size: 2.6rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             margin-bottom: 1.2rem;
             position: relative;
             display: inline-block;
@@ -713,7 +755,7 @@
         }
         
         .section-title p {
-            color: #64748B;
+            color: #CBD5E1;
             max-width: 700px;
             margin: 0 auto;
             font-size: 1.1rem;
@@ -727,16 +769,16 @@
         }
         
         .service-card {
-            background: white;
+            background: rgba(26, 26, 26, 0.8);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             transition: all 0.4s;
             text-align: center;
             padding: 2.5rem 1.5rem;
             position: relative;
             z-index: 1;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .service-card::before {
@@ -758,7 +800,7 @@
         
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
             color: white;
             border-color: transparent;
         }
@@ -783,13 +825,13 @@
         .service-card h3 {
             font-size: 1.6rem;
             margin-bottom: 1.2rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             transition: color 0.3s;
             font-weight: 700;
         }
         
         .service-card p {
-            color: #64748B;
+            color: #CBD5E1;
             transition: color 0.3s;
             line-height: 1.6;
         }
@@ -801,7 +843,7 @@
         /* Portfolio Section - محسّن */
         .portfolio {
             padding: 5rem 0;
-            background: white;
+            background: var(--dark-color);
             width: 100%;
         }
         
@@ -816,13 +858,13 @@
             border-radius: 16px;
             overflow: hidden;
             height: 280px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.4s;
         }
         
         .portfolio-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
         }
         
         .portfolio-item img {
@@ -842,7 +884,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(45, 91, 255, 0.9);
+            background: rgba(212, 175, 55, 0.9);
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -887,7 +929,7 @@
             position: relative;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
         }
         
         .about-image img {
@@ -903,13 +945,13 @@
         .about-text h3 {
             font-size: 2.2rem;
             margin-bottom: 1.5rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
             font-weight: 800;
         }
         
         .about-text p {
             margin-bottom: 1.2rem;
-            color: #64748B;
+            color: #CBD5E1;
             line-height: 1.7;
             font-size: 1.05rem;
         }
@@ -948,7 +990,7 @@
             padding: 2.5rem;
             border-radius: 16px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
             margin: 0 1rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -1008,7 +1050,7 @@
         /* Stats Section - محسّن */
         .stats {
             padding: 5rem 0;
-            background: white;
+            background: var(--dark-color);
             width: 100%;
         }
         
@@ -1024,15 +1066,15 @@
             border-radius: 16px;
             background: var(--light-color);
             transition: all 0.4s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .stat-item:hover {
             transform: translateY(-8px);
             background: var(--gradient);
             color: white;
-            box-shadow: 0 15px 30px rgba(45, 91, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
         }
         
         .stat-number {
@@ -1040,6 +1082,7 @@
             font-weight: 800;
             margin-bottom: 0.5rem;
             transition: color 0.3s;
+            color: var(--primary-color);
         }
         
         .stat-item:hover .stat-number {
@@ -1049,7 +1092,7 @@
         .stat-title {
             font-size: 1.1rem;
             font-weight: 600;
-            color: #64748B;
+            color: #CBD5E1;
             transition: color 0.3s;
         }
         
@@ -1079,16 +1122,17 @@
             display: flex;
             align-items: flex-start;
             margin-bottom: 2rem;
-            background: white;
+            background: rgba(26, 26, 26, 0.8);
             padding: 1.5rem;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: all 0.3s;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .contact-info-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
         
         .contact-icon {
@@ -1108,19 +1152,20 @@
         .contact-info-text h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
         
         .contact-info-text p {
-            color: #64748B;
+            color: #CBD5E1;
             line-height: 1.6;
         }
         
         .contact-form {
-            background: white;
+            background: rgba(26, 26, 26, 0.8);
             padding: 2.5rem;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .form-group {
@@ -1131,25 +1176,27 @@
             display: block;
             margin-bottom: 0.6rem;
             font-weight: 600;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
         
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 1px solid #ddd;
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 8px;
             font-family: inherit;
             transition: all 0.3s;
             font-size: 1rem;
+            background: rgba(10, 10, 10, 0.5);
+            color: white;
         }
         
         .form-group input:focus,
         .form-group textarea:focus {
             border-color: var(--primary-color);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(45, 91, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
         }
         
         .form-group textarea {
@@ -1163,6 +1210,7 @@
             color: white;
             padding: 4rem 0 1.5rem;
             width: 100%;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
         
         .footer-content {
@@ -1203,6 +1251,7 @@
             position: relative;
             padding-bottom: 0.8rem;
             font-weight: 700;
+            color: var(--primary-color);
         }
         
         .footer-links h3::after,
@@ -1234,7 +1283,7 @@
         }
         
         .footer-links ul li a:hover {
-            color: var(--accent-color);
+            color: var(--primary-color);
             padding-right: 8px;
         }
         
@@ -1273,7 +1322,7 @@
         }
         
         .newsletter-form button:hover {
-            background: #FF5A1F;
+            background: #A0522D;
         }
         
         .social-icons {
@@ -1297,7 +1346,7 @@
         }
         
         .social-icons a:hover {
-            background: var(--accent-color);
+            background: var(--primary-color);
             transform: translateY(-3px);
         }
         
@@ -1349,7 +1398,7 @@
             justify-content: center;
             align-items: center;
             font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
             z-index: 1000;
             cursor: pointer;
             opacity: 0;
@@ -1363,7 +1412,7 @@
         }
         
         .scroll-to-top:hover {
-            background: #FF5A1F;
+            background: #A0522D;
             transform: translateY(-3px);
         }
         
@@ -1386,7 +1435,7 @@
         /* Media Section - جديد */
         .media {
             padding: 5rem 0;
-            background: white;
+            background: var(--dark-color);
             width: 100%;
         }
         
@@ -1402,12 +1451,13 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
         
         .media-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.2);
         }
         
         .media-icon {
@@ -1419,12 +1469,101 @@
         .media-item h3 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
-            color: var(--secondary-color);
+            color: var(--primary-color);
         }
         
         .media-item p {
-            color: #64748B;
+            color: #CBD5E1;
             line-height: 1.6;
+        }
+        
+        /* قسم المقالات والمدونة */
+        .articles {
+            padding: 5rem 0;
+            background: var(--light-color);
+            width: 100%;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .article-card {
+            background: rgba(26, 26, 26, 0.8);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s;
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.2);
+        }
+        
+        .article-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .article-card:hover .article-image img {
+            transform: scale(1.1);
+        }
+        
+        .article-content {
+            padding: 1.5rem;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #94A3B8;
+        }
+        
+        .article-category {
+            background: var(--gradient);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .article-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .article-excerpt {
+            color: #CBD5E1;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .article-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .article-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
         }
         
         /* Responsive Design - محسّن للهواتف */
@@ -1473,6 +1612,16 @@
             
             .sidebar {
                 width: 280px;
+            }
+            
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .contact-info {
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
         
@@ -1525,7 +1674,8 @@
             }
             
             .services-grid,
-            .portfolio-grid {
+            .portfolio-grid,
+            .articles-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -1679,6 +1829,15 @@
             .sidebar-title {
                 font-size: 1.3rem;
             }
+            
+            .top-bar {
+                padding: 12px 0;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -1691,6 +1850,30 @@
     <!-- Scroll to Top Button -->
     <div class="scroll-to-top">
         <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- الشريط العلوي الجديد -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="site-name">
+                <i class="fas fa-crown"></i>
+                <span>داي بورت ميديا - Daport Media</span>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>01060474659</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>01123456789</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@daport.com</span>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Header -->
@@ -1710,6 +1893,7 @@
                     <li><a href="index.html">الرئيسية</a></li>
                     <li><a href="services.html">خدماتنا</a></li>
                     <li><a href="portfolio.html">معرض الأعمال</a></li>
+                    <li><a href="articles.html">المقالات</a></li>
                     <li><a href="media.html">ميديا</a></li>
                     <li><a href="about.html">من نحن</a></li>
                     <li><a href="contact.html">اتصل بنا</a></li>
@@ -1747,6 +1931,7 @@
             <li class="active"><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
             <li><a href="services.html"><i class="fas fa-laptop-code"></i> خدماتنا</a></li>
             <li><a href="portfolio.html"><i class="fas fa-briefcase"></i> معرض الأعمال</a></li>
+            <li><a href="articles.html"><i class="fas fa-newspaper"></i> المقالات</a></li>
             <li><a href="media.html"><i class="fas fa-photo-video"></i> ميديا</a></li>
             <li><a href="about.html"><i class="fas fa-users"></i> من نحن</a></li>
             <li><a href="contact.html"><i class="fas fa-envelope"></i> اتصل بنا</a></li>
@@ -1755,9 +1940,9 @@
         <div class="sidebar-divider"></div>
         
         <ul class="sidebar-menu">
-            <li><a href="#"><i class="fas fa-newspaper"></i> المدونة</a></li>
             <li><a href="#"><i class="fas fa-graduation-cap"></i> الدورات</a></li>
             <li><a href="#"><i class="fas fa-tools"></i> الأدوات</a></li>
+            <li><a href="#"><i class="fas fa-book"></i> المدونة</a></li>
         </ul>
         
         <div class="sidebar-footer">
@@ -1780,6 +1965,7 @@
             <li><a href="index.html">الرئيسية</a></li>
             <li><a href="services.html">خدماتنا</a></li>
             <li><a href="portfolio.html">معرض الأعمال</a></li>
+            <li><a href="articles.html">المقالات</a></li>
             <li><a href="media.html">ميديا</a></li>
             <li><a href="about.html">من نحن</a></li>
             <li><a href="contact.html">اتصل بنا</a></li>
@@ -1901,6 +2087,60 @@
                     <div class="portfolio-overlay">
                         <h3>منصة تعليمية</h3>
                         <p>تصميم منصة تعليمية بدورات تدريبية عبر الإنترنت</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles" id="articles">
+        <div class="container">
+            <div class="section-title">
+                <h2 data-aos="fade-up">أحدث المقالات</h2>
+                <p data-aos="fade-up" data-aos-delay="100">اكتشف أحدث المقالات والنصائح في عالم تصميم المواقع والتسويق الرقمي</p>
+            </div>
+            <div class="articles-grid">
+                <div class="article-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مقال 1">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">15 مايو 2023</span>
+                            <span class="article-category">تصميم مواقع</span>
+                        </div>
+                        <h3 class="article-title">أهم اتجاهات تصميم المواقع في 2023</h3>
+                        <p class="article-excerpt">اكتشف أحدث اتجاهات تصميم المواقع التي ستساعدك في إنشاء موقع جذاب ومتميز ينافس في السوق الرقمي.</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="article-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مقال 2">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">10 مايو 2023</span>
+                            <span class="article-category">SEO</span>
+                        </div>
+                        <h3 class="article-title">كيف ترفع موقعك في نتائج جوجل؟</h3>
+                        <p class="article-excerpt">تعرف على أهم استراتيجيات تحسين محركات البحث (SEO) التي ستساعد موقعك في الظهور في الصفحات الأولى.</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="article-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="article-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="مقال 3">
+                    </div>
+                    <div class="article-content">
+                        <div class="article-meta">
+                            <span class="article-date">5 مايو 2023</span>
+                            <span class="article-category">متاجر إلكترونية</span>
+                        </div>
+                        <h3 class="article-title">نصائح لزيادة مبيعات متجرك الإلكتروني</h3>
+                        <p class="article-excerpt">اكتشف أهم الاستراتيجيات والنصائح التي ستساعدك في زيادة مبيعات متجرك الإلكتروني وتحقيق أرباح أعلى.</p>
+                        <a href="#" class="article-link">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
             </div>
@@ -2132,6 +2372,7 @@
                         <li><a href="index.html">الرئيسية</a></li>
                         <li><a href="services.html">خدماتنا</a></li>
                         <li><a href="portfolio.html">معرض الأعمال</a></li>
+                        <li><a href="articles.html">المقالات</a></li>
                         <li><a href="media.html">ميديا</a></li>
                         <li><a href="about.html">من نحن</a></li>
                         <li><a href="contact.html">اتصل بنا</a></li>
