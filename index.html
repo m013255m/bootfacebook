@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dai Port - حلول التسويق الرقمي المتكاملة</title>
-    <meta name="description" content="Dai Port - شركة متخصصة في التسويق الإلكتروني، تحسين محركات البحث، تصميم المواقع وإدارة الحملات الإعلانية. تواصل معنا 01060474659">
+    <title>Dai Port - وكالة التسويق الرقمي والإبداع البصري</title>
+    <meta name="description" content="Dai Port - حلول تسويق رقمي متكاملة، تصميم إبداعي، إعلانات ممولة، تحسين محركات البحث SEO، وإدارة الحملات الإعلانية. 01060474659">
     <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png">
     
     <!-- المكتبات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     
@@ -18,12 +18,14 @@
             --primary: #667eea;
             --secondary: #764ba2;
             --accent: #f093fb;
-            --dark: #2D3748;
+            --dark: #1a202c;
             --light: #F7FAFC;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --gradient-dark: linear-gradient(135deg, #2D3748, #1A202C);
             --gradient-accent: linear-gradient(135deg, var(--accent), var(--primary));
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
         * {
@@ -40,7 +42,7 @@
         body {
             background-color: var(--light);
             color: var(--dark);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             font-size: 16px;
         }
@@ -54,36 +56,45 @@
         
         /* Header */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: var(--shadow);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        header.scrolled {
+            background: rgba(26, 32, 44, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 0;
-            height: 70px;
+            padding: 18px 0;
+            height: 80px;
         }
         
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
         
         .logo-img {
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
+            width: 55px;
+            height: 55px;
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid rgba(255, 255, 255, 0.2);
         }
         
         .logo-img img {
@@ -93,10 +104,19 @@
         }
         
         .logo-text {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             letter-spacing: -0.5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header.scrolled .logo-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .nav-links {
@@ -107,27 +127,49 @@
             background: var(--gradient);
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
             box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
         }
         
         .mobile-menu {
             display: block;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: var(--dark);
+            color: white;
             background: none;
             border: none;
+            transition: var(--transition);
+        }
+        
+        header.scrolled .mobile-menu {
+            color: var(--dark);
         }
         
         /* Mobile Sidebar */
@@ -137,11 +179,11 @@
             right: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1999;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
         
         .sidebar-overlay.active {
@@ -154,12 +196,12 @@
             top: 0;
             right: -100%;
             width: 85%;
-            max-width: 300px;
+            max-width: 320px;
             height: 100%;
             background: white;
             z-index: 2000;
             box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
-            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: var(--transition);
             overflow-y: auto;
             padding: 25px;
         }
@@ -180,13 +222,13 @@
         .sidebar-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
         
         .sidebar-logo-img {
-            width: 35px;
-            height: 35px;
-            border-radius: 8px;
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
             overflow: hidden;
         }
         
@@ -197,17 +239,23 @@
         }
         
         .sidebar-logo-text {
-            font-size: 1.2rem;
-            font-weight: 700;
+            font-size: 1.4rem;
+            font-weight: 800;
             color: var(--primary);
         }
         
         .close-sidebar {
             background: none;
             border: none;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--dark);
             cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .close-sidebar:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
         }
         
         .sidebar-nav {
@@ -222,80 +270,84 @@
         .sidebar-nav a {
             display: flex;
             align-items: center;
-            padding: 12px 15px;
+            padding: 14px 16px;
             color: var(--dark);
             text-decoration: none;
-            border-radius: 10px;
-            transition: all 0.3s;
-            font-weight: 600;
-            font-size: 0.95rem;
+            border-radius: 12px;
+            transition: var(--transition);
+            font-weight: 700;
+            font-size: 1rem;
         }
         
         .sidebar-nav a:hover, .sidebar-nav a.active {
             background: var(--gradient);
             color: white;
+            transform: translateX(-8px);
         }
         
         .sidebar-nav i {
-            margin-left: 10px;
-            font-size: 1.1rem;
+            margin-left: 12px;
+            font-size: 1.2rem;
         }
         
         .sidebar-contact {
             background: #f8f9fa;
             padding: 20px;
-            border-radius: 12px;
+            border-radius: 15px;
             margin-bottom: 20px;
         }
         
         .sidebar-contact h3 {
             margin-bottom: 15px;
             color: var(--dark);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         
         .sidebar-contact p {
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
         
         .sidebar-contact i {
-            margin-left: 8px;
+            margin-left: 10px;
             color: var(--primary);
         }
         
         .sidebar-social {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
             margin-top: 20px;
         }
         
         .sidebar-social a {
-            width: 38px;
-            height: 38px;
+            width: 42px;
+            height: 42px;
             background: #f0f0f0;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--dark);
-            transition: all 0.3s;
+            transition: var(--transition);
         }
         
         .sidebar-social a:hover {
             background: var(--gradient);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         /* Hero Section */
         .hero {
-            background: var(--gradient);
+            background: linear-gradient(rgba(26, 32, 44, 0.8), rgba(26, 32, 44, 0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2015&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: white;
-            padding: 120px 0 60px;
+            padding: 180px 0 100px;
             position: relative;
             overflow: hidden;
         }
@@ -304,27 +356,31 @@
             position: relative;
             z-index: 1;
             text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 2.2rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-            font-weight: 800;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
         }
         
         .hero p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 40px;
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
         
         .hero-buttons {
             display: flex;
-            gap: 15px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
@@ -333,79 +389,64 @@
             background: transparent;
             color: white;
             border: 2px solid white;
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.95rem;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-secondary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: white;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .btn-secondary:hover::before {
+            width: 100%;
         }
         
         .btn-secondary:hover {
-            background: white;
             color: var(--primary);
+            transform: translateY(-3px);
         }
         
-        /* Services Section */
-        .services {
-            padding: 70px 0;
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
             background: white;
         }
         
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-        
-        .section-title h2 {
-            font-size: 1.8rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 4px;
-            background: var(--gradient);
-            bottom: -10px;
-            right: 50%;
-            transform: translateX(50%);
-            border-radius: 2px;
-        }
-        
-        .section-title p {
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-            font-size: 1rem;
-        }
-        
-        .services-grid {
+        .stats-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
         }
         
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+        .stat-card {
             text-align: center;
-            border: 1px solid #f0f0f0;
+            padding: 30px 20px;
+            border-radius: 15px;
+            background: var(--light);
+            transition: var(--transition);
+            box-shadow: var(--shadow);
         }
         
-        .service-card:hover {
-            transform: translateY(-8px);
+        .stat-card:hover {
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
         
-        .service-icon {
+        .stat-icon {
             width: 70px;
             height: 70px;
             background: var(--gradient);
@@ -415,49 +456,160 @@
             justify-content: center;
             margin: 0 auto 20px;
             color: white;
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .stat-text {
+            font-size: 1.1rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 5px;
+            background: var(--gradient);
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            border-radius: 5px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 30px auto 0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            border: 1px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: white;
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
         }
         
         .service-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 18px;
             color: var(--dark);
         }
         
         .service-card p {
             color: #666;
-            margin-bottom: 20px;
-            font-size: 0.95rem;
+            margin-bottom: 25px;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         /* Blog Section */
         .blog {
-            padding: 70px 0;
-            background: #f8f9fa;
+            padding: 100px 0;
+            background: white;
         }
         
         .blog-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 25px;
+            gap: 30px;
         }
         
         .blog-card {
             background: white;
-            border-radius: 15px;
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            position: relative;
         }
         
         .blog-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px);
             box-shadow: var(--shadow-lg);
         }
         
         .blog-image {
-            height: 180px;
-            background: var(--gradient);
+            height: 220px;
             position: relative;
             overflow: hidden;
         }
@@ -466,234 +618,337 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover .blog-image img {
+            transform: scale(1.1);
         }
         
         .blog-content {
-            padding: 20px;
+            padding: 25px;
         }
         
         .blog-meta {
             display: flex;
-            margin-bottom: 12px;
-            font-size: 0.85rem;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
             color: #888;
         }
         
         .blog-meta span {
             margin-left: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .blog-meta i {
+            margin-left: 5px;
         }
         
         .blog-content h3 {
-            font-size: 1.2rem;
-            margin-bottom: 12px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: var(--dark);
             line-height: 1.4;
         }
         
         .blog-content p {
             color: #666;
-            margin-bottom: 18px;
-            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .read-more {
             color: var(--primary);
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             display: inline-flex;
             align-items: center;
-            font-size: 0.9rem;
+            font-size: 1rem;
+            transition: var(--transition);
         }
         
         .read-more i {
-            margin-right: 5px;
+            margin-right: 8px;
             transition: transform 0.3s;
         }
         
         .read-more:hover i {
-            transform: translateX(5px);
+            transform: translateX(8px);
+        }
+        
+        .read-more:hover {
+            color: var(--secondary);
         }
         
         /* Articles Section */
         .articles {
-            padding: 60px 0;
-            background: white;
+            padding: 100px 0;
+            background: #f8f9fa;
         }
         
         .articles-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 25px;
         }
         
         .article-card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s;
-            border-right: 4px solid var(--primary);
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            transition: var(--transition);
+            border-right: 5px solid var(--primary);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         
         .article-card:hover {
             background: white;
-            box-shadow: var(--shadow);
-            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px);
+            border-right: 5px solid var(--accent);
         }
         
         .article-card h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
             color: var(--dark);
             line-height: 1.4;
+            flex-grow: 1;
         }
         
         .article-card p {
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 15px;
+            line-height: 1.6;
         }
         
         .article-meta {
             display: flex;
             justify-content: space-between;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #888;
+            margin-top: auto;
         }
         
         .view-all {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
+        }
+        
+        /* Platforms Section */
+        .platforms {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        
+        .platform-card {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .platform-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            background: white;
+        }
+        
+        .platform-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8rem;
+        }
+        
+        .platform-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .platform-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
         
         /* Contact Section */
         .contact {
-            padding: 70px 0;
-            background: #f8f9fa;
+            padding: 100px 0;
+            background: linear-gradient(rgba(26, 32, 44, 0.9), rgba(26, 32, 44, 0.95)), url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
         }
         
         .contact-container {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 50px;
         }
         
         .contact-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 20px;
-            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .contact-info p {
-            margin-bottom: 30px;
-            color: #666;
-            font-size: 1rem;
+            margin-bottom: 35px;
+            color: #e2e8f0;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
         
         .contact-details {
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         
         .contact-item {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         
         .contact-item i {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: var(--gradient);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            margin-left: 15px;
-            font-size: 1rem;
+            margin-left: 20px;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover i {
+            transform: scale(1.1);
         }
         
         .social-links {
             display: flex;
-            gap: 12px;
+            gap: 15px;
         }
         
         .social-links a {
-            width: 42px;
-            height: 42px;
-            background: #f0f0f0;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--dark);
-            transition: all 0.3s;
+            color: white;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
         }
         
         .social-links a:hover {
             background: var(--gradient);
             color: white;
-            transform: translateY(-3px);
+            transform: translateY(-5px);
         }
         
         .contact-form {
-            background: white;
-            padding: 25px;
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 35px 30px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             font-weight: 600;
-            color: var(--dark);
-            font-size: 0.95rem;
+            color: white;
+            font-size: 1rem;
         }
         
         .form-control {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            padding: 15px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
             font-size: 1rem;
-            transition: border 0.3s;
+            transition: var(--transition);
             font-family: 'Tajawal', sans-serif;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.6);
         }
         
         .form-control:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+            background: rgba(255, 255, 255, 0.15);
         }
         
         textarea.form-control {
-            min-height: 120px;
+            min-height: 150px;
             resize: vertical;
         }
         
         /* WhatsApp Button */
         .whatsapp-float {
             position: fixed;
-            width: 55px;
-            height: 55px;
-            bottom: 20px;
-            left: 20px;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            left: 25px;
             background: #25D366;
             color: white;
             border-radius: 50px;
             text-align: center;
-            font-size: 26px;
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+            font-size: 28px;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
             z-index: 100;
             display: flex;
             align-items: center;
             justify-content: center;
             animation: pulse 2s infinite;
             text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
         }
         
         @keyframes pulse {
@@ -701,7 +956,7 @@
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
             }
             70% {
-                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
             }
             100% {
                 box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
@@ -712,29 +967,29 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 60px 0 20px;
+            padding: 80px 0 25px;
         }
         
         .footer-content {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 35px;
-            margin-bottom: 40px;
+            gap: 40px;
+            margin-bottom: 50px;
         }
         
         .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 12px;
         }
         
         .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 35px;
-            height: 3px;
-            background: var(--primary);
+            width: 45px;
+            height: 4px;
+            background: var(--gradient);
             bottom: 0;
             right: 0;
         }
@@ -744,27 +999,39 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
-            color: #aaa;
+            color: #cbd5e0;
             text-decoration: none;
-            transition: color 0.3s;
-            font-size: 0.9rem;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-links a i {
+            margin-left: 8px;
+            font-size: 0.8rem;
+            transition: var(--transition);
         }
         
         .footer-links a:hover {
             color: white;
-            padding-right: 5px;
+            padding-right: 8px;
+        }
+        
+        .footer-links a:hover i {
+            transform: translateX(-5px);
         }
         
         .copyright {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 25px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #aaa;
-            font-size: 0.85rem;
+            color: #a0aec0;
+            font-size: 0.9rem;
         }
         
         /* Responsive */
@@ -774,18 +1041,22 @@
             }
             
             .hero {
-                padding: 140px 0 80px;
+                padding: 200px 0 120px;
             }
             
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 3.5rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(4, 1fr);
             }
             
             .services-grid, .blog-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .articles-grid {
+            .articles-grid, .platforms-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
             
@@ -805,20 +1076,21 @@
             }
             
             .nav-links li {
-                margin: 0 12px;
+                margin: 0 15px;
             }
             
             .nav-links a {
                 text-decoration: none;
-                color: var(--dark);
+                color: white;
                 font-weight: 600;
-                font-size: 0.95rem;
-                transition: color 0.3s;
+                font-size: 1rem;
+                transition: var(--transition);
                 position: relative;
+                padding: 8px 0;
             }
             
-            .nav-links a:hover {
-                color: var(--primary);
+            header.scrolled .nav-links a {
+                color: var(--dark);
             }
             
             .nav-links a::after {
@@ -826,14 +1098,22 @@
                 position: absolute;
                 width: 0;
                 height: 2px;
-                bottom: -5px;
+                bottom: 0;
                 right: 0;
                 background: var(--gradient);
-                transition: width 0.3s;
+                transition: var(--transition);
             }
             
             .nav-links a:hover::after {
                 width: 100%;
+            }
+            
+            .nav-links a:hover {
+                color: var(--accent);
+            }
+            
+            header.scrolled .nav-links a:hover {
+                color: var(--primary);
             }
             
             .mobile-menu {
@@ -848,15 +1128,29 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             
+            .articles-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .platforms-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
             }
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container header-container">
             <div class="logo-container">
                 <div class="logo-img">
@@ -924,12 +1218,51 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1 class="animate__animated animate__fadeInDown">Dai Port للحلول الرقمية المتكاملة</h1>
-                <p class="animate__animated animate__fadeInUp">نقدم خدمات التسويق الإلكتروني، تصميم المواقع، وتحسين محركات البحث لمساعدة عملك على النمو والوصول إلى جمهور أوسع</p>
+            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="animate__animated animate__fadeInDown">Dai Port للإبداع الرقمي والتسويق المتكامل</h1>
+                <p class="animate__animated animate__fadeInUp">نحو آفاق جديدة في عالم التسويق الرقمي، نقدم حلولاً إبداعية متكاملة تجمع بين الإستراتيجية الذكية والتصميم المتميز لتحقيق أهداف عملك وزيادة مبيعاتك</p>
                 <div class="hero-buttons">
                     <button class="cta-button animate__animated animate__fadeInLeft">ابدأ مشروعك الآن</button>
                     <button class="btn-secondary animate__animated animate__fadeInRight">اعرف المزيد عنا</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number">+257%</div>
+                    <div class="stat-text">زيادة في المبيعات</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number">+183</div>
+                    <div class="stat-text">عميل راضٍ</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stat-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="stat-number">+89</div>
+                    <div class="stat-text">مشروع ناجح</div>
+                </div>
+                
+                <div class="stat-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">دعم فني</div>
                 </div>
             </div>
         </div>
@@ -940,16 +1273,16 @@
         <div class="container">
             <div class="section-title">
                 <h2>خدماتنا المتكاملة</h2>
-                <p>نقدم مجموعة متكاملة من خدمات التسويق الرقمي المصممة خصيصًا لتحقيق أهداف عملك</p>
+                <p>نقدم مجموعة متكاملة من خدمات التسويق الرقمي والإبداع البصري المصممة خصيصًا لتحقيق أهداف عملك وزيادة مبيعاتك</p>
             </div>
             
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up">
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>تحسين محركات البحث</h3>
-                    <p>نرفع ترتيب موقعك في نتائج البحث ونجعلك الأكثر ظهورًا للعملاء المحتملين</p>
+                    <h3>تحسين محركات البحث SEO</h3>
+                    <p>نرفع ترتيب موقعك في نتائج البحث ونجعلك الأكثر ظهورًا للعملاء المحتملين باستخدام أحدث استراتيجيات SEO</p>
                     <a href="seo-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
                 
@@ -957,8 +1290,8 @@
                     <div class="service-icon">
                         <i class="fas fa-ad"></i>
                     </div>
-                    <h3>إعلانات وسائل التواصل</h3>
-                    <p>نصمم حملات إعلانية فعالة على فيسبوك، إنستجرام، تويتر وغيرها من المنصات</p>
+                    <h3>الإعلانات الممولة</h3>
+                    <p>نصمم حملات إعلانية فعالة على فيسبوك، جوجل، إنستجرام، تويتر وغيرها من المنصات لتحقيق أعلى عائد استثمار</p>
                     <a href="social-ads-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
                 
@@ -966,9 +1299,36 @@
                     <div class="service-icon">
                         <i class="fas fa-paint-brush"></i>
                     </div>
-                    <h3>تصميم المواقع والتطبيقات</h3>
-                    <p>نصمم مواقع وتطبيقات احترافية بتجربة مستخدم متميزة وتصميم جذاب</p>
+                    <h3>التصميم الإبداعي</h3>
+                    <p>نصمم هويات بصرية، مواقع وتطبيقات احترافية بتجربة مستخدم متميزة وتصميم جذاب يعكس هوية علامتك</p>
                     <a href="web-design-service.html" class="btn-secondary">اعرف المزيد</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>إنتاج الفيديو والتسويق المرئي</h3>
+                    <p>ننتج محتوى مرئي جذاب وفعال يروي قصة علامتك التجارية بطريقة إبداعية تلفت الانتباه وتزيد التفاعل</p>
+                    <a href="video-marketing.html" class="btn-secondary">اعرف المزيد</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-envelope-open-text"></i>
+                    </div>
+                    <h3>التسويق عبر البريد الإلكتروني</h3>
+                    <p>ننشئ حملات بريدية فعالة لتحويل العملاء المحتملين إلى عملاء فعليين وبناء علاقات قوية مع جمهورك</p>
+                    <a href="email-marketing.html" class="btn-secondary">اعرف المزيد</a>
+                </div>
+                
+                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-analytics"></i>
+                    </div>
+                    <h3>تحليل البيانات والتقارير</h3>
+                    <p>نقدم تقارير شاملة وتحليلات دقيقة تساعدك في اتخاذ قراراتك التسويقية وتحسين أداء حملاتك باستمرار</p>
+                    <a href="analytics-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
             </div>
         </div>
@@ -979,11 +1339,11 @@
         <div class="container">
             <div class="section-title">
                 <h2>أحدث المقالات</h2>
-                <p>اطلع على أحدث النصائح والأفكار في عالم التسويق الرقمي وتطوير الأعمال</p>
+                <p>اطلع على أحدث النصائح والأفكار في عالم التسويق الرقمي، تحسين محركات البحث، وإدارة الحملات الإعلانية</p>
             </div>
             
             <div class="blog-grid">
-                <div class="blog-card" data-aos="fade-up">
+                <div class="blog-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="blog-image">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="SEO Strategies">
                     </div>
@@ -993,7 +1353,7 @@
                             <span><i class="far fa-folder"></i> SEO</span>
                         </div>
                         <h3>أهم 10 استراتيجيات لتحسين ترتيب موقعك في جوجل 2023</h3>
-                        <p>تعرف على أحدث استراتيجيات تحسين محركات البحث التي ستساعد موقعك في الصعود إلى الصفحة الأولى في جوجل...</p>
+                        <p>تعرف على أحدث استراتيجيات تحسين محركات البحث التي ستساعد موقعك في الصعود إلى الصفحة الأولى في جوجل وتحقيق ظهور أكبر في نتائج البحث</p>
                         <a href="article1.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
@@ -1004,11 +1364,11 @@
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 8 مايو 2023</span>
+                            <span><i class="far fa-calendar"></i> 12 مايو 2023</span>
                             <span><i class="far fa-folder"></i> التسويق عبر السوشيال ميديا</span>
                         </div>
-                        <h3>كيف تستفيد من إعلانات الفيسبوك في زيادة مبيعاتك؟</h3>
-                        <p>دليل شامل لإنشاء حملات إعلانية ناجحة على منصة الفيسبوك تستهدف الجمهور المناسب وتحقق أعلى عائد استثمار...</p>
+                        <h3>كيف تستفيد من الإعلانات الممولة في زيادة مبيعاتك؟</h3>
+                        <p>دليل شامل لإنشاء حملات إعلانية ناجحة على منصة الفيسبوك تستهدف الجمهور المناسب وتحقق أعلى عائد استثمار لعملك</p>
                         <a href="article2.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
@@ -1019,11 +1379,11 @@
                     </div>
                     <div class="blog-content">
                         <div class="blog-meta">
-                            <span><i class="far fa-calendar"></i> 1 مايو 2023</span>
+                            <span><i class="far fa-calendar"></i> 10 مايو 2023</span>
                             <span><i class="far fa-folder"></i> تصميم المواقع</span>
                         </div>
                         <h3>أهم معايير تجربة المستخدم في تصميم المواقع 2023</h3>
-                        <p>اكتشف المعايير الأساسية لتصميم مواقع ويب توفر تجربة مستخدم متميزة وتحافظ على زوار موقعك...</p>
+                        <p>اكتشف المعايير الأساسية لتصميم مواقع ويب توفر تجربة مستخدم متميزة وتحافظ على زوار موقعك وتحولهم إلى عملاء</p>
                         <a href="article3.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
@@ -1036,13 +1396,13 @@
         <div class="container">
             <div class="section-title">
                 <h2>المزيد من المقالات</h2>
-                <p>اكتشف مجموعة واسعة من المقالات المتخصصة في التسويق الرقمي وتطوير الأعمال</p>
+                <p>اكتشف مجموعة واسعة من المقالات المتخصصة في التسويق الرقمي، تحسين محركات البحث، إعلانات وسائل التواصل وتطوير الأعمال</p>
             </div>
             
             <div class="articles-grid">
-                <div class="article-card" data-aos="fade-up">
+                <div class="article-card" data-aos="fade-up" data-aos-delay="0">
                     <h3>كيفية استخدام التسويق بالمحتوى لبناء علامة تجارية قوية</h3>
-                    <p>استراتيجيات فعالة لاستخدام المحتوى في بناء علاقات قوية مع العملاء وزيادة الوعي بعلامتك التجارية.</p>
+                    <p>استراتيجيات فعالة لاستخدام المحتوى في بناء علاقات قوية مع العملاء وزيادة الوعي بعلامتك التجارية</p>
                     <div class="article-meta">
                         <span>التسويق بالمحتوى</span>
                         <span><a href="article4.html">اقرأ المزيد</a></span>
@@ -1051,7 +1411,7 @@
                 
                 <div class="article-card" data-aos="fade-up" data-aos-delay="100">
                     <h3>دليل شامل للتسويق عبر إنستجرام للأعمال</h3>
-                    <p>تعلم كيفية الاستفادة القصوى من منصة إنستجرام للوصول إلى جمهور أوسع وزيادة المبيعات.</p>
+                    <p>تعلم كيفية الاستفادة القصوى من منصة إنستجرام للوصول إلى جمهور أوسع وزيادة المبيعات وتحقيق النمو المستمر</p>
                     <div class="article-meta">
                         <span>وسائل التواصل</span>
                         <span><a href="article5.html">اقرأ المزيد</a></span>
@@ -1060,7 +1420,7 @@
                 
                 <div class="article-card" data-aos="fade-up" data-aos-delay="200">
                     <h3>أفضل أدوات التسويق الإلكتروني التي تحتاجها في 2023</h3>
-                    <p>تعرف على أهم الأدوات والتقنيات التي ستساعدك في تنفيذ استراتيجيات التسويق الرقمي بفعالية.</p>
+                    <p>تعرف على أهم الأدوات والتقنيات التي ستساعدك في تنفيذ استراتيجيات التسويق الرقمي بفعالية وتحقيق أفضل النتائج</p>
                     <div class="article-meta">
                         <span>أدوات التسويق</span>
                         <span><a href="article6.html">اقرأ المزيد</a></span>
@@ -1069,10 +1429,46 @@
                 
                 <div class="article-card" data-aos="fade-up" data-aos-delay="300">
                     <h3>كيفية قياس وتحليل أداء حملاتك التسويقية</h3>
-                    <p>اكتشف المقاييس الأساسية التي يجب تتبعها لقياس نجاح حملاتك التسويقية وتحسينها باستمرار.</p>
+                    <p>اكتشف المقاييس الأساسية التي يجب تتبعها لقياس نجاح حملاتك التسويقية وتحسينها باستمرار لتحقيق أفضل النتائج</p>
                     <div class="article-meta">
                         <span>تحليل البيانات</span>
                         <span><a href="article7.html">اقرأ المزيد</a></span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-aos="fade-up" data-aos-delay="0">
+                    <h3>كيفية تصميم إعلان ممول ناجح على فيسبوك</h3>
+                    <p>تعلم خطوة بخطوة كيفية إنشاء إعلانات فيسبوك فعالة تجذب العملاء وتزيد المبيعات مع تقليل التكلفة</p>
+                    <div class="article-meta">
+                        <span>الإعلانات الممولة</span>
+                        <span><a href="article8.html">اقرأ المزيد</a></span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>استراتيجيات زيادة المبيعات عبر وسائل التواصل الاجتماعي</h3>
+                    <p>اكتشف أحدث الاستراتيجيات لتحويل متابعيك على وسائل التواصل إلى عملاء وزيادة مبيعاتك بشكل ملحوظ</p>
+                    <div class="article-meta">
+                        <span>زيادة المبيعات</span>
+                        <span><a href="article9.html">اقرأ المزيد</a></span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>كيفية التصوير الاحترافي للمنتجات باستخدام الهاتف</h3>
+                    <p>تعلم تقنيات التصوير الأساسية لالتقاط صور منتجات احترافية باستخدام هاتفك الذكي فقط دون الحاجة إلى كاميرا احترافية</p>
+                    <div class="article-meta">
+                        <span>التصوير</span>
+                        <span><a href="article10.html">اقرأ المزيد</a></span>
+                    </div>
+                </div>
+                
+                <div class="article-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>أساسيات التصميم الجرافيكي للمبتدئين</h3>
+                    <p>دليل شامل للمبتدئين في عالم التصميم الجرافيكي، من اختيار الألوان إلى تكوين التصميم وإخراجه بشكل احترافي</p>
+                    <div class="article-meta">
+                        <span>التصميم</span>
+                        <span><a href="article11.html">اقرأ المزيد</a></span>
                     </div>
                 </div>
             </div>
@@ -1083,18 +1479,94 @@
         </div>
     </section>
 
+    <!-- Platforms Section -->
+    <section class="platforms">
+        <div class="container">
+            <div class="section-title">
+                <h2>منصات العمل</h2>
+                <p>نعمل على جميع المنصات الرقمية الرئيسية لضمان وصول رسالتك إلى الجمهور المستهدف في المكان والوقت المناسبين</p>
+            </div>
+            
+            <div class="platforms-grid">
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="platform-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <h3>فيسبوك</h3>
+                    <p>إعلانات مستهدفة، صفحات أعمال، مجموعات، وتسويق محتوى متكامل</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="platform-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>إنستجرام</h3>
+                    <p>ستوريات، ريليز، إعلانات بصرية، والتسويق عبر المؤثرين</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="platform-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <h3>جوجل</h3>
+                    <p>إعلانات بحث، شبكة Display، يوتيوب، وتحسين محركات البحث</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="platform-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h3>لينكدإن</h3>
+                    <p>إعلانات B2B، بناء شبكات مهنية، والتسويق للمحترفين</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="platform-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>تيك توك</h3>
+                    <p>إعلانات فيديو قصيرة، تحديقات، والتسويق للشباب</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="platform-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>تويتر</h3>
+                    <p>إعلانات promoted tweets، وبناء مجتمع حول علامتك</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="platform-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>يوتيوب</h3>
+                    <p>إعلانات فيديو، قنوات متخصصة، والتسويق عبر المحتوى المرئي</p>
+                </div>
+                
+                <div class="platform-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="platform-icon">
+                        <i class="fas fa-sms"></i>
+                    </div>
+                    <h3>الرسائل النصية</h3>
+                    <p>حملات SMS، رسائل واتساب، وإشعارات push للحفاظ على التواصل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>اتصل بنا</h2>
-                <p>نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك التسويقية</p>
+                <h2 style="color: white;">اتصل بنا</h2>
+                <p style="color: #e2e8f0;">نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك التسويقية وزيادة مبيعاتك</p>
             </div>
             
             <div class="contact-container">
                 <div class="contact-info">
                     <h3>تواصل مع فريقنا</h3>
-                    <p>لديك استفسار أو تريد مناقشة مشروعك؟ فريقنا متاح دائمًا لمساعدتك وتقديم الاستشارة المناسبة لاحتياجاتك.</p>
+                    <p>لديك استفسار أو تريد مناقشة مشروعك؟ فريقنا متاح دائمًا لمساعدتك وتقديم الاستشارة المناسبة لاحتياجاتك. نحن هنا لتحويل أفكارك إلى واقع ملموس ومساعدتك في تحقيق النجاح الذي تستحقه.</p>
                     
                     <div class="contact-details">
                         <div class="contact-item">
@@ -1128,6 +1600,7 @@
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -1135,17 +1608,17 @@
                     <form>
                         <div class="form-group">
                             <label for="name">الاسم الكامل</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" class="form-control" required placeholder="أدخل اسمك الكامل">
                         </div>
                         
                         <div class="form-group">
                             <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <input type="email" id="email" class="form-control" required placeholder="أدخل بريدك الإلكتروني">
                         </div>
                         
                         <div class="form-group">
                             <label for="phone">رقم الهاتف</label>
-                            <input type="tel" id="phone" class="form-control" required>
+                            <input type="tel" id="phone" class="form-control" required placeholder="أدخل رقم هاتفك">
                         </div>
                         
                         <div class="form-group">
@@ -1153,17 +1626,18 @@
                             <select id="service" class="form-control" required>
                                 <option value="">اختر الخدمة</option>
                                 <option value="seo">تحسين محركات البحث</option>
-                                <option value="social">إعلانات وسائل التواصل</option>
-                                <option value="design">تصميم المواقع</option>
-                                <option value="content">إنتاج المحتوى</option>
+                                <option value="social">الإعلانات الممولة</option>
+                                <option value="design">التصميم الإبداعي</option>
+                                <option value="video">إنتاج الفيديو</option>
                                 <option value="email">التسويق بالبريد</option>
+                                <option value="consultation">استشارة تسويقية</option>
                                 <option value="other">خدمة أخرى</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
                             <label for="message">الرسالة</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea id="message" class="form-control" required placeholder="أخبرنا عن مشروعك أو استفسارك"></textarea>
                         </div>
                         
                         <button type="submit" class="cta-button" style="width: 100%;">إرسال الرسالة</button>
@@ -1178,8 +1652,8 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>عن الشركة</h3>
-                    <p>Dai Port - شركة رائدة في مجال التسويق الإلكتروني نقدم حلولاً متكاملة تساعد الشركات على النمو والوصول إلى جمهورها المستهدف بفعالية.</p>
+                    <h3>عن Dai Port</h3>
+                    <p>Dai Port - وكالة رائدة في مجال التسويق الرقمي والإبداع البصري. نقدم حلولاً متكاملة تجمع بين الإستراتيجية الذكية والتصميم المتميز لمساعدة الشركات على النمو والوصول إلى جمهورها المستهدف بفعالية.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -1191,22 +1665,22 @@
                 <div class="footer-column">
                     <h3>روابط سريعة</h3>
                     <ul class="footer-links">
-                        <li><a href="index.html">الرئيسية</a></li>
-                        <li><a href="services.html">خدماتنا</a></li>
-                        <li><a href="blog.html">المدونة</a></li>
-                        <li><a href="articles.html">المقالات</a></li>
-                        <li><a href="contact.html">اتصل بنا</a></li>
+                        <li><a href="index.html"><i class="fas fa-chevron-left"></i> الرئيسية</a></li>
+                        <li><a href="services.html"><i class="fas fa-chevron-left"></i> خدماتنا</a></li>
+                        <li><a href="blog.html"><i class="fas fa-chevron-left"></i> المدونة</a></li>
+                        <li><a href="articles.html"><i class="fas fa-chevron-left"></i> المقالات</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-left"></i> اتصل بنا</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>خدماتنا</h3>
                     <ul class="footer-links">
-                        <li><a href="seo-service.html">تحسين محركات البحث</a></li>
-                        <li><a href="social-ads-service.html">إعلانات وسائل التواصل</a></li>
-                        <li><a href="web-design-service.html">تصميم المواقع والتطبيقات</a></li>
-                        <li><a href="email-marketing-service.html">التسويق عبر البريد</a></li>
-                        <li><a href="content-marketing-service.html">إنتاج المحتوى المرئي</a></li>
+                        <li><a href="seo-service.html"><i class="fas fa-chevron-left"></i> تحسين محركات البحث</a></li>
+                        <li><a href="social-ads-service.html"><i class="fas fa-chevron-left"></i> الإعلانات الممولة</a></li>
+                        <li><a href="web-design-service.html"><i class="fas fa-chevron-left"></i> التصميم الإبداعي</a></li>
+                        <li><a href="video-marketing.html"><i class="fas fa-chevron-left"></i> إنتاج الفيديو</a></li>
+                        <li><a href="email-marketing.html"><i class="fas fa-chevron-left"></i> التسويق بالبريد</a></li>
                     </ul>
                 </div>
                 
@@ -1234,7 +1708,7 @@
             </div>
             
             <div class="copyright">
-                <p>جميع الحقوق محفوظة &copy; 2023 Dai Port</p>
+                <p>جميع الحقوق محفوظة &copy; 2023 Dai Port - وكالة التسويق الرقمي والإبداع البصري</p>
             </div>
         </div>
     </footer>
@@ -1249,20 +1723,18 @@
     <script>
         // Initialize AOS
         AOS.init({
-            duration: 800,
+            duration: 1000,
             once: true,
             offset: 100
         });
         
         // Header scroll effect
         window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
+            const header = document.getElementById('header');
             if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
+                header.classList.add('scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                header.classList.remove('scrolled');
             }
         });
         
@@ -1296,6 +1768,32 @@
                 window.location.href = 'contact.html';
             });
         });
+        
+        // Add animation to elements on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .blog-card, .article-card, .platform-card, .stat-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.service-card, .blog-card, .article-card, .platform-card, .stat-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
