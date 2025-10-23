@@ -69,13 +69,13 @@
             height: 50px;
             margin-left: 10px;
             border-radius: 10px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 10px rgba(45, 91, 255, 0.3);
+            overflow: hidden;
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .logo-text {
@@ -200,12 +200,13 @@
             height: 40px;
             margin-left: 10px;
             border-radius: 8px;
-            background: var(--gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
+            overflow: hidden;
+        }
+        
+        .sidebar-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
         
         .sidebar-logo-text {
@@ -852,17 +853,17 @@
         <div class="container header-container">
             <div class="logo-container">
                 <div class="logo-img">
-                    <i class="fas fa-rocket"></i>
+                    <img src="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png" alt="شعار الشركة">
                 </div>
                 <div class="logo-text">شركة التسويق</div>
             </div>
             
             <ul class="nav-links">
-                <li><a href="#home">الرئيسية</a></li>
-                <li><a href="#services">خدماتنا</a></li>
-                <li><a href="#blog">المدونة</a></li>
-                <li><a href="#articles">المقالات</a></li>
-                <li><a href="#contact">اتصل بنا</a></li>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="services.html">خدماتنا</a></li>
+                <li><a href="blog.html">المدونة</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
             </ul>
             
             <button class="cta-button">اطلب خدمتك الآن</button>
@@ -879,7 +880,7 @@
         <div class="sidebar-header">
             <div class="sidebar-logo">
                 <div class="sidebar-logo-img">
-                    <i class="fas fa-rocket"></i>
+                    <img src="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png" alt="شعار الشركة">
                 </div>
                 <div class="sidebar-logo-text">شركة التسويق</div>
             </div>
@@ -889,14 +890,14 @@
         </div>
         
         <ul class="sidebar-nav">
-            <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
-            <li><a href="#services"><i class="fas fa-cogs"></i> خدماتنا</a></li>
-            <li><a href="#blog"><i class="fas fa-blog"></i> المدونة</a></li>
-            <li><a href="#articles"><i class="fas fa-newspaper"></i> المقالات</a></li>
-            <li><a href="#contact"><i class="fas fa-phone"></i> اتصل بنا</a></li>
-            <li><a href="#"><i class="fas fa-info-circle"></i> عن الشركة</a></li>
-            <li><a href="#"><i class="fas fa-users"></i> فريق العمل</a></li>
-            <li><a href="#"><i class="fas fa-project-diagram"></i> المشاريع</a></li>
+            <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدماتنا</a></li>
+            <li><a href="blog.html"><i class="fas fa-blog"></i> المدونة</a></li>
+            <li><a href="articles.html"><i class="fas fa-newspaper"></i> المقالات</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> عن الشركة</a></li>
+            <li><a href="team.html"><i class="fas fa-users"></i> فريق العمل</a></li>
+            <li><a href="projects.html"><i class="fas fa-project-diagram"></i> المشاريع</a></li>
         </ul>
         
         <div class="sidebar-contact">
@@ -947,7 +948,7 @@
                     </div>
                     <h3>تحسين محركات البحث (SEO)</h3>
                     <p>نرفع ترتيب موقعك في نتائج البحث ونجعلك الأكثر ظهورًا للعملاء المحتملين</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
+                    <a href="seo-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
                 
                 <div class="service-card">
@@ -956,7 +957,7 @@
                     </div>
                     <h3>إعلانات وسائل التواصل</h3>
                     <p>نصمم حملات إعلانية فعالة على فيسبوك، إنستجرام، تويتر وغيرها من المنصات</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
+                    <a href="social-ads-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
                 
                 <div class="service-card">
@@ -965,34 +966,7 @@
                     </div>
                     <h3>تصميم المواقع والتطبيقات</h3>
                     <p>نصمم مواقع وتطبيقات احترافية بتجربة مستخدم متميزة وتصميم جذاب</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <h3>التسويق عبر البريد الإلكتروني</h3>
-                    <p>ننشئ حملات بريدية فعالة لتحويل العملاء المحتملين إلى عملاء فعليين</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3>إنتاج المحتوى المرئي</h3>
-                    <p>ننتج محتوى مرئي جذاب وفعال يروي قصة علامتك التجارية بطريقة إبداعية</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-analytics"></i>
-                    </div>
-                    <h3>تحليل البيانات والتقارير</h3>
-                    <p>نقدم تقارير شاملة وتحليلات دقيقة تساعدك في اتخاذ قراراتك التسويقية</p>
-                    <button class="btn-secondary">اعرف المزيد</button>
+                    <a href="web-design-service.html" class="btn-secondary">اعرف المزيد</a>
                 </div>
             </div>
         </div>
@@ -1016,7 +990,7 @@
                         </div>
                         <h3>أهم 10 استراتيجيات لتحسين ترتيب موقعك في جوجل 2023</h3>
                         <p>تعرف على أحدث استراتيجيات تحسين محركات البحث التي ستساعد موقعك في الصعود إلى الصفحة الأولى في جوجل...</p>
-                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <a href="article1.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
                 
@@ -1029,7 +1003,7 @@
                         </div>
                         <h3>كيف تستفيد من إعلانات الفيسبوك في زيادة مبيعاتك؟</h3>
                         <p>دليل شامل لإنشاء حملات إعلانية ناجحة على منصة الفيسبوك تستهدف الجمهور المناسب وتحقق أعلى عائد استثمار...</p>
-                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <a href="article2.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
                 
@@ -1042,7 +1016,7 @@
                         </div>
                         <h3>أهم معايير تجربة المستخدم في تصميم المواقع 2023</h3>
                         <p>اكتشف المعايير الأساسية لتصميم مواقع ويب توفر تجربة مستخدم متميزة وتحافظ على زوار موقعك...</p>
-                        <a href="#" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                        <a href="article3.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
                     </div>
                 </div>
             </div>
@@ -1063,7 +1037,7 @@
                     <p>استراتيجيات فعالة لاستخدام المحتوى في بناء علاقات قوية مع العملاء وزيادة الوعي بعلامتك التجارية.</p>
                     <div class="article-meta">
                         <span>التسويق بالمحتوى</span>
-                        <span>10 دقائق قراءة</span>
+                        <span><a href="article4.html">اقرأ المزيد</a></span>
                     </div>
                 </div>
                 
@@ -1072,7 +1046,7 @@
                     <p>تعلم كيفية الاستفادة القصوى من منصة إنستجرام للوصول إلى جمهور أوسع وزيادة المبيعات.</p>
                     <div class="article-meta">
                         <span>وسائل التواصل</span>
-                        <span>8 دقائق قراءة</span>
+                        <span><a href="article5.html">اقرأ المزيد</a></span>
                     </div>
                 </div>
                 
@@ -1081,54 +1055,13 @@
                     <p>تعرف على أهم الأدوات والتقنيات التي ستساعدك في تنفيذ استراتيجيات التسويق الرقمي بفعالية.</p>
                     <div class="article-meta">
                         <span>أدوات التسويق</span>
-                        <span>12 دقائق قراءة</span>
+                        <span><a href="article6.html">اقرأ المزيد</a></span>
                     </div>
                 </div>
-                
-                <div class="article-card">
-                    <h3>كيفية قياس وتحليل أداء حملاتك التسويقية</h3>
-                    <p>اكتشف المقاييس الأساسية التي يجب تتبعها لقياس نجاح حملاتك التسويقية وتحسينها باستمرار.</p>
-                    <div class="article-meta">
-                        <span>تحليل البيانات</span>
-                        <span>9 دقائق قراءة</span>
-                    </div>
-                </div>
-                
-                <div class="article-card">
-                    <h3>استراتيجيات التسويق عبر البريد الإلكتروني التي تحقق نتائج</h3>
-                    <p>تعلم كيفية تصميم حملات بريد إلكتروني فعالة تحقق أعلى معدلات فتح ونقر وتحويل.</p>
-                    <div class="article-meta">
-                        <span>التسويق بالبريد</span>
-                        <span>11 دقائق قراءة</span>
-                    </div>
-                </div>
-                
-                <div class="article-card">
-                    <h3>كيفية زيادة معدل التحويل في موقعك الإلكتروني</h3>
-                    <p>استراتيجيات مثبتة لتحسين تجربة المستخدم وزيادة معدلات التحويل في موقعك الإلكتروني.</p>
-                    <div class="article-meta">
-                        <span>تحسين التحويل</span>
-                        <span>7 دقائق قراءة</span>
-                    </div>
-                </div>
-                
-                <div class="article-card">
-                    <h3>أهم اتجاهات التسويق الرقمي في 2023</h3>
-                    <p>اكتشف أحدث الاتجاهات والتقنيات التي ستشكل مستقبل التسويق الرقمي في العام الحالي.</p>
-                    <div class="article-meta">
-                        <span>اتجاهات التسويق</span>
-                        <span>10 دقائق قراءة</span>
-                    </div>
-                </div>
-                
-                <div class="article-card">
-                    <h3>كيفية بناء استراتيجية تسويق رقمية ناجحة من الصفر</h3>
-                    <p>خطوات عملية لبناء استراتيجية تسويق رقمية شاملة تحقق أهداف عملك وتنمو مبيعاتك.</p>
-                    <div class="article-meta">
-                        <span>استراتيجيات التسويق</span>
-                        <span>14 دقائق قراءة</span>
-                    </div>
-                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="articles.html" class="cta-button">عرض جميع المقالات</a>
             </div>
         </div>
     </section>
@@ -1241,20 +1174,20 @@
                 <div class="footer-column">
                     <h3>روابط سريعة</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">الرئيسية</a></li>
-                        <li><a href="#services">خدماتنا</a></li>
-                        <li><a href="#blog">المدونة</a></li>
-                        <li><a href="#articles">المقالات</a></li>
-                        <li><a href="#contact">اتصل بنا</a></li>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="services.html">خدماتنا</a></li>
+                        <li><a href="blog.html">المدونة</a></li>
+                        <li><a href="articles.html">المقالات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>خدماتنا</h3>
                     <ul class="footer-links">
-                        <li><a href="#">تحسين محركات البحث</a></li>
-                        <li><a href="#">إعلانات وسائل التواصل</a></li>
-                        <li><a href="#">تصميم المواقع والتطبيقات</a></li>
+                        <li><a href="seo-service.html">تحسين محركات البحث</a></li>
+                        <li><a href="social-ads-service.html">إعلانات وسائل التواصل</a></li>
+                        <li><a href="web-design-service.html">تصميم المواقع والتطبيقات</a></li>
                         <li><a href="#">التسويق عبر البريد</a></li>
                         <li><a href="#">إنتاج المحتوى المرئي</a></li>
                     </ul>
@@ -1329,29 +1262,6 @@
             sidebarOverlay.classList.remove('active');
             sidebar.classList.remove('active');
             document.body.style.overflow = 'auto';
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close sidebar if open
-                    sidebarOverlay.classList.remove('active');
-                    sidebar.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            });
         });
         
         // Create floating elements dynamically
