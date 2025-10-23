@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شركة التسويق الإلكتروني - الحلول الرقمية المتكاملة</title>
     <meta name="description" content="شركة متخصصة في التسويق الإلكتروني، إدارة الحملات الإعلانية، تحسين محركات البحث SEO، وتصميم المواقع الإحترافية. تواصل معنا 01060474659">
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #2D5BFF;
@@ -15,6 +17,7 @@
             --dark: #1A1A2E;
             --light: #F8F9FA;
             --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --sidebar-width: 320px;
         }
         
         * {
@@ -40,7 +43,7 @@
         
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: fixed;
             width: 100%;
@@ -56,17 +59,29 @@
             padding: 15px 0;
         }
         
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+        .logo-container {
             display: flex;
             align-items: center;
         }
         
-        .logo i {
+        .logo-img {
+            width: 50px;
+            height: 50px;
             margin-left: 10px;
-            color: var(--secondary);
+            border-radius: 10px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(45, 91, 255, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
         }
         
         .nav-links {
@@ -126,6 +141,170 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Sidebar Styles */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: var(--sidebar-width);
+            height: 100%;
+            background: white;
+            z-index: 2001;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: right 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-logo-img {
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            border-radius: 8px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-sidebar:hover {
+            color: var(--accent);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 15px;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+        
+        .sidebar-nav a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-contact {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-contact h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.2rem;
+        }
+        
+        .sidebar-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .sidebar-contact i {
+            margin-left: 10px;
+            color: var(--primary);
+        }
+        
+        .sidebar-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .sidebar-social a {
+            width: 40px;
+            height: 40px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: all 0.3s;
+        }
+        
+        .sidebar-social a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
         }
         
         /* Hero Section */
@@ -371,6 +550,51 @@
             transform: translateX(5px);
         }
         
+        /* Additional Articles Section */
+        .articles {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .article-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .article-card:hover {
+            background: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-5px);
+        }
+        
+        .article-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .article-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
         /* Contact Section */
         .contact {
             padding: 100px 0;
@@ -598,8 +822,12 @@
                 font-size: 2rem;
             }
             
-            .services, .blog, .contact {
+            .services, .blog, .contact, .articles {
                 padding: 70px 0;
+            }
+            
+            .sidebar {
+                width: 85%;
             }
         }
         
@@ -608,8 +836,12 @@
                 font-size: 1.8rem;
             }
             
-            .services-grid, .blog-grid {
+            .services-grid, .blog-grid, .articles-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -618,15 +850,18 @@
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <i class="fas fa-rocket"></i>
-                <span>شركة التسويق</span>
+            <div class="logo-container">
+                <div class="logo-img">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="logo-text">شركة التسويق</div>
             </div>
             
             <ul class="nav-links">
                 <li><a href="#home">الرئيسية</a></li>
                 <li><a href="#services">خدماتنا</a></li>
                 <li><a href="#blog">المدونة</a></li>
+                <li><a href="#articles">المقالات</a></li>
                 <li><a href="#contact">اتصل بنا</a></li>
             </ul>
             
@@ -638,23 +873,60 @@
         </div>
     </header>
 
+    <!-- Sidebar -->
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-img">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="sidebar-logo-text">شركة التسويق</div>
+            </div>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li><a href="#home"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="#services"><i class="fas fa-cogs"></i> خدماتنا</a></li>
+            <li><a href="#blog"><i class="fas fa-blog"></i> المدونة</a></li>
+            <li><a href="#articles"><i class="fas fa-newspaper"></i> المقالات</a></li>
+            <li><a href="#contact"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            <li><a href="#"><i class="fas fa-info-circle"></i> عن الشركة</a></li>
+            <li><a href="#"><i class="fas fa-users"></i> فريق العمل</a></li>
+            <li><a href="#"><i class="fas fa-project-diagram"></i> المشاريع</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3>معلومات التواصل</h3>
+            <p><i class="fas fa-phone"></i> 01060474659</p>
+            <p><i class="fas fa-envelope"></i> info@example.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+            
+            <div class="sidebar-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="floating-elements">
-            <div class="floating-element" style="width: 50px; height: 50px; top: 10%; right: 20%; animation-delay: 0s;"></div>
-            <div class="floating-element" style="width: 30px; height: 30px; top: 20%; right: 70%; animation-delay: 2s;"></div>
-            <div class="floating-element" style="width: 40px; height: 40px; top: 60%; right: 10%; animation-delay: 4s;"></div>
-            <div class="floating-element" style="width: 60px; height: 60px; top: 40%; right: 60%; animation-delay: 6s;"></div>
-            <div class="floating-element" style="width: 25px; height: 25px; top: 80%; right: 40%; animation-delay: 8s;"></div>
+            <!-- Floating elements will be generated by JavaScript -->
         </div>
         
         <div class="container">
             <div class="hero-content">
-                <h1>نحو آفاق جديدة في التسويق الإلكتروني</h1>
-                <p>نحن شركة متخصصة في تقديم حلول التسويق الرقمي المتكاملة، نساعدك في الوصول إلى جمهورك المستهدف وزيادة مبيعاتك من خلال استراتيجيات مدروسة وأدوات متطورة.</p>
+                <h1 class="animate__animated animate__fadeInDown">نحو آفاق جديدة في التسويق الإلكتروني</h1>
+                <p class="animate__animated animate__fadeInUp">نحن شركة متخصصة في تقديم حلول التسويق الرقمي المتكاملة، نساعدك في الوصول إلى جمهورك المستهدف وزيادة مبيعاتك من خلال استراتيجيات مدروسة وأدوات متطورة.</p>
                 <div class="hero-buttons">
-                    <button class="cta-button">ابدأ مشروعك الآن</button>
-                    <button class="btn-secondary">اعرف المزيد عنا</button>
+                    <button class="cta-button animate__animated animate__fadeInLeft">ابدأ مشروعك الآن</button>
+                    <button class="btn-secondary animate__animated animate__fadeInRight">اعرف المزيد عنا</button>
                 </div>
             </div>
         </div>
@@ -777,6 +1049,90 @@
         </div>
     </section>
 
+    <!-- Additional Articles Section -->
+    <section class="articles" id="articles">
+        <div class="container">
+            <div class="section-title">
+                <h2>المزيد من المقالات</h2>
+                <p>اكتشف مجموعة واسعة من المقالات المتخصصة في التسويق الرقمي وتطوير الأعمال</p>
+            </div>
+            
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>كيفية استخدام التسويق بالمحتوى لبناء علامة تجارية قوية</h3>
+                    <p>استراتيجيات فعالة لاستخدام المحتوى في بناء علاقات قوية مع العملاء وزيادة الوعي بعلامتك التجارية.</p>
+                    <div class="article-meta">
+                        <span>التسويق بالمحتوى</span>
+                        <span>10 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>دليل شامل للتسويق عبر إنستجرام للأعمال</h3>
+                    <p>تعلم كيفية الاستفادة القصوى من منصة إنستجرام للوصول إلى جمهور أوسع وزيادة المبيعات.</p>
+                    <div class="article-meta">
+                        <span>وسائل التواصل</span>
+                        <span>8 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>أفضل أدوات التسويق الإلكتروني التي تحتاجها في 2023</h3>
+                    <p>تعرف على أهم الأدوات والتقنيات التي ستساعدك في تنفيذ استراتيجيات التسويق الرقمي بفعالية.</p>
+                    <div class="article-meta">
+                        <span>أدوات التسويق</span>
+                        <span>12 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>كيفية قياس وتحليل أداء حملاتك التسويقية</h3>
+                    <p>اكتشف المقاييس الأساسية التي يجب تتبعها لقياس نجاح حملاتك التسويقية وتحسينها باستمرار.</p>
+                    <div class="article-meta">
+                        <span>تحليل البيانات</span>
+                        <span>9 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>استراتيجيات التسويق عبر البريد الإلكتروني التي تحقق نتائج</h3>
+                    <p>تعلم كيفية تصميم حملات بريد إلكتروني فعالة تحقق أعلى معدلات فتح ونقر وتحويل.</p>
+                    <div class="article-meta">
+                        <span>التسويق بالبريد</span>
+                        <span>11 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>كيفية زيادة معدل التحويل في موقعك الإلكتروني</h3>
+                    <p>استراتيجيات مثبتة لتحسين تجربة المستخدم وزيادة معدلات التحويل في موقعك الإلكتروني.</p>
+                    <div class="article-meta">
+                        <span>تحسين التحويل</span>
+                        <span>7 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>أهم اتجاهات التسويق الرقمي في 2023</h3>
+                    <p>اكتشف أحدث الاتجاهات والتقنيات التي ستشكل مستقبل التسويق الرقمي في العام الحالي.</p>
+                    <div class="article-meta">
+                        <span>اتجاهات التسويق</span>
+                        <span>10 دقائق قراءة</span>
+                    </div>
+                </div>
+                
+                <div class="article-card">
+                    <h3>كيفية بناء استراتيجية تسويق رقمية ناجحة من الصفر</h3>
+                    <p>خطوات عملية لبناء استراتيجية تسويق رقمية شاملة تحقق أهداف عملك وتنمو مبيعاتك.</p>
+                    <div class="article-meta">
+                        <span>استراتيجيات التسويق</span>
+                        <span>14 دقائق قراءة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -888,8 +1244,8 @@
                         <li><a href="#home">الرئيسية</a></li>
                         <li><a href="#services">خدماتنا</a></li>
                         <li><a href="#blog">المدونة</a></li>
+                        <li><a href="#articles">المقالات</a></li>
                         <li><a href="#contact">اتصل بنا</a></li>
-                        <li><a href="#">سياسة الخصوصية</a></li>
                     </ul>
                 </div>
                 
@@ -946,17 +1302,33 @@
                 header.style.background = 'rgba(255, 255, 255, 0.98)';
                 header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
                 header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
             }
         });
         
-        // Mobile menu toggle
+        // Sidebar functionality
         const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebar = document.querySelector('.sidebar');
+        const closeSidebar = document.querySelector('.close-sidebar');
         
         mobileMenu.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            sidebarOverlay.classList.add('active');
+            sidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeSidebar.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        sidebarOverlay.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
         });
         
         // Smooth scrolling for anchor links
@@ -974,10 +1346,10 @@
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 992) {
-                        navLinks.style.display = 'none';
-                    }
+                    // Close sidebar if open
+                    sidebarOverlay.classList.remove('active');
+                    sidebar.classList.remove('active');
+                    document.body.style.overflow = 'auto';
                 }
             });
         });
@@ -1001,6 +1373,32 @@
             
             floatingContainer.appendChild(element);
         }
+        
+        // Add animation on scroll
+        const animateOnScroll = function() {
+            const elements = document.querySelectorAll('.service-card, .blog-card, .article-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.service-card, .blog-card, .article-card').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        // Trigger once on load
+        window.addEventListener('load', animateOnScroll);
     </script>
 </body>
 </html>
