@@ -159,6 +159,179 @@
             background: rgba(255, 255, 255, 0.1);
         }
         
+        /* Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .sidebar-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .sidebar-logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-sidebar:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-contact {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-contact h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar-contact i {
+            margin-left: 8px;
+            color: var(--primary);
+        }
+        
+        .sidebar-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .sidebar-social a {
+            width: 38px;
+            height: 38px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .sidebar-social a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
         /* Article Header */
         .article-header {
             background: var(--gradient);
@@ -302,6 +475,88 @@
         
         .tip-box h4 i {
             margin-left: 8px;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-right: 4px solid var(--primary);
+        }
+        
+        .toc h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 15px;
+        }
+        
+        .toc li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .toc a {
+            color: #444;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .toc a:hover {
+            color: var(--primary);
+            padding-right: 5px;
+        }
+        
+        /* Author Box */
+        .author-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
         }
         
         /* Related Articles */
@@ -604,6 +859,46 @@
         </div>
     </header>
 
+    <!-- Mobile Sidebar -->
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-img">
+                    <img src="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png" alt="Dai Port Logo">
+                </div>
+                <div class="sidebar-logo-text">Dai Port</div>
+            </div>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدماتنا</a></li>
+            <li><a href="blog.html"><i class="fas fa-blog"></i> المدونة</a></li>
+            <li><a href="articles.html" class="active"><i class="fas fa-newspaper"></i> المقالات</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> عن الشركة</a></li>
+            <li><a href="team.html"><i class="fas fa-users"></i> فريق العمل</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3>معلومات التواصل</h3>
+            <p><i class="fas fa-phone"></i> 01060474659</p>
+            <p><i class="fas fa-envelope"></i> info@daiport.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+            
+            <div class="sidebar-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
     <!-- Article Header -->
     <section class="article-header">
         <div class="container">
@@ -613,6 +908,7 @@
                     <span><i class="far fa-calendar"></i> 15 مايو 2023</span>
                     <span><i class="far fa-clock"></i> 10 دقائق قراءة</span>
                     <span><i class="far fa-folder"></i> SEO</span>
+                    <span><i class="far fa-eye"></i> 2,847 مشاهدة</span>
                 </div>
             </div>
         </div>
@@ -626,10 +922,28 @@
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="SEO Strategies">
                 </div>
                 
-                <p>في عالم يتزايد فيه الاعتماد على الإنترنت يومًا بعد يوم، أصبح تحسين محركات البحث (SEO) أمرًا حيويًا لأي عمل تجاري يريد البقاء والمنافسة. إذا كنت تريد أن يظهر موقعك في الصفحة الأولى من نتائج البحث على جوجل، فأنت بحاجة إلى تطبيق استراتيجيات SEO فعالة ومحدثة.</p>
+                <div class="toc">
+                    <h3>محتويات المقال</h3>
+                    <ul>
+                        <li><a href="#intro">مقدمة عن SEO</a></li>
+                        <li><a href="#strategy1">تحسين تجربة المستخدم (UX)</a></li>
+                        <li><a href="#strategy2">إنشاء محتوى عالي الجودة</a></li>
+                        <li><a href="#strategy3">تحسين محتوى الصور والفيديو</a></li>
+                        <li><a href="#strategy4">بناء روابط خلفية عالية الجودة</a></li>
+                        <li><a href="#strategy5">تحسين سرعة الموقع</a></li>
+                        <li><a href="#strategy6">تحسين محركات البحث المحلي</a></li>
+                        <li><a href="#strategy7">استخدام البيانات المنظمة</a></li>
+                        <li><a href="#strategy8">تحسين محركات البحث للصوت</a></li>
+                        <li><a href="#strategy9">التركيز على E-A-T</a></li>
+                        <li><a href="#strategy10">تحليل البيانات وتحسين الاستراتيجية</a></li>
+                        <li><a href="#conclusion">خاتمة</a></li>
+                    </ul>
+                </div>
                 
-                <h2>ما هو تحسين محركات البحث (SEO)؟</h2>
+                <h2 id="intro">ما هو تحسين محركات البحث (SEO)؟</h2>
                 <p>تحسين محركات البحث (SEO) هو عملية تحسين موقعك الإلكتروني لزيادة ظهوره في نتائج محركات البحث المجانية. الهدف هو جعل موقعك يظهر في المراكز الأولى لنتائج البحث عندما يبحث الأشخاص عن كلمات رئيسية تتعلق بعملك.</p>
+                
+                <p>في عالم يتزايد فيه الاعتماد على الإنترنت يومًا بعد يوم، أصبح تحسين محركات البحث (SEO) أمرًا حيويًا لأي عمل تجاري يريد البقاء والمنافسة. إذا كنت تريد أن يظهر موقعك في الصفحة الأولى من نتائج البحث على جوجل، فأنت بحاجة إلى تطبيق استراتيجيات SEO فعالة ومحدثة.</p>
                 
                 <div class="tip-box">
                     <h4><i class="fas fa-lightbulb"></i> معلومة سريعة</h4>
@@ -638,54 +952,124 @@
                 
                 <h2>أهم 10 استراتيجيات SEO يجب تطبيقها في 2023</h2>
                 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy1">
                     <h4>1. تحسين تجربة المستخدم (UX)</h4>
                     <p>أصبحت تجربة المستخدم عاملًا مهمًا في خوارزميات جوجل. تأكد من أن موقعك سريع، سهل الاستخدام، ومتوافق مع جميع الأجهزة. استخدم تصميمًا متجاوبًا وحسن سرعة تحميل الصفحات.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>استخدم تصميمًا بسيطًا وسهل التنقل</li>
+                        <li>حسن سرعة تحميل الصفحات (استهدف أقل من 3 ثوانٍ)</li>
+                        <li>اجعل الموقع متوافقًا مع الجوال</li>
+                        <li>استخدم أزرار واضحة ودعوات واضحة للإجراء</li>
+                    </ul>
                 </div>
                 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy2">
                     <h4>2. إنشاء محتوى عالي الجودة</h4>
                     <p>المحتوى هو الملك. أنشئ محتوى أصليًا، قيمًا، ومفيدًا يجيب على أسئلة جمهورك. ركز على الجودة بدلاً من الكمية وأنشئ محتوى طويلاً وشاملاً عندما يكون ذلك مناسبًا.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>أجرِ بحثًا عن الكلمات المفتاحية قبل كتابة المحتوى</li>
+                        <li>أجب على الأسئلة الشائعة في مجال تخصصك</li>
+                        <li>استخدم العناوين الفرعية لتنظيم المحتوى</li>
+                        <li>أضف وسائط متعددة (صور، فيديو، إنفوجرافيك)</li>
+                    </ul>
                 </div>
                 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy3">
                     <h4>3. تحسين محتوى الصور والفيديو</h4>
                     <p>استخدم الوسائط المتعددة لتحسين تجربة المستخدم وزيادة وقت البقاء على الموقع. قم بتحسين أحجام الملفات، أضف نصوصًا بديلة وصفيّة، واستخدم مقاطع فيديو جذابة.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>اضغط الصور لتقليل حجم الملفات</li>
+                        <li>استخدم النصوص البديلة الوصفية للصور</li>
+                        <li>أضف مقاطع فيديو قصيرة وجذابة</li>
+                        <li>استخدم ملفات Sitemap للفيديو</li>
+                    </ul>
                 </div>
                 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy4">
                     <h4>4. بناء روابط خلفية عالية الجودة</h4>
                     <p>احصل على روابط خلفية من مواقع موثوقة وذات صلة بمجال عملك. تجنب أساليب بناء الروابط غير الطبيعية وركز على الجودة بدلاً من الكمية.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>أنشئ محتوى جديرًا بالربط (دراسات، أبحاث، أدوات)</li>
+                        <li>تواصل مع المدونين والمؤثرين في مجالك</li>
+                        <li>شارك في منتديات ومجتمعات متخصصة</li>
+                        <li>استخدم أسلوب "الكسر المميت" للروابط</li>
+                    </ul>
                 </div>
                 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy5">
                     <h4>5. تحسين سرعة الموقع</h4>
                     <p>سرعة الموقع تؤثر بشكل مباشر على تجربة المستخدم وترتيب الموقع في نتائج البحث. استخدم أدوات مثل PageSpeed Insights لتحليل أداء موقعك وتطبيق التحسينات اللازمة.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>استخدم خدمة استضافة عالية الجودة</li>
+                        <li>قلل من حجم ملفات CSS وJavaScript</li>
+                        <li>استخدم التخزين المؤقت للمتصفح</li>
+                        <li>قلل من طلبات HTTP</li>
+                    </ul>
                 </div>
 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy6">
                     <h4>6. تحسين محركات البحث المحلي</h4>
                     <p>إذا كان لديك عمل محلي، فاحرص على تحسين ظهورك في نتائج البحث المحلي. سجل نشاطك التجاري على Google My Business وحسن معلومات الاتصال والعنوان.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>أنشئ وتأكد من ملف Google My Business</li>
+                        <li>استخدم الكلمات المفتاحية المحلية في المحتوى</li>
+                        <li>احصل على تقييمات إيجابية من العملاء</li>
+                        <li>استخدم مخطط NAP (الاسم، العنوان، الهاتف) بشكل متسق</li>
+                    </ul>
                 </div>
 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy7">
                     <h4>7. استخدام البيانات المنظمة (Structured Data)</h4>
                     <p>أضف بيانات منظمة إلى موقعك لمساعدة جوجل على فهم محتوى صفحاتك بشكل أفضل. هذا يمكن أن يؤدي إلى ظهور نتائج غنية تزيد من نسبة النقر إلى الظهور.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>استخدم Schema.org لتمييز المحتوى</li>
+                        <li>أضف بيانات منظمة للمقالات والمنتجات</li>
+                        <li>استخدم أداة اختبار البيانات المنظمة من جوجل</li>
+                        <li>طوّر النتائج الغنية لموقعك</li>
+                    </ul>
                 </div>
 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy8">
                     <h4>8. تحسين محركات البحث للصوت</h4>
                     <p>مع تزايد استخدام المساعدات الصوتية، أصبح تحسين محتواك للبحث الصوتي أمرًا مهمًا. ركز على الإجابة على الأسئلة الشائعة واستخدم لغة محادثة طبيعية.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>أجب على الأسئلة مباشرة في المحتوى</li>
+                        <li>استخدم لغة محادثة طبيعية</li>
+                        <li>أنشئ قسم الأسئلة الشائعة</li>
+                        <li>ركز على الكلمات المفتاحية الطويلة والصوتية</li>
+                    </ul>
                 </div>
 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy9">
                     <h4>9. التركيز على E-A-T</h4>
                     <p>E-A-T ترمز إلى الخبرة، السلطة، والموثوقية (Expertise, Authoritativeness, Trustworthiness). عزز هذه العوامل في موقعك من خلال عرض شهادات العملاء، السير الذاتية للفريق، والمحتوى المدعوم بالأدلة.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>أضف صفحة "من نحن" مفصلة</li>
+                        <li>اعرض شهادات العملاء والتقييمات</li>
+                        <li>استشهد بمصادر موثوقة في المحتوى</li>
+                        <li>اظهر الخبرات والشهادات المهنية</li>
+                    </ul>
                 </div>
 
-                <div class="strategy-box">
+                <div class="strategy-box" id="strategy10">
                     <h4>10. تحليل البيانات وتحسين الاستراتيجية</h4>
                     <p>استخدم أدوات مثل Google Analytics وGoogle Search Console لمراقبة أداء موقعك. حلل البيانات بانتظام وعدّل استراتيجيتك بناءً على النتائج.</p>
+                    <p><strong>نصائح عملية:</strong></p>
+                    <ul>
+                        <li>راقب حركة المرور والتحويلات</li>
+                        <li>تتبع الكلمات المفتاحية التي تجلب زيارات</li>
+                        <li>حلل سلوك المستخدمين على الموقع</li>
+                        <li>عدّل استراتيجيتك بناءً على البيانات</li>
+                    </ul>
                 </div>
 
                 <div class="tip-box">
@@ -693,10 +1077,30 @@
                     <p>جرب هذه الأدوات المجانية: Google Search Console, Google Analytics, PageSpeed Insights, Google My Business - كلها أدوات أساسية مجانية من جوجل.</p>
                 </div>
                 
-                <h2>خاتمة</h2>
+                <div class="author-box">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="محمد أحمد">
+                    </div>
+                    <div class="author-info">
+                        <h4>محمد أحمد</h4>
+                        <p>خبير SEO مع أكثر من 8 سنوات خبرة في تحسين محركات البحث والتسويق الرقمي. ساعد أكثر من 200 عميل في تحسين ظهورهم في نتائج البحث وزيادة مبيعاتهم.</p>
+                        <div class="sidebar-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2 id="conclusion">خاتمة</h2>
                 <p>تحسين محركات البحث عملية مستمرة تتطلب الصبر والالتزام. من خلال تطبيق هذه الاستراتيجيات العشر، يمكنك تحسين ظهور موقعك في نتائج البحث وجذب المزيد من الزوار المؤهلين. تذكر أن جوجل يكافئ دائمًا المواقع التي تقدم قيمة حقيقية للمستخدمين.</p>
                 
                 <p>إذا كنت تحتاج إلى مساعدة في تحسين موقعك لمحركات البحث، فلا تتردد في <a href="contact.html" style="color: var(--primary); font-weight: 600;">الاتصال بفريقنا</a> من الخبراء الذين يمتلكون سنوات من الخبرة في مجال SEO.</p>
+                
+                <div class="tip-box">
+                    <h4><i class="fas fa-question-circle"></i> هل تحتاج مساعدة في SEO؟</h4>
+                    <p>فريق Dai Port جاهز لمساعدتك في تحسين ترتيب موقعك في جوجل. <a href="contact.html" style="color: white; text-decoration: underline;">اتصل بنا اليوم</a> للحصول على استشارة مجانية.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -792,33 +1196,51 @@
             }
         });
 
-        // Mobile menu functionality
+        // Sidebar functionality
         const mobileMenu = document.querySelector('.mobile-menu');
-        const navLinks = document.querySelector('.nav-links');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebar = document.querySelector('.sidebar');
+        const closeSidebar = document.querySelector('.close-sidebar');
         
-        if (mobileMenu && navLinks) {
-            mobileMenu.addEventListener('click', function() {
-                if (window.innerWidth < 992) {
-                    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-                    navLinks.style.flexDirection = 'column';
-                    navLinks.style.position = 'absolute';
-                    navLinks.style.top = '70px';
-                    navLinks.style.right = '0';
-                    navLinks.style.background = 'white';
-                    navLinks.style.width = '100%';
-                    navLinks.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
-                    navLinks.style.padding = '20px';
+        mobileMenu.addEventListener('click', function() {
+            sidebarOverlay.classList.add('active');
+            sidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeSidebar.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        sidebarOverlay.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                window.location.href = 'contact.html';
+            });
+        });
+
+        // Smooth scroll for table of contents
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
                 }
             });
-        }
-
-        // Adjust nav for mobile on load
-        if (window.innerWidth < 992) {
-            const navLinks = document.querySelector('.nav-links');
-            if (navLinks) {
-                navLinks.style.display = 'none';
-            }
-        }
+        });
     </script>
 </body>
 </html>
