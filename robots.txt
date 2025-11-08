@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://m013255m.github.io/bootfacebook/sitemap.xml
