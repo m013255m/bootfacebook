@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كيف تستفيد من الإعلانات الممولة في زيادة مبيعاتك؟ - Dai Port</title>
+    <meta name="description" content="دليل شامل لإنشاء حملات إعلانية ناجحة على منصة الفيسبوك تستهدف الجمهور المناسب وتحقق أعلى عائد استثمار لعملك">
+    <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --accent: #f093fb;
+            --dark: #1a202c;
+            --light: #F7FAFC;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.15);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        header.scrolled {
+            background: rgba(26, 32, 44, 0.98);
+            backdrop-filter: blur(15px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            height: 70px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+        
+        header.scrolled .logo-text {
+            color: white;
+        }
+        
+        .nav-links {
+            display: none;
+        }
+        
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mobile-menu {
+            display: block;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+            transition: var(--transition);
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mobile-menu:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        header.scrolled .mobile-menu {
+            color: white;
+        }
+        
+        header.scrolled .mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Sidebar */
+        .sidebar-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        .sidebar-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 2000;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .sidebar.active {
+            right: 0;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .sidebar-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .sidebar-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .sidebar-logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .sidebar-logo-text {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        .close-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 35px;
+            height: 35px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-sidebar:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: var(--dark);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: var(--transition);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background: var(--gradient);
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .sidebar-nav i {
+            margin-left: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-contact {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-contact h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+        
+        .sidebar-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        
+        .sidebar-contact i {
+            margin-left: 8px;
+            color: var(--primary);
+        }
+        
+        .sidebar-social {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .sidebar-social a {
+            width: 38px;
+            height: 38px;
+            background: #f0f0f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+        
+        .sidebar-social a:hover {
+            background: var(--gradient);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Article Header */
+        .article-header {
+            background: var(--gradient);
+            color: white;
+            padding: 120px 0 40px;
+            margin-top: 70px;
+        }
+        
+        .article-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .article-header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.4;
+            font-weight: 800;
+        }
+        
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .article-meta i {
+            margin-left: 8px;
+        }
+        
+        /* Article Content */
+        .article-content {
+            background: white;
+            margin-top: -20px;
+            border-radius: 20px 20px 0 0;
+            padding: 40px 20px;
+            box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .article-body {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .article-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .article-body h2 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: var(--dark);
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        .article-body h3 {
+            font-size: 1.2rem;
+            margin: 25px 0 12px;
+            color: var(--primary);
+        }
+        
+        .article-body p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+            color: #444;
+            line-height: 1.8;
+        }
+        
+        .article-body ul, .article-body ol {
+            margin: 20px 0;
+            padding-right: 20px;
+        }
+        
+        .article-body li {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        .strategy-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            border-right: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+        
+        .strategy-box:hover {
+            transform: translateX(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .strategy-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 25px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .tip-box h4 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tip-box h4 i {
+            margin-left: 8px;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-right: 4px solid var(--primary);
+        }
+        
+        .toc h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            padding-right: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 15px;
+        }
+        
+        .toc li:before {
+            content: "•";
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+        
+        .toc a {
+            color: #444;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .toc a:hover {
+            color: var(--primary);
+            padding-right: 5px;
+        }
+        
+        /* Author Box */
+        .author-box {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 40px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Platform Comparison */
+        .platform-comparison {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .platform-comparison h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .comparison-table th {
+            background: var(--gradient);
+            color: white;
+            padding: 12px 15px;
+            text-align: right;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: right;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background: #edf2f7;
+        }
+        
+        /* Campaign Checklist */
+        .checklist {
+            background: #f0fff4;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-right: 4px solid #48bb78;
+        }
+        
+        .checklist h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+        }
+        
+        .checklist h3 i {
+            margin-left: 10px;
+            color: #48bb78;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .checklist-item i {
+            color: #48bb78;
+            margin-left: 10px;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        
+        .checklist-text {
+            flex: 1;
+        }
+        
+        /* Case Study */
+        .case-study {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .case-study h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .case-study h3 i {
+            margin-left: 10px;
+            color: var(--secondary);
+        }
+        
+        .case-study-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Related Articles */
+        .related-articles {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .articles-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+        
+        .article-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .article-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .article-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .article-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+        
+        .read-more i {
+            margin-right: 5px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .read-more:hover {
+            color: var(--secondary);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 35px;
+            height: 3px;
+            background: var(--gradient);
+            bottom: 0;
+            right: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-right: 5px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 55px;
+            height: 55px;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 26px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .container {
+                width: 90%;
+            }
+            
+            .article-header {
+                padding: 140px 0 60px;
+            }
+            
+            .article-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .article-content {
+                padding: 50px 40px;
+            }
+            
+            .article-image {
+                height: 350px;
+            }
+            
+            .case-study-stats {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .articles-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 992px) {
+            .nav-links {
+                display: flex;
+                list-style: none;
+            }
+            
+            .nav-links li {
+                margin: 0 12px;
+            }
+            
+            .nav-links a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 600;
+                font-size: 0.95rem;
+                transition: var(--transition);
+                position: relative;
+                padding: 5px 0;
+            }
+            
+            header.scrolled .nav-links a {
+                color: white;
+            }
+            
+            .nav-links a::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 2px;
+                bottom: 0;
+                right: 0;
+                background: var(--gradient);
+                transition: var(--transition);
+            }
+            
+            .nav-links a:hover::after {
+                width: 100%;
+            }
+            
+            .nav-links a:hover {
+                color: var(--primary);
+            }
+            
+            header.scrolled .nav-links a:hover {
+                color: var(--accent);
+            }
+            
+            .mobile-menu {
+                display: none;
+            }
+            
+            .articles-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .article-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo-img">
+                    <img src="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png" alt="Dai Port Logo">
+                </div>
+                <div class="logo-text">Dai Port</div>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="services.html">خدماتنا</a></li>
+                <li><a href="blog.html">المدونة</a></li>
+                <li><a href="articles.html">المقالات</a></li>
+                <li><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <button class="cta-button">اطلب خدمتك</button>
+            
+            <button class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar-overlay"></div>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <div class="sidebar-logo">
+                <div class="sidebar-logo-img">
+                    <img src="https://i.postimg.cc/ZK12BvL3/file-000000004918620a9decf628decf87c8.png" alt="Dai Port Logo">
+                </div>
+                <div class="sidebar-logo-text">Dai Port</div>
+            </div>
+            <button class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <ul class="sidebar-nav">
+            <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+            <li><a href="services.html"><i class="fas fa-cogs"></i> خدماتنا</a></li>
+            <li><a href="blog.html"><i class="fas fa-blog"></i> المدونة</a></li>
+            <li><a href="articles.html" class="active"><i class="fas fa-newspaper"></i> المقالات</a></li>
+            <li><a href="contact.html"><i class="fas fa-phone"></i> اتصل بنا</a></li>
+            <li><a href="about.html"><i class="fas fa-info-circle"></i> عن الشركة</a></li>
+            <li><a href="team.html"><i class="fas fa-users"></i> فريق العمل</a></li>
+        </ul>
+        
+        <div class="sidebar-contact">
+            <h3>معلومات التواصل</h3>
+            <p><i class="fas fa-phone"></i> 01060474659</p>
+            <p><i class="fas fa-envelope"></i> info@daiport.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> القاهرة، مصر</p>
+            
+            <div class="sidebar-social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Header -->
+    <section class="article-header">
+        <div class="container">
+            <div class="article-header-content">
+                <h1 class="animate__animated animate__fadeInDown">كيف تستفيد من الإعلانات الممولة في زيادة مبيعاتك؟</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> 12 مايو 2023</span>
+                    <span><i class="far fa-clock"></i> 12 دقائق قراءة</span>
+                    <span><i class="far fa-folder"></i> الإعلانات الممولة</span>
+                    <span><i class="far fa-eye"></i> 3,215 مشاهدة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Content -->
+    <section class="article-content">
+        <div class="container">
+            <div class="article-body">
+                <div class="article-image">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Social Media Advertising">
+                </div>
+                
+                <div class="toc">
+                    <h3>محتويات المقال</h3>
+                    <ul>
+                        <li><a href="#intro">مقدمة عن الإعلانات الممولة</a></li>
+                        <li><a href="#platforms">اختيار المنصة المناسبة</a></li>
+                        <li><a href="#targeting">استراتيجيات التargeting المتقدمة</a></li>
+                        <li><a href="#creative">إبداع المحتوى والإعلان</a></li>
+                        <li><a href="#budget">إدارة الميزانية وتحسين الأداء</a></li>
+                        <li><a href="#conversion">تحسين معدلات التحويل</a></li>
+                        <li><a href="#case-study">دراسة حالة عملية</a></li>
+                        <li><a href="#checklist">قائمة التحقق النهائية</a></li>
+                    </ul>
+                </div>
+                
+                <h2 id="intro">مقدمة عن الإعلانات الممولة</h2>
+                <p>الإعلانات الممولة أصبحت العمود الفقري للتسويق الرقمي في العصر الحديث. مع أكثر من 4.8 مليار مستخدم لوسائل التواصل الاجتماعي حول العالم، تمثل هذه المنصات فرصة ذهبية للوصول إلى العملاء المحتملين وزيادة المبيعات.</p>
+                
+                <p>لكن النجاح في الإعلانات الممولة يتطلب أكثر من مجرد نشر إعلان عشوائي. إنها عملية استراتيجية تشمل فهم الجمهور، تصميم محتوى جذاب، وإدارة الحملات باحترافية لتحقيق أعلى عائد على الاستثمار.</p>
+                
+                <div class="tip-box">
+                    <h4><i class="fas fa-chart-line"></i> إحصائية مهمة</h4>
+                    <p>70% من المسوقين يخططون لزيادة ميزانياتهم للإعلانات الممولة في 2023، مما يدل على فعاليتها في تحقيق النتائج.</p>
+                </div>
+                
+                <h2 id="platforms">اختيار المنصة المناسبة لعملك</h2>
+                <p>ليس كل منصة إعلانية مناسبة لكل نوع من الأعمال. اختيار المنصة الصحيحة يعتمد على جمهورك المستهدف، نوع منتجك، وأهدافك التسويقية.</p>
+                
+                <div class="platform-comparison">
+                    <h3>مقارنة بين منصات الإعلانات الرئيسية</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>المعيار</th>
+                                <th>فيسبوك/إنستجرام</th>
+                                <th>جوجل</th>
+                                <th>لينكدإن</th>
+                                <th>تيك توك</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>الفئة العمرية الأساسية</td>
+                                <td>25-44 سنة</td>
+                                <td>جميع الأعمار</td>
+                                <td>30-49 سنة</td>
+                                <td>16-30 سنة</td>
+                            </tr>
+                            <tr>
+                                <td>أنسب لنوع الأعمال</td>
+                                <td>B2C، التجارة الإلكترونية</td>
+                                <td>جميع الأعمال</td>
+                                <td>B2B، الخدمات المهنية</td>
+                                <td>الموضة، الترفيه، الشباب</td>
+                            </tr>
+                            <tr>
+                                <td>متوسط تكلفة النقرة (CPC)</td>
+                                <td>0.5 - 2 دولار</td>
+                                <td>1 - 5 دولار</td>
+                                <td>5 - 15 دولار</td>
+                                <td>0.2 - 1 دولار</td>
+                            </tr>
+                            <tr>
+                                <td>نقاط القوة</td>
+                                <td>تحديد دقيق، أشكال إعلانية متنوعة</td>
+                                <td>نية الشراء، بحث نشط</td>
+                                <td>جمهور محترف، قرارات شراء كبيرة</td>
+                                <td>تفاعل عالي، محتوى فيديو</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h2 id="targeting">استراتيجيات التargeting المتقدمة</h2>
+                
+                <div class="strategy-box">
+                    <h4>1. التحديد الديموغرافي والسلوكي</h4>
+                    <p>استخدم البيانات الديموغرافية مثل العمر، الجنس، الموقع الجغرافي، بالإضافة إلى السلوكيات والاهتمامات لتحديد جمهورك بدقة.</p>
+                    <p><strong>نصائح متقدمة:</strong></p>
+                    <ul>
+                        <li>استخدم شرائح متعددة للجمهور لاختبار الأداء</li>
+                        <li>اجمع بين الاهتمامات والسلوكيات لتحسين التحديد</li>
+                        <li>استخدم بيانات العملاء الحاليين لإنشاء جمهور مشابه</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>2. إعادة استهداف الزوار والمهتمين</h4>
+                    <p>الزوار السابقون لموقعك والمهتمون بمنتجاتك هم الأكثر احتمالية للتحويل. استهدفهم بإعلانات مخصصة تعيد جذبهم.</p>
+                    <p><strong>استراتيجيات فعالة:</strong></p>
+                    <ul>
+                        <li>إعلانات تذكيرية للزوار الذين لم يكملوا الشراء</li>
+                        <li>عروض حصرية للمشتركين في القائمة البريدية</li>
+                        <li>إعلانات منتجات مشابهة لما شاهدوه سابقًا</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>3. Lookalike Audiences</h4>
+                    <p>أنشئ جمهورًا جديدًا يشبه عملائك الحاليين باستخدام خوارزميات الذكاء الاصطناعي. هذه الطريقة تمكنك من الوصول إلى عملاء جدد محتملين بخصائص مشابهة لأفضل عملائك.</p>
+                </div>
+                
+                <h2 id="creative">إبداع المحتوى والإعلان</h2>
+                
+                <div class="strategy-box">
+                    <h4>1. تصميم إعلانات جذابة بصريًا</h4>
+                    <p>الصور والفيديوهات عالية الجودة تزيد من معدل النقر وتجذب الانتباه. استخدم ألوانًا متناسقة، صورًا واضحة، وتصميمًا يعكس هوية علامتك التجارية.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>2. كتابة نصوص إعلانية مقنعة</h4>
+                    <p>النص الإعلاني الجيد يخاطب احتياجات العميل، يقدم حلاً لمشكلته، ويحتوي على دعوة واضحة للإجراء.</p>
+                    <p><strong>عناصر النص الناجح:</strong></p>
+                    <ul>
+                        <li>عنوان جذاب يلفت الانتباه</li>
+                        <li>وصف يوضح الفائدة والمنفعة</li>
+                        <li>عرض قيمة واضح ومقنع</li>
+                        <li>دعوة إجراء محددة وقابلة للتنفيذ</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>3. اختبار A/B المستمر</h4>
+                    <p>اختبر عناصر مختلفة من إعلاناتك باستمرار لتحسين الأداء. جرب نصوصًا مختلفة، صورًا متنوعة، وعناوين متعددة لتحديد الأكثر فعالية.</p>
+                </div>
+                
+                <h2 id="budget">إدارة الميزانية وتحسين الأداء</h2>
+                
+                <div class="strategy-box">
+                    <h4>1. تخصيص الميزانية بذكاء</h4>
+                    <p>لا تضع كل ميزانيتك في حملة واحدة. وزع الميزانية على عدة حملات وشرائح جمهور، ثم ركز على الأكثر أداءً.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>2. مراقبة وتحليل المقاييس الرئيسية</h4>
+                    <p>تابع مقاييس الأداء باستمرار مثل:</p>
+                    <ul>
+                        <li>معدل النقر (CTR)</li>
+                        <li>تكلفة النقرة (CPC)</li>
+                        <li>معدل التحويل (Conversion Rate)</li>
+                        <li>عائد الاستثمار (ROI)</li>
+                        <li>تكلفة الاكتساب (CAC)</li>
+                    </ul>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>3. تحسين الحملات باستمرار</h4>
+                    <p>استخدم بيانات الأداء لتحسين حملاتك باستمرار. أوقف الإعلانات منخفضة الأداء، وزاد ميزانية الإعلانات عالية الأداء، وعدّل استراتيجيات التargeting بناءً على النتائج.</p>
+                </div>
+                
+                <h2 id="conversion">تحسين معدلات التحويل</h2>
+                
+                <div class="strategy-box">
+                    <h4>1. صفحات هبوط مخصصة</h4>
+                    <p>صمم صفحات هبوط مخصصة لكل حملة إعلانية. يجب أن تكون الصفحة متوافقة مع رسالة الإعلان وتحتوي على نموذج تحويل بسيط وسهل.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>2. تجربة مستخدم سلسة</h4>
+                    <p>تأكد من أن رحلة العميل من رؤية الإعلان إلى إكمال الشراء سلسة وخالية من العقبات. اختبر عملية الشراء بنفسك لتحديد أي نقاط ضعف.</p>
+                </div>
+                
+                <div class="strategy-box">
+                    <h4>3. عروض محدودة الزمن</h4>
+                    <p>استخدم عنصر الندرة والإلحاح لتحفيز العملاء على اتخاذ قرار الشراء فورًا. العروض المحدودة بوقت تزيد من معدلات التحويل بشكل ملحوظ.</p>
+                </div>
+                
+                <h2 id="case-study">دراسة حالة عملية</h2>
+                
+                <div class="case-study">
+                    <h3><i class="fas fa-chart-bar"></i> نجاح متجر إلكتروني في زيادة المبيعات بنسبة 320%</h3>
+                    <p>متجر "أزياء أنيقة" كان يعاني من مبيعات منخفضة ووعي محدود بالعلامة التجارية. بعد تطبيق استراتيجية إعلانات ممولة محكمة، حقق النتائج التالية:</p>
+                    
+                    <div class="case-study-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">+320%</div>
+                            <div class="stat-label">زيادة في المبيعات</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">-42%</div>
+                            <div class="stat-label">انخفاض في تكلفة الاكتساب</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">5.8%</div>
+                            <div class="stat-label">معدل تحويل</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">3.2x</div>
+                            <div class="stat-label">عائد الاستثمار</div>
+                        </div>
+                    </div>
+                    
+                    <p><strong>الاستراتيجية المطبقة:</strong></p>
+                    <ul>
+                        <li>إنشاء جمهور مشابه بناءً على عملاء سعداء</li>
+                        <li>إعادة استهداف زوار الموقع بعروض حصرية</li>
+                        <li>استخدام فيديوهات قصيرة تعرض المنتجات بشكل حي</li>
+                        <li>اختبار مستمر وتحسين الحملات أسبوعيًا</li>
+                    </ul>
+                </div>
+                
+                <h2 id="checklist">قائمة التحقق النهائية</h2>
+                
+                <div class="checklist">
+                    <h3><i class="fas fa-check-circle"></i> قائمة التحقق لحملة إعلانية ناجحة</h3>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>تحديد الهدف بوضوح</strong>
+                            <p>هل حددت هدف الحملة بوضوح (وعي، تحويلات، مبيعات)؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>دراسة الجمهور المستهدف</strong>
+                            <p>هل فهمت جمهورك المستهدف واحتياجاتهم بدقة؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>اختيار المنصة المناسبة</strong>
+                            <p>هل اخترت المنصة الإعلانية الأنسب لجمهورك وهدفك؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>تصميم محتوى جذاب</strong>
+                            <p>هل صممت إعلانات بصريًا جذابة ونصوصًا مقنعة؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>إعداد صفحات هبوط فعالة</strong>
+                            <p>هل جهزت صفحات هبوط مخصصة ومحسنة للتحويل؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>تحديد الميزانية والجدول الزمني</strong>
+                            <p>هل حددت ميزانية واقعية وجدولًا زمنيًا للحملة؟</p>
+                        </div>
+                    </div>
+                    
+                    <div class="checklist-item">
+                        <i class="fas fa-check"></i>
+                        <div class="checklist-text">
+                            <strong>إعداد نظام التتبع والتحليل</strong>
+                            <p>هل جهزت أدوات التتبع لمراقبة أداء الحملة؟</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="author-box">
+                    <div class="author-avatar">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" alt="أحمد محمد">
+                    </div>
+                    <div class="author-info">
+                        <h4>أحمد محمد</h4>
+                        <p>خبير تسويق إلكتروني وإعلانات ممولة مع أكثر من 10 سنوات خبرة. ساعد أكثر من 150 شركة في تحقيق نمو ملحوظ في مبيعاتهم من خلال استراتيجيات إعلانية مدروسة.</p>
+                        <div class="sidebar-social">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-medium"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <h2>خاتمة</h2>
+                <p>الإعلانات الممولة ليست رفاهية في عالم اليوم، بل أصبحت ضرورة للبقاء والمنافسة. لكن النجاح فيها يتطلب استراتيجية مدروسة، تنفيذ دقيق، وتحليل مستمر للبيانات.</p>
+                
+                <p>ابدأ بتطبيق هذه الاستراتيجيات خطوة بخطوة، وراقب النتائج بعناية، وعدّل استراتيجيتك بناءً على البيانات. مع الوقت والصبر، ستتمكن من تحويل الإعلانات الممولة إلى مصدر مستدام للنمو والربح لعملك.</p>
+                
+                <div class="tip-box">
+                    <h4><i class="fas fa-rocket"></i> مستعد لبدء حملتك الإعلانية؟</h4>
+                    <p>فريق Dai Port متخصص في تصميم وإدارة الحملات الإعلانية التي تحقق نتائج ملموسة. <a href="contact.html" style="color: white; text-decoration: underline;">اتصل بنا اليوم</a> لاستشارة مجانية وتصميم خطة إعلانية مخصصة لعملك.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="related-articles">
+        <div class="container">
+            <div class="section-title">
+                <h2>مقالات ذات صلة</h2>
+                <p>اكتشف المزيد من المقالات المفيدة في مجال التسويق الرقمي</p>
+            </div>
+            
+            <div class="articles-grid">
+                <div class="article-card">
+                    <h3>أهم 10 استراتيجيات لتحسين ترتيب موقعك في جوجل 2023</h3>
+                    <p>تعرف على أحدث استراتيجيات تحسين محركات البحث التي ستساعد موقعك في الصعود إلى الصفحة الأولى في جوجل وتحقيق ظهور أكبر في نتائج البحث</p>
+                    <a href="article1.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+                
+                <div class="article-card">
+                    <h3>أهم معايير تجربة المستخدم في تصميم المواقع 2023</h3>
+                    <p>اكتشف المعايير الأساسية لتصميم مواقع ويب توفر تجربة مستخدم متميزة وتحافظ على زوار موقعك وتحولهم إلى عملاء.</p>
+                    <a href="article3.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+                
+                <div class="article-card">
+                    <h3>كيفية قياس وتحليل أداء حملاتك التسويقية</h3>
+                    <p>اكتشف المقاييس الأساسية التي يجب تتبعها لقياس نجاح حملاتك التسويقية وتحسينها باستمرار لتحقيق أفضل النتائج</p>
+                    <a href="article7.html" class="read-more">اقرأ المزيد <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>عن Dai Port</h3>
+                    <p>Dai Port - وكالة رائدة في مجال التسويق الرقمي والإبداع البصري. نقدم حلولاً متكاملة تجمع بين الإستراتيجية الذكية والتصميم المتميز لمساعدة الشركات على النمو والوصول إلى جمهورها المستهدف بفعالية.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="services.html">خدماتنا</a></li>
+                        <li><a href="blog.html">المدونة</a></li>
+                        <li><a href="articles.html">المقالات</a></li>
+                        <li><a href="contact.html">اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>خدماتنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="seo-service.html">تحسين محركات البحث</a></li>
+                        <li><a href="social-ads-service.html">الإعلانات الممولة</a></li>
+                        <li><a href="web-design-service.html">التصميم الإبداعي</a></li>
+                        <li><a href="video-marketing.html">إنتاج الفيديو</a></li>
+                        <li><a href="email-marketing.html">التسويق بالبريد</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <p>01060474659</p>
+                    <p>info@daiport.com</p>
+                    <p>القاهرة، مصر</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>جميع الحقوق محفوظة &copy; 2023 Dai Port - وكالة التسويق الرقمي والإبداع البصري</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/201060474659" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Sidebar functionality
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebar = document.querySelector('.sidebar');
+        const closeSidebar = document.querySelector('.close-sidebar');
+        
+        mobileMenu.addEventListener('click', function() {
+            sidebarOverlay.classList.add('active');
+            sidebar.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeSidebar.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        sidebarOverlay.addEventListener('click', function() {
+            sidebarOverlay.classList.remove('active');
+            sidebar.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                window.location.href = 'contact.html';
+            });
+        });
+
+        // Smooth scroll for table of contents
+        document.querySelectorAll('.toc a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
